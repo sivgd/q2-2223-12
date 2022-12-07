@@ -36,4 +36,5 @@ public class WeaponManager : MonoBehaviour
         weapons[2].SetActive(w3Active);
         Debug.Log($"weapon 1 active: {weapons[0].activeInHierarchy}\nweapon 2 active: {weapons[1].activeInHierarchy}\nweapon 3 active: {weapons[2].activeInHierarchy}"); 
     }
+
 }
