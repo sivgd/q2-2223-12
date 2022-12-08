@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e6f8e4823619e4d87262bce424a7a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSpread: 10
-  maxTimer: 1
+  shotSpread: 0.5
+  maxTimer: 5
   pelletAmt: 25
   enemyTag: Enemy
   instPos: {fileID: 1401764805}
