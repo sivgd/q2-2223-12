@@ -606,8 +606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9e1accf82690f41bd53e219d4e08a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensX: 400
-  sensY: 400
+  sensX: 600
+  sensY: 600
   orientation: {fileID: 1369515661}
 --- !u!850595691 &1017818808
 LightingSettings:

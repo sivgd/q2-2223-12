@@ -97,7 +97,6 @@ public class EnemyAI : MonoBehaviour
         if(!alreadyAttacked)
         {
             Shoot();
-
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttack);
         }
@@ -115,7 +114,7 @@ public class EnemyAI : MonoBehaviour
         rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
         rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 
-        Destroy(projectile, 1f);
+        Destroy(rb.gameObject, 1f);
     }
 
     private void OnDrawGizmosSelected()
