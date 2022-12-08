@@ -52,7 +52,7 @@ public class ShotgunArm : MonoBehaviour
 
         for (int i = 0; i < pelletAmt; i++)
         {
-            double spread = (Mathf.Sqrt(pelletAmt) % 1 ==0) ? Mathf.Sqrt(pelletAmt)
+            double spread = (Mathf.Sqrt(pelletAmt) % 1 == 0) ? Mathf.Sqrt(pelletAmt): Mathf.Ceil(Mathf.Sqrt(pelletAmt));
 
             Vector3 dir = new Vector3(transform.forward.x * rX, transform.forward.y * rY, transform.forward.z * rZ);
             Ray ray = new Ray(instPos.position, dir);
