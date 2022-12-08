@@ -45,14 +45,13 @@ public class ShotgunArm : MonoBehaviour
 
    private void GenerateBullets()
    {
-
-
-       
-
+        /// pellet pos should have fixed spread based on the sqr root of the amt of pellets 
+        double spread = (Mathf.Sqrt(pelletAmt) % 1 == 0) ? Mathf.Sqrt(pelletAmt) : Mathf.Ceil(Mathf.Sqrt(pelletAmt));
+        int pRow, pColumn;
 
         for (int i = 0; i < pelletAmt; i++)
         {
-            double spread = (Mathf.Sqrt(pelletAmt) % 1 == 0) ? Mathf.Sqrt(pelletAmt): Mathf.Ceil(Mathf.Sqrt(pelletAmt));
+            
 
             Vector3 dir = new Vector3(transform.forward.x * rX, transform.forward.y * rY, transform.forward.z * rZ);
             Ray ray = new Ray(instPos.position, dir);
