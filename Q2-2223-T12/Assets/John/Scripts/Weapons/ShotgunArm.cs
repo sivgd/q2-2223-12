@@ -28,53 +28,40 @@ public class ShotgunArm : MonoBehaviour
     {
         hitObj = new GameObject[pelletAmt];
     }
-    private void Awake()
-    {
-        StartCoroutine(GenerateBullets());
-    }
+    
 
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1") && canFire)
+        if (Input.GetButtonDown("Fire1"))
         {
-            canFire = false;
-            shotTimer = maxTimer; 
             Fire(); 
-        }
-        else if (!canFire) shotTimer -= Time.deltaTime;
-        if(shotTimer <= 0f)
-        {
-            canFire = true; 
-        }
-        
-           
-        
+        }  
     }
     private void Fire()
     {
-        StartCoroutine(GenerateBullets()); 
+        GenerateBullets(); 
     }
 
-    IEnumerator GenerateBullets()
-    {
-        
-            yield return new WaitForSecondsRealtime(shotTimer);
+   private void GenerateBullets()
+   {
 
-            rX = Random.Range(0f, shotSpread); 
-            rY = Random.Range(0f, shotSpread);
-            rZ = Random.Range(0f, shotSpread);
+
+       
+
+
+        for (int i = 0; i < pelletAmt; i++)
+        {
+            double spread = (Mathf.Sqrt(pelletAmt) % 1 ==0) ? Mathf.Sqrt(pelletAmt)
+
             Vector3 dir = new Vector3(transform.forward.x * rX, transform.forward.y * rY, transform.forward.z * rZ);
-
-            for (int i = 0; i < pelletAmt; i++)
+            Ray ray = new Ray(instPos.position, dir);
+            Debug.DrawRay(ray.origin,ray.direction,Color.red,0.5f); 
+            if (Physics.Raycast(ray, out hit))
             {
-                Ray ray = new Ray(instPos.position, dir);
-                Debug.DrawRay(ray.origin,ray.direction,Color.red,0.5f); 
-                if (Physics.Raycast(ray, out hit))
-                {
-                    hitObj[i] = hit.collider.gameObject;
-                }
+                hitObj[i] = hit.collider.gameObject;
             }
+        }
         
 
     }
