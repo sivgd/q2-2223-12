@@ -7,7 +7,7 @@ public class ShotgunArm : MonoBehaviour
     public float shotSpread = 0.2f;
     private float shotTimer;
     public float maxTimer; 
-    float rX, rY, rZ;
+    //float rX, rY, rZ;
 
     public int pelletAmt = 5;
 
@@ -46,19 +46,24 @@ public class ShotgunArm : MonoBehaviour
    private void GenerateBullets()
    {
         /// pellet pos should have fixed spread based on the sqr root of the amt of pellets 
-        double spread = (Mathf.Sqrt(pelletAmt) % 1 == 0) ? Mathf.Sqrt(pelletAmt) : Mathf.Ceil(Mathf.Sqrt(pelletAmt));
-        int pRow, pColumn;
+        float spread = shotSpread; 
+        int pRow = 0, pColumn = 0;
 
         for (int i = 0; i < pelletAmt; i++)
         {
-            
-
-            Vector3 dir = new Vector3(transform.forward.x * rX, transform.forward.y * rY, transform.forward.z * rZ);
-            Ray ray = new Ray(instPos.position, dir);
+            float xtoZratio = transform.forward.x / transform.forward.z;
+            Vector3 dirMod = new Vector3(pColumn * spread, pRow * spread, pColumn * spread);
+            Ray ray = new Ray(instPos.position, instPos.forward * spread);
             Debug.DrawRay(ray.origin,ray.direction,Color.red,0.5f); 
             if (Physics.Raycast(ray, out hit))
             {
                 hitObj[i] = hit.collider.gameObject;
+            }
+            pColumn++; 
+            if(pColumn >= spread)
+            {
+                pRow++;
+                pColumn = 0; 
             }
         }
         
