@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlimeBall : MonoBehaviour
 {
-    private float shootForce = 10f;
+    public static float shootForce = 10f;
     private Rigidbody rb; 
     private void Awake()
     {

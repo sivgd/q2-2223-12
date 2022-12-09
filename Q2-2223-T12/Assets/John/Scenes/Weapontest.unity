@@ -1813,9 +1813,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea755653702e024b938ca2b92f343cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slimeBall: {fileID: 1401764804}
-  instPos: {fileID: 0}
+  slimeBall: {fileID: 624056384090442364, guid: 49de6e2cacd041848bf7d042f7439128, type: 3}
+  instPos: {fileID: 1401764805}
   cooldown: 5
+  maxTimer: 5
 --- !u!1 &1401764804
 GameObject:
   m_ObjectHideFlags: 0
