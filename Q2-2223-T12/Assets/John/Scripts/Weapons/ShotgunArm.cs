@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShotgunArm : MonoBehaviour
 {
-    public float shotSpread = 0.2f;
+    public float shotSpread=0.2f;
     private float shotTimer;
     public float maxTimer; 
     //float rX, rY, rZ;
@@ -46,14 +46,17 @@ public class ShotgunArm : MonoBehaviour
    private void GenerateBullets()
    {
         /// pellet pos should have fixed spread based on the sqr root of the amt of pellets 
-        float spread = shotSpread; 
-        int pRow = 0, pColumn = 0;
+        float spread = Mathf.Ceil(Mathf.Sqrt(pelletAmt)); 
+
+        int pRow = -1, pColumn = 0;
 
         for (int i = 0; i < pelletAmt; i++)
         {
-            float xtoZratio = transform.forward.x / transform.forward.z;
-            Vector3 dirMod = new Vector3(pColumn * spread, pRow * spread, pColumn * spread);
-            Ray ray = new Ray(instPos.position, instPos.forward * spread);
+           // float xtoZratio = transform.forward.x / transform.forward.z;
+            Vector3 dirMod = new Vector3(pRow * spread, -pRow * spread, pColumn * spread);
+
+            Debug.Log($"dirMod: {dirMod.normalized} instPos.forward: {instPos.forward}"); 
+            Ray ray = new Ray(instPos.position, instPos.forward + dirMod.normalized);
             Debug.DrawRay(ray.origin,ray.direction,Color.red,0.5f); 
             if (Physics.Raycast(ray, out hit))
             {
