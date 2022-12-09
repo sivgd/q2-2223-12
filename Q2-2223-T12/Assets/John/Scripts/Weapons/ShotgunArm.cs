@@ -6,17 +6,17 @@ public class ShotgunArm : MonoBehaviour
 {
     public float shotSpread=0.2f;
     private float shotTimer;
-    public float maxTimer; 
+    public float maxTimer;
+    public float spreadMult;
     //float rX, rY, rZ;
-
+    public float range = 100f; 
     public int pelletAmt = 5;
 
     public string enemyTag;
 
-    private bool canFire; 
+    
 
     private RaycastHit hit; 
-    private GameObject[] hitObj;
     public Transform instPos;
 
     
@@ -26,7 +26,7 @@ public class ShotgunArm : MonoBehaviour
 
     private void Start()
     {
-        hitObj = new GameObject[pelletAmt];
+       
     }
     
 
@@ -45,42 +45,28 @@ public class ShotgunArm : MonoBehaviour
 
    private void GenerateBullets()
    {
-        /// pellet pos should have fixed spread based on the sqr root of the amt of pellets 
-        float spread = Mathf.Ceil(Mathf.Sqrt(pelletAmt)); 
-
-        int pRow = -1, pColumn = 0;
-
-        for (int i = 0; i < pelletAmt; i++)
+        Ray boxRay = new Ray(instPos.position, instPos.forward);
+        Vector3 boxRange = new Vector3(shotSpread,shotSpread,shotSpread);
+        Quaternion boxOrientation = instPos.rotation;
+        Debug.DrawRay(boxRay.origin, boxRay.direction,Color.red);
+        if (Physics.BoxCast(boxRay.origin, boxRange, boxRay.direction, out hit, boxOrientation, range))
         {
-           // float xtoZratio = transform.forward.x / transform.forward.z;
-            Vector3 dirMod = new Vector3(pRow * spread, -pRow * spread, pColumn * spread);
-
-            Debug.Log($"dirMod: {dirMod.normalized} instPos.forward: {instPos.forward}"); 
-            Ray ray = new Ray(instPos.position, instPos.forward + dirMod.normalized);
-            Debug.DrawRay(ray.origin,ray.direction,Color.red,0.5f); 
-            if (Physics.Raycast(ray, out hit))
+            Debug.Log($"{hit.collider.name} was hit"); 
+            if (hit.collider.CompareTag(enemyTag))
             {
-                hitObj[i] = hit.collider.gameObject;
-            }
-            pColumn++; 
-            if(pColumn >= spread)
-            {
-                pRow++;
-                pColumn = 0; 
-            }
-        }
-        
+                ApplyDamage(hit.collider.gameObject); 
 
-    }
+            }
+        } 
 
-    private void ApplyDamage(GameObject[] inputObj)
+   }
+
+    private void ApplyDamage(GameObject inputObj)
     {
-        for(int i = 0; i< inputObj.Length; i++)
+        if (inputObj.CompareTag(enemyTag))
         {
-            if (inputObj[i].CompareTag(enemyTag)){
-                //Damage enemy
-                Debug.Log("Enemy Damaged"); 
-            }
+            //Damage enemy
+            Debug.Log("Enemy Damaged");
         }
     }
 }
