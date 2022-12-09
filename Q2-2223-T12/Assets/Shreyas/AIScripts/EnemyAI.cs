@@ -2,38 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
 public class EnemyAI : MonoBehaviour
 {
-    public NavMeshAgent agent;
+    public EnemyTypeClass enemy;
+    public PatrolClass patrol;
+    public AttackClass attack;
+    public ShootClass fire;
+    public RangeClass range;
 
-    public Transform player;
-
-    public LayerMask whatIsGround, whatIsPlayer;
-
-    //Patrol
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
-
-    //Atacc
-    public float timeBetweenAttack;
-    bool alreadyAttacked;
+    [Header("Shoot")]
     public GameObject projectile;
+    public GameObject shoot;
+    public bool projectileEnemy;
 
+    [Header("Range")]
     public float sightRange, attackRange;
     public bool playerSightInRange, playerInAttackRange;
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
+        enemy.player = GameObject.Find("Player").transform;
+        enemy.agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
-        playerSightInRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        playerSightInRange = Physics.CheckSphere(transform.position, sightRange, enemy.whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, enemy.whatIsPlayer);
 
         if(!playerSightInRange && !playerInAttackRange)
         {
@@ -53,63 +48,63 @@ public class EnemyAI : MonoBehaviour
 
     private void Patrol()
     {
-        if(!walkPointSet)
+        if(!patrol.walkPointSet)
         {
             SearchWalkPoint();
         }
 
-        if(walkPointSet)
+        if(patrol.walkPointSet)
         {
-            agent.SetDestination(walkPoint);
+            enemy.agent.SetDestination(patrol.walkPoint);
         }
 
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+        Vector3 distanceToWalkPoint = transform.position - patrol.walkPoint;
 
         if(distanceToWalkPoint.magnitude < 1)
         {
-            walkPointSet = false;
+            patrol.walkPointSet = false;
         }
     }
     private void SearchWalkPoint()
     {
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
+        float randomZ = Random.Range(-patrol.walkPointRange, patrol.walkPointRange);
+        float randomX = Random.Range(-patrol.walkPointRange, patrol.walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        patrol.walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        if(Physics.Raycast(patrol.walkPoint, -transform.up, 2f, enemy.whatIsGround))
         {
-            walkPointSet = true;
+            patrol.walkPointSet = true;
         }
     }
 
     private void Chase()
     {
-        agent.SetDestination(player.position);
+        enemy.agent.SetDestination(enemy.player.position);
     }
 
     private void Attack()
     {
-        agent.SetDestination(transform.position);
+        enemy.agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        transform.LookAt(enemy.player);
 
-        if(!alreadyAttacked)
+        if(!attack.alreadyAttacked)
         {
             Shoot();
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttack);
+            attack.alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), attack.timeBetweenAttack);
         }
     }
 
     private void ResetAttack()
     {
-        alreadyAttacked = false;
+        attack.alreadyAttacked = false;
     }
 
     private void Shoot()
     {
-        Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        Rigidbody rb = Instantiate(projectile, shoot.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
         rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
         rb.AddForce(transform.up * 8f, ForceMode.Impulse);
@@ -125,5 +120,42 @@ public class EnemyAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 
+
+}
+
+[System.Serializable]
+public class EnemyTypeClass
+{
+    public NavMeshAgent agent;
+    public Transform player;
+    public LayerMask whatIsGround, whatIsPlayer;
+}
+
+[System.Serializable]
+public class PatrolClass
+{
+    public Vector3 walkPoint;
+    [HideInInspector]
+    public bool walkPointSet;
+    public float walkPointRange;
+}
+
+[System.Serializable]
+public class AttackClass
+{
+    public float timeBetweenAttack;
+    [HideInInspector]
+    public bool alreadyAttacked;
+}
+
+[System.Serializable]
+public class RangeClass
+{
+
+}
+
+[System.Serializable]
+public class ShootClass
+{
 
 }
