@@ -4,43 +4,43 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
-    public EnemyTypeClass enemy;
-    public PatrolClass patrol;
-    public AttackClass attack;
-    public ShootClass fire;
-    public RangeClass range;
-
-    [Header("Shoot")]
-    public GameObject projectile;
-    public GameObject shoot;
+    [Header("EnemyType")]
     public bool projectileEnemy;
+    public bool explodeEnemy;
 
-    [Header("Range")]
-    public float sightRange, attackRange;
-    public bool playerSightInRange, playerInAttackRange;
+    public EnemyClass enemy;
+    public RangeClass range;
+    public ShootClass projectileEnemyShoot;
+    public ExplosionClass explodingEnemy;
+
+    PlayerMovement playerMoves;
+    Vector3 direction;
 
     private void Awake()
     {
+        playerMoves = GetComponent<PlayerMovement>();
         enemy.player = GameObject.Find("Player").transform;
         enemy.agent = GetComponent<NavMeshAgent>();
+        enemy.alreadyAttacked = false;
+
     }
 
     private void Update()
     {
-        playerSightInRange = Physics.CheckSphere(transform.position, sightRange, enemy.whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, enemy.whatIsPlayer);
+        range.playerSightInRange = Physics.CheckSphere(transform.position, range.sightRange, enemy.whatIsPlayer);
+        range.playerInAttackRange = Physics.CheckSphere(transform.position, range.AttackRange, enemy.whatIsPlayer);
 
-        if(!playerSightInRange && !playerInAttackRange)
+        if (!range.playerSightInRange && !range.playerInAttackRange)
         {
             Patrol();
         }
 
-        if(playerSightInRange && !playerInAttackRange)
+        if(range.playerSightInRange && !range.playerInAttackRange)
         {
             Chase();
         }
 
-        if (playerInAttackRange && playerSightInRange)
+        if (range.playerInAttackRange && range.playerSightInRange )
         {
             Attack();
         }
@@ -48,33 +48,33 @@ public class EnemyAI : MonoBehaviour
 
     private void Patrol()
     {
-        if(!patrol.walkPointSet)
+        if(!enemy.walkPointSet)
         {
             SearchWalkPoint();
         }
 
-        if(patrol.walkPointSet)
+        if(enemy.walkPointSet)
         {
-            enemy.agent.SetDestination(patrol.walkPoint);
+            enemy.agent.SetDestination(enemy.walkPoint);
         }
 
-        Vector3 distanceToWalkPoint = transform.position - patrol.walkPoint;
+        Vector3 distanceToWalkPoint = transform.position - enemy.walkPoint;
 
         if(distanceToWalkPoint.magnitude < 1)
         {
-            patrol.walkPointSet = false;
+            enemy.walkPointSet = false;
         }
     }
     private void SearchWalkPoint()
     {
-        float randomZ = Random.Range(-patrol.walkPointRange, patrol.walkPointRange);
-        float randomX = Random.Range(-patrol.walkPointRange, patrol.walkPointRange);
+        float randomZ = Random.Range(-enemy.walkPointRange, enemy.walkPointRange);
+        float randomX = Random.Range(-enemy.walkPointRange, enemy.walkPointRange);
 
-        patrol.walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        enemy.walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if(Physics.Raycast(patrol.walkPoint, -transform.up, 2f, enemy.whatIsGround))
+        if(Physics.Raycast(enemy.walkPoint, -transform.up, 2f, enemy.whatIsGround))
         {
-            patrol.walkPointSet = true;
+            enemy.walkPointSet = true;
         }
     }
 
@@ -89,60 +89,100 @@ public class EnemyAI : MonoBehaviour
 
         transform.LookAt(enemy.player);
 
-        if(!attack.alreadyAttacked)
+        if(!enemy.alreadyAttacked)
         {
-            Shoot();
-            attack.alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), attack.timeBetweenAttack);
+            if(projectileEnemy == true)
+            {
+                Shoot();
+            }
+            if(explodeEnemy == true)
+            {
+                Explode();
+            }
+            enemy.alreadyAttacked = true;
+            Invoke(nameof(Resetenemy), enemy.timeBetweenAttack);
         }
     }
 
-    private void ResetAttack()
+    private void Resetenemy()
     {
-        attack.alreadyAttacked = false;
+        enemy.alreadyAttacked = false;
     }
 
     private void Shoot()
     {
-        Rigidbody rb = Instantiate(projectile, shoot.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        Ray ray = new Ray(projectileEnemyShoot.firingPoint.transform.position, transform.TransformDirection(Vector3.forward));
+        RaycastHit hit;
+        Debug.DrawRay(ray.origin, ray.direction * 10);
 
-        rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-        rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+        Vector3 targetPoint;
+        if(Physics.Raycast(ray, out hit))
+        {
+            targetPoint = hit.point;
+        }
+        else
+        {
+            targetPoint = ray.GetPoint(75);
+        }
 
-        Destroy(rb.gameObject, 1f);
+        Vector3 directionWithoutSpread = targetPoint - projectileEnemyShoot.firingPoint.transform.position;
+
+        GameObject currentBullet = Instantiate(projectileEnemyShoot.projectile, projectileEnemyShoot.firingPoint.transform.position, Quaternion.identity);
+        currentBullet.transform.forward = directionWithoutSpread.normalized;
+
+        currentBullet.GetComponent<Rigidbody>().AddForce(directionWithoutSpread.normalized * projectileEnemyShoot.shootForce, ForceMode.Impulse);
+        currentBullet.GetComponent<Rigidbody>().AddForce(projectileEnemyShoot.firingPoint.transform.up * projectileEnemyShoot.upwardForce, ForceMode.Impulse);
+    }
+
+    private void Explode()
+    {
+        StartCoroutine(WaitToExplode());
+    }
+    IEnumerator WaitToExplode()
+    {
+        yield return new WaitForSeconds(3);
+        GameObject exp = Instantiate(explodingEnemy.exp, transform.position, transform.rotation);
+        Destroy(exp, 0.5f);
+        KnockBack();
+        Destroy(gameObject);
+    }
+    private void KnockBack()
+    {
+
+        Collider[] playerCol = Physics.OverlapSphere(transform.position, range.AttackRange);
+
+        foreach (Collider near in playerCol)
+        {
+            Rigidbody rb = near.GetComponent<Rigidbody>();
+            if(rb != null)
+            {
+                rb.AddExplosionForce(explodingEnemy.knockbackForce, transform.position, range.AttackRange);
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position, range.AttackRange);
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.DrawWireSphere(transform.position, range.sightRange);
+
     }
 
 
 }
 
 [System.Serializable]
-public class EnemyTypeClass
+public class EnemyClass
 {
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
-}
-
-[System.Serializable]
-public class PatrolClass
-{
     public Vector3 walkPoint;
     [HideInInspector]
     public bool walkPointSet;
     public float walkPointRange;
-}
-
-[System.Serializable]
-public class AttackClass
-{
     public float timeBetweenAttack;
     [HideInInspector]
     public bool alreadyAttacked;
@@ -151,11 +191,35 @@ public class AttackClass
 [System.Serializable]
 public class RangeClass
 {
-
+    public float sightRange, AttackRange;
+    public bool playerSightInRange, playerInAttackRange;
 }
 
 [System.Serializable]
 public class ShootClass
 {
+    public GameObject projectile;
+    public GameObject firingPoint;
+
+    public float shootForce, upwardForce;
+
+    public int bulletsPerShot;
+
+    [HideInInspector]
+    public int bulletsShot;
+    [HideInInspector]
+    public bool shooting;
+}
+
+[System.Serializable]
+public class ExplosionClass
+{
+    public GameObject exp;
+    public float knockbackForce;
+    public float knockBackTime;
+
+    [HideInInspector]
+    public float knockBackCounter;
 
 }
+

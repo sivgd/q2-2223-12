@@ -27,10 +27,10 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
-    Vector3 moveDirection;
+    [HideInInspector]
+    public Vector3 moveDirection;
 
-    Rigidbody rb;
-
+    Rigidbody rb; 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
