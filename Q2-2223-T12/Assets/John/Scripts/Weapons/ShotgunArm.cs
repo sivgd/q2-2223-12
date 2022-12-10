@@ -48,10 +48,13 @@ public class ShotgunArm : MonoBehaviour
         if (Physics.BoxCast(boxRay.origin, boxRange, boxRay.direction, out hit, boxOrientation, range))
         {
             Debug.Log($"{hit.collider.name} was hit"); 
-            if (hit.collider.CompareTag(enemyTag))
+            if(hit.collider.tag != null)
             {
-                ApplyDamage(hit.collider.gameObject); 
+                if (hit.collider.CompareTag(enemyTag))
+                {
+                    ApplyDamage(hit.collider.gameObject);
 
+                }
             }
         } 
 
