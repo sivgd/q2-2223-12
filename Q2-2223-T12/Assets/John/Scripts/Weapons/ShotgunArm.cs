@@ -9,18 +9,25 @@ public class ShotgunArm : MonoBehaviour
     //float rX, rY, rZ;
     public float range = 100f; 
     public string enemyTag;
-
+    [SerializeField] bool canFire = true; 
     
 
     private RaycastHit hit; 
     public Transform instPos;
 
-    
+
 
 
     //[SerializeField] Ray[] pellets;
 
-
+    private void Awake()
+    {
+        canFire = true; 
+    }
+    private void OnDisable()
+    {
+        canFire = false; 
+    }
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
