@@ -22,7 +22,6 @@ public class ShotgunArm : MonoBehaviour
 
     //[SerializeField] Ray[] pellets;
 
-
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
