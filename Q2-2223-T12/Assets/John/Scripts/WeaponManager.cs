@@ -9,6 +9,11 @@ public class WeaponManager : MonoBehaviour
 
     public void Update()
     {
+        /*
+         * 1 = Shotgun Fist
+         * 2 = Slimeball launcher (big boom)
+         * 3 = Lillypad Sniper 
+         */
         if (Input.GetKey(KeyCode.Alpha1))
         {
             w1Active = true;
@@ -27,9 +32,9 @@ public class WeaponManager : MonoBehaviour
             w2Active = false;
             w3Active = true;
         }
-        ActiveWeapons(); 
+        RefreshWeapons(); 
     }
-    private void ActiveWeapons()
+    private void RefreshWeapons()
     {
         weapons[0].SetActive(w1Active);
         weapons[1].SetActive(w2Active);
