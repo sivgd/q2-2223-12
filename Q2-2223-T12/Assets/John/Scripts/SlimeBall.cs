@@ -4,17 +4,28 @@ using UnityEngine;
 
 public class SlimeBall : MonoBehaviour
 {
-    private static float shootForce = 10000f;
+
+    [Header("External References")]
+    public GameObject explosionSphere; 
+    
+    private static float shootForce = 50000f;
     private static float damage = 1f;
     private static float explosionRadius = 12f;
     private static float explosionMult = 100f; 
-    private Rigidbody rb; 
+    private Rigidbody rb;
+
     private void Awake()
     {
+        StartCoroutine(ApplyLaunchForce());
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * shootForce * Time.deltaTime,ForceMode.Impulse); 
     }
-
+    IEnumerator ApplyLaunchForce()
+    {
+        yield return new WaitForEndOfFrame(); 
+        
+        rb.AddForce(transform.forward * shootForce * Time.deltaTime, ForceMode.Impulse);
+        StopCoroutine(ApplyLaunchForce());
+    }
 
     private float calcExplosionRadius()
     {
@@ -23,7 +34,9 @@ public class SlimeBall : MonoBehaviour
     }
     private void Explode()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, calcExplosionRadius()); 
+        Collider[] colliders = Physics.OverlapSphere(transform.position, calcExplosionRadius());
+        explosionSphere.transform.localScale = new Vector3(calcExplosionRadius(),calcExplosionRadius(),calcExplosionRadius());
+       // Instantiate(explosionSphere, transform.position,transform.rotation); 
         foreach(Collider hit in colliders)
         {
             Rigidbody r = hit.GetComponent<Rigidbody>();
@@ -33,6 +46,22 @@ public class SlimeBall : MonoBehaviour
                 //ApplyDamage(r.gameObject,damage);
             }
            
+        }
+    }
+    private void Explode(int superExplodeMult)
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, calcExplosionRadius());
+        explosionSphere.transform.localScale = new Vector3(calcExplosionRadius(), calcExplosionRadius(), calcExplosionRadius());
+       // Instantiate(explosionSphere, transform.position, transform.rotation);
+        foreach (Collider hit in colliders)
+        {
+            Rigidbody r = hit.GetComponent<Rigidbody>();
+            if (r != null)
+            {
+                r.AddExplosionForce(calcExplosionRadius() * (explosionMult * superExplodeMult) * Time.deltaTime, transform.position, calcExplosionRadius(), 1f, ForceMode.Impulse);
+                //ApplyDamage(r.gameObject,damage);
+            }
+
         }
     }
     private void ApplyDamage(GameObject enemy,float damage)
@@ -49,12 +78,22 @@ public class SlimeBall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Explode();
-        Destroy(gameObject); 
+        /// if you are good at the game you can make a super explosion 
+        if (collision.collider.CompareTag("Lily"))
+        {
+            Explode(3);
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+
+        }
+        else
+        {
+            Explode();
+            Destroy(gameObject);
+        }
+
     }
-
-
-    #region Accessors and Mutators
+        #region Accessors and Mutators
     public float getShootForce()
     {
         return shootForce; 
