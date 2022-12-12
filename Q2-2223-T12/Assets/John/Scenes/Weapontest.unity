@@ -3819,6 +3819,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7908084654540729945, guid: 89cff152712d0d04c95c9298facc14bc, type: 3}
+      propertyPath: m_Size.z
+      value: 2.27
+      objectReference: {fileID: 0}
     - target: {fileID: 7908084654540729946, guid: 89cff152712d0d04c95c9298facc14bc, type: 3}
       propertyPath: m_Name
       value: Lilybullet
