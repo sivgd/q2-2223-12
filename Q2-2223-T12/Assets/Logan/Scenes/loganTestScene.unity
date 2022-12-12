@@ -3497,6 +3497,7 @@ GameObject:
   - component: {fileID: 234223630}
   - component: {fileID: 234223629}
   - component: {fileID: 234223631}
+  - component: {fileID: 234223632}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3553,7 +3554,7 @@ MonoBehaviour:
   sprintSpeed: 12
   walkSpeed: 9
   groundDrag: 7
-  jumpForce: 13
+  jumpForce: 15
   jumpCooldown: 0.25
   airMultiplier: 0.3
   crouchSpeed: 6
@@ -3568,6 +3569,24 @@ MonoBehaviour:
   maxSlopeAngle: 40
   orientation: {fileID: 1545259177}
   state: 0
+--- !u!114 &234223632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234223628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a0017d5d4dc404692bbabd8b014028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 1545259177}
+  playerObj: {fileID: 1778897635}
+  slideForce: 200
+  slideYScale: 0.5
+  slideKey: 99
+  sliding: 0
 --- !u!43 &272447345
 Mesh:
   m_ObjectHideFlags: 0
@@ -9588,7 +9607,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-23110
+  m_Name: pb_Mesh16534
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

@@ -29,6 +29,11 @@ public class playerMove : MonoBehaviour
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode crouchKey = KeyCode.C;
 
+
+    private float horizontalInput;
+    private float verticalInput;
+
+
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -41,13 +46,11 @@ public class playerMove : MonoBehaviour
 
     public Transform orientation;
 
-    float horizontalInput;
-    float verticalInput;
-
     Vector3 moveDirection;
 
     Rigidbody rb;
 
+    private slideSystem ss;
 
     public MovementState state;
     public enum MovementState
@@ -60,6 +63,8 @@ public class playerMove : MonoBehaviour
 
     private void Start()
     {
+        ss = GetComponent<slideSystem>();
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -80,6 +85,9 @@ public class playerMove : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+
+
+
     }
 
     private void Update()
@@ -87,6 +95,11 @@ public class playerMove : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
+
+
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
+
     }
 
     private void MyInput()
@@ -105,7 +118,7 @@ public class playerMove : MonoBehaviour
         }
 
         //start crouch
-        if(Input.GetKeyDown(crouchKey))
+        if(Input.GetKeyDown(crouchKey) && Input.GetKey(sprintKey) == false)
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
@@ -122,25 +135,27 @@ public class playerMove : MonoBehaviour
     private void StateHandler()
     {
 
+
+        //Mode - Crouching
+        if (Input.GetKey(crouchKey) && Input.GetKey(sprintKey) == false)
+        {
+            state = MovementState.crouching;
+            moveSpeed = crouchSpeed;
+        }
+
+
         //Mode - Sprinting
-        if(grounded && Input.GetKey(sprintKey))
+        else if (grounded && Input.GetKey(sprintKey) && Input.GetKeyDown(crouchKey) == false)
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
         }
 
         //Mode - Walking
-        else if(grounded)
+        else if (grounded)
         {
             state = MovementState.walking;
             moveSpeed = walkSpeed;
-        }
-
-        //Mode - Crouching
-        if (Input.GetKey(crouchKey))
-        {
-            state = MovementState.crouching;
-            moveSpeed = crouchSpeed;
         }
 
         //Mode - Air
@@ -148,11 +163,13 @@ public class playerMove : MonoBehaviour
         {
             state = MovementState.air;
         }
+
     }
 
     private void MovePlayer()
     {
         //calculate movement direction
+        if(ss.sliding == false)
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         if(OnSlope() && !exitingSlope)
@@ -232,5 +249,4 @@ public class playerMove : MonoBehaviour
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
-
 }
