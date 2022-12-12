@@ -39,7 +39,7 @@ public class EnemyAI : MonoBehaviour
             Chase();
         }
 
-        if (range.playerInAttackRange && range.playerSightInRange )
+        if (range.playerInAttackRange && range.playerSightInRange)
         {
             Attack();
         }
@@ -94,13 +94,15 @@ public class EnemyAI : MonoBehaviour
             {
                 Shoot();
             }
-            if(explodeEnemy == true)
+            if (explodeEnemy == true)
             {
                 Explode();
             }
             enemy.alreadyAttacked = true;
             Invoke(nameof(Resetenemy), enemy.timeBetweenAttack);
         }
+
+
     }
 
     private void Resetenemy()
