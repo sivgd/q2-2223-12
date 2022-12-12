@@ -4,76 +4,87 @@ using UnityEngine;
 
 public class ShotgunArm : MonoBehaviour
 {
-    public float shotSpread = 0.2f;
-    private float shotTimer;
-    public float maxTimer; 
-    float rX, rY, rZ;
-
-    public int pelletAmt = 5;
-
+    [Header("Shooting Variables")]
+    public float shotSpread=0.2f;
+    public float spreadMult;
+    //float rX, rY, rZ;
+    public float range = 100f; 
     public string enemyTag;
-
-    private bool canFire; 
-
-    private RaycastHit hit; 
-    private GameObject[] hitObj;
-    public Transform instPos;
-
     
+    
+    [Header("External References")]
+    private RaycastHit hit; 
+    public Transform instPos;
+    public GameObject muzzleFlash;
+
+
 
 
     //[SerializeField] Ray[] pellets;
-
-    private void Start()
-    {
-        hitObj = new GameObject[pelletAmt];
-    }
-    
 
 
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Fire(); 
-        }  
+            Fire();
+            StartCoroutine("MuzzleFlash"); 
+
+        }
+       
+    }
+    IEnumerator MuzzleFlash()
+    {
+        muzzleFlash.SetActive(true);
+        yield return new WaitForSecondsRealtime(0.3f);
+        muzzleFlash.SetActive(false); 
     }
     private void Fire()
     {
         GenerateBullets(); 
     }
 
+    /// <summary>
+    /// Casts a box at a designated range and origin (range & instpos) towards what the player is aimning at 
+    /// The range can be changed in the editor
+    /// There is also a spread that determines the width and height of the box, it can be modified to increase the amount of enemies hit on screen 
+    /// </summary>
    private void GenerateBullets()
    {
 
-
-       
-
-
-        for (int i = 0; i < pelletAmt; i++)
+        Ray boxRay = new Ray(instPos.position, instPos.forward);
+        Vector3 boxRange = new Vector3(shotSpread,shotSpread/3,shotSpread);
+        Quaternion boxOrientation = instPos.rotation;
+        Debug.DrawRay(boxRay.origin, boxRay.direction,Color.red);
+        if (Physics.BoxCast(boxRay.origin, boxRange, boxRay.direction, out hit, boxOrientation, range))
         {
-            double spread = (Mathf.Sqrt(pelletAmt) % 1 == 0) ? Mathf.Sqrt(pelletAmt): Mathf.Ceil(Mathf.Sqrt(pelletAmt));
-
-            Vector3 dir = new Vector3(transform.forward.x * rX, transform.forward.y * rY, transform.forward.z * rZ);
-            Ray ray = new Ray(instPos.position, dir);
-            Debug.DrawRay(ray.origin,ray.direction,Color.red,0.5f); 
-            if (Physics.Raycast(ray, out hit))
+            Debug.Log($"{hit.collider.name} was hit"); 
+            if(hit.collider.tag != null)
             {
-                hitObj[i] = hit.collider.gameObject;
+                if (hit.collider.CompareTag(enemyTag))
+                {
+                    ApplyDamage(hit.collider.gameObject);
+
+                }
+                if(hit.collider.gameObject.GetComponent<Rigidbody>() != null)
+                {
+                    PushEnemy(hit.collider.gameObject.GetComponent<Rigidbody>(),hit);
+                }
             }
-        }
-        
+        } 
 
-    }
-
-    private void ApplyDamage(GameObject[] inputObj)
+   }
+    private void PushEnemy(Rigidbody affectedRB,RaycastHit hit)
     {
-        for(int i = 0; i< inputObj.Length; i++)
+
+        affectedRB.AddExplosionForce(5000f, hit.point, 0.3f); 
+    }
+    private void ApplyDamage(GameObject inputObj)
+    {
+        if (inputObj.CompareTag(enemyTag))
         {
-            if (inputObj[i].CompareTag(enemyTag)){
-                //Damage enemy
-                Debug.Log("Enemy Damaged"); 
-            }
+            //Damage enemy
+            Debug.Log("Enemy Damaged");
         }
     }
 }

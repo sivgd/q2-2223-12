@@ -27,10 +27,14 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
-    Vector3 moveDirection;
+    [HideInInspector]
+    public Vector3 moveDirection;
 
     Rigidbody rb;
 
+    public float knockBackForce;
+    public float knockBackTime;
+    private float knockBackCounter;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -43,9 +47,15 @@ public class PlayerMovement : MonoBehaviour
     {
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
 
-        MyInput();
-        SpeedControl();
-
+        if (knockBackCounter <= 0)
+        {
+            MyInput();
+            SpeedControl();
+        }
+        else
+        {
+            knockBackCounter -= Time.deltaTime;
+        }
 
         if (grounded)
         {
@@ -55,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0;
         }
+
     }
 
     private void FixedUpdate()
@@ -114,5 +125,13 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
+    }
+
+    public void KnockBack()
+    {
+        knockBackCounter = knockBackTime;
+
+        rb.AddForce(orientation.transform.forward.normalized * -knockBackForce * 10f, ForceMode.Impulse);
+        rb.AddForce(transform.up * knockBackForce, ForceMode.Impulse);
     }
 }

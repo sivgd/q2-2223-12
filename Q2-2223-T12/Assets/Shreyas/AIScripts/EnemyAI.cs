@@ -2,50 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
 public class EnemyAI : MonoBehaviour
 {
-    public NavMeshAgent agent;
+    [Header("EnemyType")]
+    public bool projectileEnemy;
+    public bool explodeEnemy;
 
-    public Transform player;
+    public EnemyClass enemy;
+    public RangeClass range;
+    public ShootClass projectileEnemyShoot;
+    public ExplosionClass explodingEnemy;
 
-    public LayerMask whatIsGround, whatIsPlayer;
 
-    //Patrol
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
-
-    //Atacc
-    public float timeBetweenAttack;
-    bool alreadyAttacked;
-    public GameObject projectile;
-
-    public float sightRange, attackRange;
-    public bool playerSightInRange, playerInAttackRange;
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
+        enemy.player = GameObject.Find("Player").transform;
+        enemy.agent = GetComponent<NavMeshAgent>();
+        enemy.alreadyAttacked = false;
+        explodingEnemy.explosionTrigger.SetActive(false);
+        explodingEnemy.animObject.SetActive(false);
     }
 
     private void Update()
     {
-        playerSightInRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        range.playerSightInRange = Physics.CheckSphere(transform.position, range.sightRange, enemy.whatIsPlayer);
+        range.playerInAttackRange = Physics.CheckSphere(transform.position, range.AttackRange, enemy.whatIsPlayer);
 
-        if(!playerSightInRange && !playerInAttackRange)
+        if (!range.playerSightInRange && !range.playerInAttackRange)
         {
             Patrol();
         }
 
-        if(playerSightInRange && !playerInAttackRange)
+        if(range.playerSightInRange && !range.playerInAttackRange)
         {
             Chase();
         }
 
-        if (playerInAttackRange && playerSightInRange)
+        if (range.playerInAttackRange && range.playerSightInRange)
         {
             Attack();
         }
@@ -53,77 +47,164 @@ public class EnemyAI : MonoBehaviour
 
     private void Patrol()
     {
-        if(!walkPointSet)
+        if(!enemy.walkPointSet)
         {
             SearchWalkPoint();
         }
 
-        if(walkPointSet)
+        if(enemy.walkPointSet)
         {
-            agent.SetDestination(walkPoint);
+            enemy.agent.SetDestination(enemy.walkPoint);
         }
 
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+        Vector3 distanceToWalkPoint = transform.position - enemy.walkPoint;
 
         if(distanceToWalkPoint.magnitude < 1)
         {
-            walkPointSet = false;
+            enemy.walkPointSet = false;
         }
     }
     private void SearchWalkPoint()
     {
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
+        float randomZ = Random.Range(-enemy.walkPointRange, enemy.walkPointRange);
+        float randomX = Random.Range(-enemy.walkPointRange, enemy.walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        enemy.walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        if(Physics.Raycast(enemy.walkPoint, -transform.up, 2f, enemy.whatIsGround))
         {
-            walkPointSet = true;
+            enemy.walkPointSet = true;
         }
     }
 
     private void Chase()
     {
-        agent.SetDestination(player.position);
+        enemy.agent.SetDestination(enemy.player.position);
     }
 
     private void Attack()
     {
-        agent.SetDestination(transform.position);
+        enemy.agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        transform.LookAt(enemy.player);
 
-        if(!alreadyAttacked)
+        if(!enemy.alreadyAttacked)
         {
-            Shoot();
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttack);
+            if(projectileEnemy == true)
+            {
+                Shoot();
+            }
+            if (explodeEnemy == true)
+            {
+                Explode();
+            }
+            enemy.alreadyAttacked = true;
+            Invoke(nameof(Resetenemy), enemy.timeBetweenAttack);
         }
+
+
     }
 
-    private void ResetAttack()
+    private void Resetenemy()
     {
-        alreadyAttacked = false;
+        enemy.alreadyAttacked = false;
     }
 
     private void Shoot()
     {
-        Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        Ray ray = new Ray(projectileEnemyShoot.firingPoint.transform.position, transform.TransformDirection(Vector3.forward));
+        RaycastHit hit;
+        Debug.DrawRay(ray.origin, ray.direction * 10);
 
-        rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-        rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+        Vector3 targetPoint;
+        if(Physics.Raycast(ray, out hit))
+        {
+            targetPoint = hit.point;
+        }
+        else
+        {
+            targetPoint = ray.GetPoint(75);
+        }
 
-        Destroy(rb.gameObject, 1f);
+        Vector3 directionWithoutSpread = targetPoint - projectileEnemyShoot.firingPoint.transform.position;
+
+        GameObject currentBullet = Instantiate(projectileEnemyShoot.projectile, projectileEnemyShoot.firingPoint.transform.position, Quaternion.identity);
+        currentBullet.transform.forward = directionWithoutSpread.normalized;
+
+        currentBullet.GetComponent<Rigidbody>().AddForce(directionWithoutSpread.normalized * projectileEnemyShoot.shootForce, ForceMode.Impulse);
+        currentBullet.GetComponent<Rigidbody>().AddForce(projectileEnemyShoot.firingPoint.transform.up * projectileEnemyShoot.upwardForce, ForceMode.Impulse);
+    }
+
+    private void Explode()
+    {
+        StartCoroutine(WaitToExplode());
+    }
+    IEnumerator WaitToExplode()
+    {
+        explodingEnemy.rendererObject.SetActive(false);
+        explodingEnemy.animObject.SetActive(true);
+        yield return new WaitForSeconds(3);
+        GameObject exp = Instantiate(explodingEnemy.exp, explodingEnemy.animObject.transform.position, transform.rotation);
+        explodingEnemy.explosionTrigger.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        Destroy(exp, 0.5f);
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position, range.AttackRange);
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.DrawWireSphere(transform.position, range.sightRange);
+
     }
 
 
 }
+
+[System.Serializable]
+public class EnemyClass
+{
+    public NavMeshAgent agent;
+    public Transform player;
+    public LayerMask whatIsGround, whatIsPlayer;
+    public Vector3 walkPoint;
+    [HideInInspector]
+    public bool walkPointSet;
+    public float walkPointRange;
+    public float timeBetweenAttack;
+    [HideInInspector]
+    public bool alreadyAttacked;
+}
+
+[System.Serializable]
+public class RangeClass
+{
+    public float sightRange, AttackRange;
+    public bool playerSightInRange, playerInAttackRange;
+}
+
+[System.Serializable]
+public class ShootClass
+{
+    public GameObject projectile;
+    public GameObject firingPoint;
+
+    public float shootForce, upwardForce;
+
+    public int bulletsPerShot;
+
+    [HideInInspector]
+    public int bulletsShot;
+    [HideInInspector]
+    public bool shooting;
+}
+
+[System.Serializable]
+public class ExplosionClass
+{
+    public GameObject exp;
+    public GameObject explosionTrigger, animObject, rendererObject;
+}
+
