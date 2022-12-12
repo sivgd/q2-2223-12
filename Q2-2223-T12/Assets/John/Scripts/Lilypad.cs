@@ -41,11 +41,12 @@ public class Lilypad : MonoBehaviour
         
         if (collision.CompareTag(enemyTag))
         {
-            ApplyDamage(0); 
+            ApplyDamage(0);
+            SticktoGameObject(collision.gameObject); 
         }
         else if(collision.name != "Player")
         {
-            SticktoGameObject(collision.gameObject); 
+            Destroy(gameObject); 
         }
     }
 

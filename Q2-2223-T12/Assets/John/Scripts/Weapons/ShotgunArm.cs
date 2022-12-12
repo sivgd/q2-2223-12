@@ -4,29 +4,40 @@ using UnityEngine;
 
 public class ShotgunArm : MonoBehaviour
 {
+    [Header("Shooting Variables")]
     public float shotSpread=0.2f;
     public float spreadMult;
     //float rX, rY, rZ;
     public float range = 100f; 
     public string enemyTag;
-   
     
-
+    
+    [Header("External References")]
     private RaycastHit hit; 
     public Transform instPos;
+    public GameObject muzzleFlash;
 
 
 
 
     //[SerializeField] Ray[] pellets;
 
-    
+
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Fire(); 
-        }  
+            Fire();
+            StartCoroutine("MuzzleFlash"); 
+
+        }
+       
+    }
+    IEnumerator MuzzleFlash()
+    {
+        muzzleFlash.SetActive(true);
+        yield return new WaitForSecondsRealtime(0.3f);
+        muzzleFlash.SetActive(false); 
     }
     private void Fire()
     {
@@ -55,11 +66,19 @@ public class ShotgunArm : MonoBehaviour
                     ApplyDamage(hit.collider.gameObject);
 
                 }
+                if(hit.collider.gameObject.GetComponent<Rigidbody>() != null)
+                {
+                    PushEnemy(hit.collider.gameObject.GetComponent<Rigidbody>(),hit);
+                }
             }
         } 
 
    }
+    private void PushEnemy(Rigidbody affectedRB,RaycastHit hit)
+    {
 
+        affectedRB.AddExplosionForce(5000f, hit.point, 0.3f); 
+    }
     private void ApplyDamage(GameObject inputObj)
     {
         if (inputObj.CompareTag(enemyTag))
