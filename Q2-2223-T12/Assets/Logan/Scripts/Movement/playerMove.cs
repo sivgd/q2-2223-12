@@ -24,6 +24,7 @@ public class playerMove : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     bool canJump;
+    private int jumpCharge = 2;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -102,10 +103,16 @@ public class playerMove : MonoBehaviour
 
     private void Update()
     {
+
+        if (grounded == true)
+        {
+            jumpCharge = 1;
+        }
+
+
         MyInput();
         SpeedControl();
         StateHandler();
-
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
@@ -118,7 +125,7 @@ public class playerMove : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         //When to jump
-        if (Input.GetKey(jumpKey) && canJump && grounded && state != MovementState.crouching)
+        if (Input.GetKey(jumpKey) && canJump && (grounded || jumpCharge != 0) && state != MovementState.crouching)
         {
             canJump = false;
 
@@ -151,6 +158,7 @@ public class playerMove : MonoBehaviour
         {
             state = MovementState.crouching;
             desiredMoveSpeed = crouchSpeed;
+            
         }
 
         else if(wallrunning)
@@ -185,6 +193,7 @@ public class playerMove : MonoBehaviour
         {
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
+            jumpCharge = 1;
         }
 
         //Mode - Air
@@ -291,9 +300,15 @@ public class playerMove : MonoBehaviour
         exitingSlope = true;
 
         //reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        if(jumpCharge != 0)
+        {
+            jumpCharge -= 1;
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        }
+
     }
 
     private void ResetJump()

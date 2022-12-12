@@ -20,10 +20,7 @@ public class SlimballLauncher : MonoBehaviour
     private SlimeBall sb;
 
  
-    private void Start()
-    {
-       
-    }
+   
     private void Update()
     {
        
@@ -51,6 +48,7 @@ public class SlimballLauncher : MonoBehaviour
     {
         Instantiate(slimeBall, instPos.position, instPos.rotation);
         sb = GameObject.FindGameObjectWithTag("Slimeball").GetComponent<SlimeBall>();
+        sb.setShootForce(sb.getShootForce() * charge); 
         sb.setDamage(sb.getDamage() * charge); 
         
         

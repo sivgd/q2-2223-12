@@ -27,13 +27,13 @@ public class Lilypad : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(lifeTime);
         Destroy(gameObject);
-       
     }
 
-    private void SticktoGameObject(GameObject stickTo)
+    private void SticktoGameObject(GameObject stickTo,Collider collider)
     {
         rb.velocity = Vector3.zero;
-        transform.SetParent(stickTo.transform); 
+        transform.SetParent(stickTo.transform);
+        transform.position = collider.ClosestPointOnBounds(transform.position); 
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -42,11 +42,11 @@ public class Lilypad : MonoBehaviour
         if (collision.CompareTag(enemyTag))
         {
             ApplyDamage(0);
-            SticktoGameObject(collision.gameObject); 
+            SticktoGameObject(collision.gameObject,collision); 
         }
         else if(collision.name != "Player")
         {
-            Destroy(gameObject); 
+            SticktoGameObject(collision.gameObject,collision); 
         }
     }
 
