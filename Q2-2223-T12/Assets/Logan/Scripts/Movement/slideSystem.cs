@@ -24,8 +24,8 @@ public class slideSystem : MonoBehaviour
     private float verticalInput;
     Vector3 inputDirection;
 
-    [HideInInspector]
-    public bool sliding;
+    //[HideInInspector]
+    //public bool sliding;
 
     private void Start()
     {
@@ -42,42 +42,49 @@ public class slideSystem : MonoBehaviour
         if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput != 0) && pm.state != playerMove.MovementState.crouching)
             StartSlide();
 
-        if (Input.GetKeyUp(slideKey) && sliding)
+        if (Input.GetKeyUp(slideKey) && pm.sliding)
             StopSlide();
+
+        if (pm.sliding)
+            SlidingMovement();
+
     }
 
     private void FixedUpdate()
     {
-        if (sliding)
-            SlidingMovement();
+
     }
 
     private void StartSlide()
     {
-        sliding = true;
+        pm.sliding = true;
 
-        playerObj.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
+        transform.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
+        rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
         inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+        
 
         //slideTimer = maxSlideTime;
     }
 
     private void SlidingMovement()
     {
+        if(!pm.OnSlope() || rb.velocity.y > -0.1f)
+        {
+            rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
+        }
 
-        rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
+        else
+        {
+            rb.AddForce(pm.GetSlopeMoveDirection(inputDirection) * slideForce, ForceMode.Force);
+        }
 
-        //slideTimer -= Time.deltaTime;
-
-        //if (slideTimer <= 0)
-        //    StopSlide();
     }
 
     private void StopSlide()
     {
-        sliding = false;
+        pm.sliding = false;
         playerObj.localScale = new Vector3(playerObj.localScale.x, startYScale, playerObj.localScale.z);
     }
 
