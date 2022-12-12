@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 231139984321487877}
   - component: {fileID: 935559020875585322}
   - component: {fileID: 3154861834228245615}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Uphill Road
   m_TagString: Untagged
   m_Icon: {fileID: 0}

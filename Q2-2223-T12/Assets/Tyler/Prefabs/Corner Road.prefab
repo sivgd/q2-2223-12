@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5770489024410332468}
   - component: {fileID: 3002729953970017676}
   - component: {fileID: 1226273266592430864}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Corner Road
   m_TagString: Untagged
   m_Icon: {fileID: 0}
