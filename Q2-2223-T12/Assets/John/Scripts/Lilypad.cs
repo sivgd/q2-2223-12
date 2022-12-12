@@ -46,7 +46,7 @@ public class Lilypad : MonoBehaviour
         }
         else if(collision.name != "Player")
         {
-            Destroy(gameObject); 
+            SticktoGameObject(collision.gameObject); 
         }
     }
 
