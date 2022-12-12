@@ -13,16 +13,15 @@ public class EnemyAI : MonoBehaviour
     public ShootClass projectileEnemyShoot;
     public ExplosionClass explodingEnemy;
 
-    PlayerMovement playerMoves;
-    Vector3 direction;
+
 
     private void Awake()
     {
-        playerMoves = GetComponent<PlayerMovement>();
         enemy.player = GameObject.Find("Player").transform;
         enemy.agent = GetComponent<NavMeshAgent>();
         enemy.alreadyAttacked = false;
-
+        explodingEnemy.explosionTrigger.SetActive(false);
+        explodingEnemy.animObject.SetActive(false);
     }
 
     private void Update()
@@ -140,25 +139,14 @@ public class EnemyAI : MonoBehaviour
     }
     IEnumerator WaitToExplode()
     {
+        explodingEnemy.rendererObject.SetActive(false);
+        explodingEnemy.animObject.SetActive(true);
         yield return new WaitForSeconds(3);
-        GameObject exp = Instantiate(explodingEnemy.exp, transform.position, transform.rotation);
+        GameObject exp = Instantiate(explodingEnemy.exp, explodingEnemy.animObject.transform.position, transform.rotation);
+        explodingEnemy.explosionTrigger.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
         Destroy(exp, 0.5f);
-        KnockBack();
         Destroy(gameObject);
-    }
-    private void KnockBack()
-    {
-
-        Collider[] playerCol = Physics.OverlapSphere(transform.position, range.AttackRange);
-
-        foreach (Collider near in playerCol)
-        {
-            Rigidbody rb = near.GetComponent<Rigidbody>();
-            if(rb != null)
-            {
-                rb.AddExplosionForce(explodingEnemy.knockbackForce, transform.position, range.AttackRange);
-            }
-        }
     }
 
     private void OnDrawGizmosSelected()
@@ -215,11 +203,6 @@ public class ShootClass
 public class ExplosionClass
 {
     public GameObject exp;
-    public float knockbackForce;
-    public float knockBackTime;
-
-    [HideInInspector]
-    public float knockBackCounter;
-
+    public GameObject explosionTrigger, animObject, rendererObject;
 }
 
