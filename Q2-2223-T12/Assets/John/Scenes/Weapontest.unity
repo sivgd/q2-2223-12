@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 159232710}
   - component: {fileID: 159232709}
   - component: {fileID: 159232708}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3432,7 +3432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc071317f4870a49b8929ec7bb8365c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPosition: {fileID: 0}
+  cameraPosition: {fileID: 6663014824487309783}
 --- !u!114 &1989984710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3445,9 +3445,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31930d0974be164785216c8d50cef7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSensitivity: 50
-  ySensitivity: 50
-  orientation: {fileID: 0}
+  xSensitivity: 200
+  ySensitivity: 200
+  orientation: {fileID: 6663014823424054770}
 --- !u!81 &1989984711
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3487,7 +3487,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 5175
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3771,6 +3771,16 @@ Transform:
   m_Father: {fileID: 77484058}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!4 &6663014823424054770 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2446510938437457755, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
+  m_PrefabInstance: {fileID: 9044362827283186345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6663014824487309783 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2446510939521684350, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
+  m_PrefabInstance: {fileID: 9044362827283186345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7908084654170807751
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3861,15 +3871,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2446510939789535228, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2275782
+      value: 17.49
       objectReference: {fileID: 0}
     - target: {fileID: 2446510939789535228, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 6.67
       objectReference: {fileID: 0}
     - target: {fileID: 2446510939789535228, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.9190322
+      value: 27.2
       objectReference: {fileID: 0}
     - target: {fileID: 2446510939789535228, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
       propertyPath: m_LocalRotation.w
