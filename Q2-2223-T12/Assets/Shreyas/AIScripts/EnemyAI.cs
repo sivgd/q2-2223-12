@@ -95,14 +95,12 @@ public class EnemyAI : MonoBehaviour
                 Shoot();
             }
             if (explodeEnemy == true)
-            {
+            {  
                 Explode();
             }
             enemy.alreadyAttacked = true;
             Invoke(nameof(Resetenemy), enemy.timeBetweenAttack);
         }
-
-
     }
 
     private void Resetenemy()
@@ -141,6 +139,7 @@ public class EnemyAI : MonoBehaviour
     }
     IEnumerator WaitToExplode()
     {
+        enemy.agent.speed = 0;
         explodingEnemy.rendererObject.SetActive(false);
         explodingEnemy.animObject.SetActive(true);
         yield return new WaitForSeconds(3);
@@ -183,6 +182,9 @@ public class RangeClass
 {
     public float sightRange, AttackRange;
     public bool playerSightInRange, playerInAttackRange;
+
+    [HideInInspector]
+    public int noChase = 0;
 }
 
 [System.Serializable]
