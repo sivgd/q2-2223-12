@@ -17,9 +17,9 @@ TagManager:
   - Viewmodel Only
   - 
   - 
-  - whatIsGround
-  - whatIsPlayer
-  - 
+  - ground
+  - player
+  - wall
   - 
   - 
   - 
