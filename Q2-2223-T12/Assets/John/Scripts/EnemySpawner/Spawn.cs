@@ -17,7 +17,7 @@ public class Spawn : MonoBehaviour
     private int totalSpawns; 
     /// <summary>
     /// Spawns a new enemy after a fixed time delay
-    /// if the number of spawns is greater than the alloted spawns per enemy then it resets number of spawns and spawns the next enemy 
+    /// if the number of spawns is greater than the alloted spawns per enemy then it resets number of spawns and changes the current enemy to the next one in the queue 
     /// </summary>
     /// <returns></returns>
      private IEnumerator SpawnEnemy()

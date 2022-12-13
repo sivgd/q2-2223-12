@@ -11,11 +11,13 @@ public class SpawnTrigger : MonoBehaviour
     {
         return activated; 
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionStay(Collision collision)
     {
-        if (other.gameObject.layer.Equals(playerLayer))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            activated = true; 
+            activated = true;
+            Debug.Log($"{name} triggered!"); 
         }
+        Debug.Log($"Collided with {collision.gameObject.name}"); 
     }
 }

@@ -21,26 +21,30 @@ public class SpawnController : MonoBehaviour
     [Header("Preferences")]
     public bool useTriggers = false;
     public bool spawnEqually = false;
-    private void Start()
-    {
-        StartCoroutine(checkSpawnValidity()); 
-    }
+
+    private int spawnLocationNum = 0; 
+
+
+   
     /// <summary>
     /// Checks whether or not a spawner is ready to spawn, then activates said spawner. 
     /// </summary>
+    /// <param name="sp"> The spawner to check </param>
     /// <returns></returns>
-    IEnumerator checkSpawnValidity()
+    private bool checkSpawnValidity(Spawn sp)
     {
-        yield return new WaitForEndOfFrame();
-        for (int i = 0; i < spawnLocations.Length; i++)
-        {
-            if (spawnLocations[i].CanSpawn())
-            {
-                spawnLocations[i].StartSpawnRoutine(waveDelay);
-                Debug.Log($"{spawnLocations[i].name} can spawn");
-            }
-        }
+        return sp.CanSpawn(); 
+    }
 
+    private void Update()
+    {
+        if (checkSpawnValidity(spawnLocations[spawnLocationNum]))
+        {
+            spawnLocations[spawnLocationNum].StartSpawnRoutine(waveDelay);
+            Debug.Log($"spawner no {spawnLocationNum} activated!"); 
+        }
+        else spawnLocationNum++;
+        if (spawnLocationNum >= spawnLocations.Length) spawnLocationNum = 0; 
     }
 
 
