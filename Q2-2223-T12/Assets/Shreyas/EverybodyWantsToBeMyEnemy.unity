@@ -783,6 +783,7 @@ GameObject:
   - component: {fileID: 805390492}
   - component: {fileID: 805390491}
   - component: {fileID: 805390497}
+  - component: {fileID: 805390498}
   m_Layer: 0
   m_Name: KamikazeEnemy
   m_TagString: Enemy
@@ -954,9 +955,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   currentHealth: 0
-  exp: {fileID: 2126222279912443848, guid: d5408ebb60d998e41aa525e94b56f14c, type: 3}
-  explosionTrigger: {fileID: 1890931827}
-  agent: {fileID: 805390492}
+--- !u!114 &805390498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805390490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8176bc14b6003574ab68d486c8f1f6ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &898410689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,7 +1405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9cba8a447d37464eba66b30bdd0d7ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileEnemy: 1
+  projectileEnemy: 0
   explodeEnemy: 0
   enemy:
     agent: {fileID: 1148010079}
@@ -1548,9 +1558,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 60
   currentHealth: 0
-  exp: {fileID: 0}
-  explosionTrigger: {fileID: 0}
-  agent: {fileID: 0}
 --- !u!1 &1162688611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2015,6 +2022,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2975414613145243465, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
+      propertyPath: damageToGive
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2975414613359069472, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: damageToGive
       value: 20
@@ -2092,19 +2103,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2975414613359069474, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
   m_PrefabInstance: {fileID: 1433552873}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1433552891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433552874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8575a6b301614eb4cba00816c8cd7e33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageToGive: 20
 --- !u!1 &1720140584
 GameObject:
   m_ObjectHideFlags: 0
@@ -2463,7 +2461,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20996
+  m_Name: pb_Mesh17064
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
