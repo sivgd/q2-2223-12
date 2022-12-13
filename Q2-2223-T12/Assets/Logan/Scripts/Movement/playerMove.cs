@@ -52,6 +52,11 @@ public class playerMove : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitingSlope;
 
+    [Header("KnockBack")]
+    public float knockBackForce;
+    public float knockBackTime;
+    private float knockBackCounter;
+
     public Transform orientation;
 
     Vector3 moveDirection;
@@ -103,16 +108,21 @@ public class playerMove : MonoBehaviour
 
     private void Update()
     {
-
         if (grounded == true)
         {
             jumpCharge = 1;
         }
 
-
-        MyInput();
-        SpeedControl();
-        StateHandler();
+        if (knockBackCounter <= 0)
+        {
+            MyInput();
+            SpeedControl();
+            StateHandler();
+        }
+        else
+        {
+            knockBackCounter -= Time.deltaTime;
+        }
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
@@ -332,5 +342,13 @@ public class playerMove : MonoBehaviour
     public Vector3 GetSlopeMoveDirection(Vector3 direction)
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
+    }
+
+    public void KnockBack()
+    {
+        knockBackCounter = knockBackTime;
+
+        rb.AddForce(orientation.transform.forward.normalized * -knockBackForce * 10f, ForceMode.Impulse);
+        rb.AddForce(transform.up * knockBackForce, ForceMode.Impulse);
     }
 }
