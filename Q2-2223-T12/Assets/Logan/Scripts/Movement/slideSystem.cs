@@ -39,7 +39,7 @@ public class slideSystem : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput != 0) && pm.state != playerMove.MovementState.crouching)
+        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput != 0) && pm.state != playerMove.MovementState.crouching && pm.state == playerMove.MovementState.sprinting)
             StartSlide();
 
         if (Input.GetKeyUp(slideKey) && pm.sliding)
