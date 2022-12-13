@@ -126,6 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootForce: 10000
-  damage: 1
+  damageToGive: 5
   lifeTime: 5
   enemyTag: Enemy

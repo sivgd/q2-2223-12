@@ -9,7 +9,6 @@ public class LilypadSniper : MonoBehaviour
     public Transform instPos;
 
 
-
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -20,6 +19,7 @@ public class LilypadSniper : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(lilypadPrefab, instPos.position, instPos.rotation); 
+        Instantiate(lilypadPrefab, instPos.position, instPos.rotation);
     }
+
 }

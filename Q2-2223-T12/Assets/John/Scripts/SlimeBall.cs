@@ -6,11 +6,11 @@ public class SlimeBall : MonoBehaviour
 {
 
     [Header("External References")]
-    public GameObject explosionSphere; 
-    
+    public GameObject explosionSphere;
+
     private static float shootForce = 50000f;
-    private static float damage = 1f;
     private static float explosionRadius = 12f;
+    private static float damage = 1f;
     private static float explosionMult = 100f; 
     private Rigidbody rb;
 
@@ -43,7 +43,7 @@ public class SlimeBall : MonoBehaviour
             if(r != null)
             {
                 r.AddExplosionForce(calcExplosionRadius() * explosionMult * Time.deltaTime, transform.position, calcExplosionRadius(),1f,ForceMode.Impulse);
-                //ApplyDamage(r.gameObject,damage);
+                ApplyDamage(r.gameObject,damage);
             }
            
         }
@@ -59,7 +59,7 @@ public class SlimeBall : MonoBehaviour
             if (r != null)
             {
                 r.AddExplosionForce(calcExplosionRadius() * (explosionMult * superExplodeMult) * Time.deltaTime, transform.position, calcExplosionRadius(), 1f, ForceMode.Impulse);
-                //ApplyDamage(r.gameObject,damage);
+                ApplyDamage(r.gameObject,damage);
             }
 
         }
@@ -70,7 +70,7 @@ public class SlimeBall : MonoBehaviour
         {
             if (enemy.CompareTag("Enemy"))
             {
-                /// Damage enemy
+                FindObjectOfType<EnemyHealth>().HurtEnemy(damage);
             }
         }
         return; 

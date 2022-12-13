@@ -16,7 +16,7 @@ public class ShotgunArm : MonoBehaviour
     private RaycastHit hit; 
     public Transform instPos;
     public GameObject muzzleFlash;
-
+    public int damageToGive;
 
 
 
@@ -63,7 +63,6 @@ public class ShotgunArm : MonoBehaviour
                 if (hit.collider.CompareTag(enemyTag))
                 {
                     ApplyDamage(hit.collider.gameObject);
-
                 }
                 if(hit.collider.gameObject.GetComponent<Rigidbody>() != null)
                 {
@@ -84,6 +83,7 @@ public class ShotgunArm : MonoBehaviour
         {
             //Damage enemy
             Debug.Log("Enemy Damaged");
+            FindObjectOfType<EnemyHealth>().HurtEnemy(damageToGive);
         }
     }
 }

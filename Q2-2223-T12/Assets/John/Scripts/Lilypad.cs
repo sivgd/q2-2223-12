@@ -7,7 +7,7 @@ public class Lilypad : MonoBehaviour
     
     [Header("Shooting Variables")]
     public float shootForce = 10000f;
-    public float damage = 1f;
+    public float damageToGive;
     /// <summary>
     /// The lifetime of the lilypad in seconds 
     /// </summary>
@@ -53,6 +53,7 @@ public class Lilypad : MonoBehaviour
     private void ApplyDamage(int amt)
     {
         /// apply damage
+        FindObjectOfType<EnemyHealth>().HurtEnemy(damageToGive);
     }
 
 }

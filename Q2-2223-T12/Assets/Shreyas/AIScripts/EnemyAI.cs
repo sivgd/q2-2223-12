@@ -145,9 +145,9 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(3);
         GameObject exp = Instantiate(explodingEnemy.exp, explodingEnemy.animObject.transform.position, transform.rotation);
         explodingEnemy.explosionTrigger.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
         Destroy(exp, 0.5f);
-        Destroy(gameObject);
+        Destroy(gameObject, 0.1f);
     }
 
     private void OnDrawGizmosSelected()
