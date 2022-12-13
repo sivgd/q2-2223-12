@@ -233,7 +233,7 @@ MonoBehaviour:
   - {fileID: 1968991351303649809, guid: 709d5732cc631cd47ba4ebf321b6f63e, type: 3}
   designatedTrigger: {fileID: 552058594}
   spawnsPerEnemy: 1
-  spawnDelay: 0.2
+  spawnDelay: 1
 --- !u!1 &363058533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +1040,7 @@ MonoBehaviour:
   - {fileID: 3650091543662834309, guid: 3ed77446b3ebab4488eaff97fcf5ee51, type: 3}
   designatedTrigger: {fileID: 552058594}
   spawnsPerEnemy: 1
-  spawnDelay: 0.2
+  spawnDelay: 1
 --- !u!43 &734722573
 Mesh:
   m_ObjectHideFlags: 0
@@ -14532,7 +14532,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5250
+  m_Name: pb_Mesh16888
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15626,4 +15626,4 @@ MonoBehaviour:
   - {fileID: 1960560019405645806, guid: afb87e727617d6647ab8687aab68c80e, type: 3}
   designatedTrigger: {fileID: 552058594}
   spawnsPerEnemy: 2
-  spawnDelay: 0.2
+  spawnDelay: 1

@@ -40,7 +40,7 @@ public class SpawnController : MonoBehaviour
     {
         if (checkSpawnValidity(spawnLocations[spawnLocationNum]))
         {
-            spawnLocations[spawnLocationNum].StartSpawnRoutine(waveDelay);
+            spawnLocations[spawnLocationNum].StartSpawnRoutine();
             Debug.Log($"spawner no {spawnLocationNum} activated!"); 
         }
         else spawnLocationNum++;

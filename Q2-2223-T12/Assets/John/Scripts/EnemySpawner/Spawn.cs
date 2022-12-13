@@ -14,7 +14,7 @@ public class Spawn : MonoBehaviour
    
     private int currentEnemy = 0;
     private int spawns = 0;
-    private int totalSpawns; 
+    private bool canSpawn,hasSpawnedEnemies = false; 
     /// <summary>
     /// Spawns a new enemy after a fixed time delay
     /// if the number of spawns is greater than the alloted spawns per enemy then it resets number of spawns and changes the current enemy to the next one in the queue 
@@ -25,12 +25,13 @@ public class Spawn : MonoBehaviour
         yield return new WaitForSecondsRealtime(spawnDelay);
         if (currentEnemy < enemyQueue.Length)
         {
+          
             GameObject currentSpawn = enemyQueue[currentEnemy];
             if (spawns < spawnsPerEnemy)
             {
                 Instantiate(currentSpawn, transform.position, transform.rotation);
                 spawns++;
-                totalSpawns++; 
+               
             }
             else
             {
@@ -39,22 +40,28 @@ public class Spawn : MonoBehaviour
                 StopCoroutine(SpawnEnemy());
             }
         }
-        else StopCoroutine(SpawnEnemy());
+        else
+        {
+            canSpawn = false;
+            hasSpawnedEnemies = true; 
+            StopCoroutine(SpawnEnemy());
+        }
      }
-    /// <summary>
-    /// Spawns an enemy after a given wave delay
-    /// </summary>
-    /// <param name="delay"></param> the delay between waves 
-    /// <returns></returns>
-    public IEnumerator StartSpawnRoutine(float delay)
+   
+    public void StartSpawnRoutine()
     {
-        yield return new WaitForSecondsRealtime(delay);
+       
         StartCoroutine(SpawnEnemy());
     }
     public bool CanSpawn()
     {
-        int spawnsLeft = spawnsPerEnemy - (totalSpawns * enemyQueue.Length);
-        bool output = designatedTrigger && (spawnsLeft <= 0);
-        return output; 
+        return canSpawn; 
+    }
+    private void Update()
+    {
+        if (!hasSpawnedEnemies)
+        {
+            canSpawn = designatedTrigger.getActivated();
+        }
     }
 }
