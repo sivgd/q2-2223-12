@@ -41,7 +41,8 @@ public class SpawnController : MonoBehaviour
         if (checkSpawnValidity(spawnLocations[spawnLocationNum]))
         {
             spawnLocations[spawnLocationNum].StartSpawnRoutine();
-            Debug.Log($"spawner no {spawnLocationNum} activated!"); 
+            Debug.Log($"spawner no {spawnLocationNum} activated!");
+            spawnLocationNum++; 
         }
         else spawnLocationNum++;
         if (spawnLocationNum >= spawnLocations.Length) spawnLocationNum = 0; 

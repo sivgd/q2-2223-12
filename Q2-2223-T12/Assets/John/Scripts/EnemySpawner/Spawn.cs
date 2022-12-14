@@ -10,58 +10,68 @@ public class Spawn : MonoBehaviour
 
     [Header("Preferences")]
     public int spawnsPerEnemy = 1;
-    public float spawnDelay = 0.2f;
-   
+    //public float spawnDelay = 0.2f;
+
     private int currentEnemy = 0;
-    private int spawns = 0;
-    private bool canSpawn,hasSpawnedEnemies = false; 
+    private bool canSpawn = false;
+    private GameObject[] instObj;
+    private bool enemyExsists;
+
+
+    private void Start()
+    {
+        instObj = new GameObject[enemyQueue.Length]; 
+    }
     /// <summary>
-    /// Spawns a new enemy after a fixed time delay
-    /// if the number of spawns is greater than the alloted spawns per enemy then it resets number of spawns and changes the current enemy to the next one in the queue 
-    /// </summary>
+    /// Spawns a new enemy if there aren't enemies in the scene
+    /// iterates on what enemy can be spawned after it spawns an enemy, and said enemy is destroyed
     /// <returns></returns>
-     private IEnumerator SpawnEnemy()
+    private IEnumerator SpawnEnemy()
      {
-        yield return new WaitForSecondsRealtime(spawnDelay);
-        if (currentEnemy < enemyQueue.Length)
-        {
-          
-            GameObject currentSpawn = enemyQueue[currentEnemy];
-            if (spawns < spawnsPerEnemy)
-            {
-                Instantiate(currentSpawn, transform.position, transform.rotation);
-                spawns++;
-               
-            }
-            else
-            {
-                spawns = 0;
-                currentEnemy++; 
-                StopCoroutine(SpawnEnemy());
-            }
-        }
-        else
-        {
-            canSpawn = false;
-            hasSpawnedEnemies = true; 
-            StopCoroutine(SpawnEnemy());
-        }
+        yield return new WaitUntil(() => canSpawn);
+        EnemySpawn();
+        yield return new WaitWhile(() => enemyExsists);
+        currentEnemy++;
      }
+    /// <summary>
+    /// Spawns an enemy and adds them to the array of enemies exclusive to this spawnpoint 
+    /// </summary>
+    void EnemySpawn()
+    {
+        Debug.Log($"Spawning {enemyQueue[currentEnemy].name}");
+       for(int i = 0; i< spawnsPerEnemy; i++)
+        {
+            instObj.SetValue(Instantiate(enemyQueue[currentEnemy], transform.position, transform.rotation),currentEnemy);
+            instObj[currentEnemy].name += name;
+        }
+    }
    
+    private bool CheckForEnemy()
+    {
+        for(int enemies = 0; enemies < instObj.Length; enemies++)
+        {
+            if (instObj[enemies] != null) return true;
+        }
+        return false; 
+    }
     public void StartSpawnRoutine()
     {
-       
         StartCoroutine(SpawnEnemy());
+        return; 
     }
+    /// <summary>
+    /// Checks if there are currently any enemies exclusive to this gameobject in the scene
+    /// </summary>
+    /// <returns></returns>
     public bool CanSpawn()
     {
         return canSpawn; 
     }
     private void Update()
     {
-        if (!hasSpawnedEnemies)
-        {
-            canSpawn = designatedTrigger.getActivated();
-        }
+        if (!enemyExsists) canSpawn = designatedTrigger.getActivated();
+        else canSpawn = false;
+        if (currentEnemy >= enemyQueue.Length) canSpawn = false;
+        enemyExsists = CheckForEnemy(); 
     }
 }
