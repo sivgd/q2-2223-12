@@ -11,10 +11,10 @@ public class Spawn : MonoBehaviour
     [Header("Preferences")]
     public int spawnsPerEnemy = 1;
     public float spawnDelay = 0.2f;
-   
+
     private int currentEnemy = 0;
     private bool canSpawn = false;
-    private bool enemyExsists; 
+    private bool enemyExsists;
     /// <summary>
     /// Spawns a new enemy if there aren't enemies in the scene
     /// iterates on what enemy can be spawned after it spawns an enemy, and said enemy is destroyed
@@ -24,9 +24,8 @@ public class Spawn : MonoBehaviour
         yield return new WaitUntil(() => canSpawn);
         EnemySpawn();
         yield return new WaitWhile(() => enemyExsists);
-        currentEnemy++; 
-
-    }
+        currentEnemy++;
+     }
     void EnemySpawn()
     {
         Debug.Log($"Spawning {enemyQueue[currentEnemy].name}");
@@ -47,6 +46,6 @@ public class Spawn : MonoBehaviour
         if (!enemyExsists) canSpawn = designatedTrigger.getActivated();
         else canSpawn = false;
         if (currentEnemy >= enemyQueue.Length) canSpawn = false;
-        enemyExsists = GameObject.FindGameObjectWithTag("Enemy") != null; 
+        enemyExsists = GameObject.FindGameObjectWithTag("Enemy") != null;
     }
 }
