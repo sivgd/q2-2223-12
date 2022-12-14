@@ -11,7 +11,7 @@ public class SpawnTrigger : MonoBehaviour
     {
         return activated; 
     }
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
