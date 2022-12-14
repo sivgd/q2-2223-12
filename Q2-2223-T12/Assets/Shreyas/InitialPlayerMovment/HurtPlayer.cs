@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explode : MonoBehaviour
+public class HurtPlayer : MonoBehaviour
 {
     public int damageToGive;
+    public bool explodeEnemy;
+    public int explodeDamage;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,14 @@ public class Explode : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            FindObjectOfType<HealthManager>().HurtPlayer(damageToGive);
+            if(explodeEnemy == true)
+            {
+                FindObjectOfType<HealthManager>().explodeHurt(explodeDamage);
+            }
+            else
+            {
+                FindObjectOfType<HealthManager>().HurtPlayer(damageToGive);
+            }
         }
 
     }

@@ -7,6 +7,8 @@ public class EnemyHealth : MonoBehaviour
 {
     public float maxHealth;
     public float currentHealth;
+
+    ExplodeEnemy explode;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,17 @@ public class EnemyHealth : MonoBehaviour
         if(currentHealth <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void ExplodeEnemy(float damage)
+    {
+        Debug.Log("Damage");
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            explode.ExplodeImmediatley();
         }
     }
 }

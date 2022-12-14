@@ -19,15 +19,22 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void HurtPlayer(int damage)
     {
         currentHealth -= damage;
+    }
+
+    public void explodeHurt(int explodeDamage)
+    {
+        currentHealth -= explodeDamage;
 
         player.KnockBack();
     }
+    
+
 
 
 
