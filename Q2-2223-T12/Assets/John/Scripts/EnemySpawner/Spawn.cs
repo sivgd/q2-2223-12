@@ -29,7 +29,10 @@ public class Spawn : MonoBehaviour
     void EnemySpawn()
     {
         Debug.Log($"Spawning {enemyQueue[currentEnemy].name}");
-        Instantiate(enemyQueue[currentEnemy], transform.position, transform.rotation);
+       for(int i = 0; i< spawnsPerEnemy; i++)
+        {
+            Instantiate(enemyQueue[currentEnemy], transform.position, transform.rotation);
+        }
     }
    
     public void StartSpawnRoutine()
