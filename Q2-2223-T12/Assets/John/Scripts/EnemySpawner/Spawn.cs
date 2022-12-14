@@ -10,7 +10,7 @@ public class Spawn : MonoBehaviour
 
     [Header("Preferences")]
     public int spawnsPerEnemy = 1;
-    public float spawnDelay = 0.2f;
+    //public float spawnDelay = 0.2f;
 
     private int currentEnemy = 0;
     private bool canSpawn = false;
