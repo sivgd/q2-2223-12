@@ -24,7 +24,8 @@ public class playerMove : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     bool canJump;
-    private int jumpCharge = 2;
+    [HideInInspector]
+    public int jumpCharge = 2;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -135,7 +136,7 @@ public class playerMove : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         //When to jump
-        if (Input.GetKey(jumpKey) && canJump && (grounded || jumpCharge != 0) && state != MovementState.crouching)
+        if (Input.GetKeyDown(jumpKey) && canJump && (grounded || jumpCharge != 0) && state != MovementState.crouching)
         {
             canJump = false;
 
