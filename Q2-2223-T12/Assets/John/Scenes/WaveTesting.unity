@@ -232,8 +232,7 @@ MonoBehaviour:
   - {fileID: 3650091543662834309, guid: 3ed77446b3ebab4488eaff97fcf5ee51, type: 3}
   - {fileID: 1968991351303649809, guid: 709d5732cc631cd47ba4ebf321b6f63e, type: 3}
   designatedTrigger: {fileID: 552058594}
-  spawnsPerEnemy: 1
-  spawnDelay: 0.5
+  spawnsPerEnemy: 2
 --- !u!1 &363058533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,8 +1038,7 @@ MonoBehaviour:
   - {fileID: 1960560019405645806, guid: afb87e727617d6647ab8687aab68c80e, type: 3}
   - {fileID: 3650091543662834309, guid: 3ed77446b3ebab4488eaff97fcf5ee51, type: 3}
   designatedTrigger: {fileID: 552058594}
-  spawnsPerEnemy: 1
-  spawnDelay: 0.5
+  spawnsPerEnemy: 2
 --- !u!43 &734722573
 Mesh:
   m_ObjectHideFlags: 0
@@ -15625,5 +15623,4 @@ MonoBehaviour:
   - {fileID: 1968991351303649809, guid: 709d5732cc631cd47ba4ebf321b6f63e, type: 3}
   - {fileID: 1960560019405645806, guid: afb87e727617d6647ab8687aab68c80e, type: 3}
   designatedTrigger: {fileID: 552058594}
-  spawnsPerEnemy: 1
-  spawnDelay: 0.5
+  spawnsPerEnemy: 2
