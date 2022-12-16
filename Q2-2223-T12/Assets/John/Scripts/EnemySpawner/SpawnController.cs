@@ -18,9 +18,9 @@ public class SpawnController : MonoBehaviour
     public int enemyWaveIncrease = 0;
 
 
-    [Header("Preferences")]
+    /*[Header("Preferences")]
     public bool useTriggers = false;
-    public bool spawnEqually = false;
+    public bool spawnEqually = false;*/
 
     private int spawnLocationNum = 0; 
 
@@ -47,6 +47,7 @@ public class SpawnController : MonoBehaviour
         else spawnLocationNum++;
         if (spawnLocationNum >= spawnLocations.Length) spawnLocationNum = 0; 
     }
+
 
 
 
