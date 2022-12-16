@@ -88,6 +88,7 @@ public class ExplodeEnemy : MonoBehaviour
 
     private void Chase()
     {
+        transform.LookAt(player);
         agent.SetDestination(player.position);
     }
 

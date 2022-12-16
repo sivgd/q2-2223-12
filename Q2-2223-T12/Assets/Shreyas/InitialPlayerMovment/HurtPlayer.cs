@@ -31,6 +31,5 @@ public class HurtPlayer : MonoBehaviour
                 FindObjectOfType<HealthManager>().HurtPlayer(damageToGive);
             }
         }
-
     }
 }

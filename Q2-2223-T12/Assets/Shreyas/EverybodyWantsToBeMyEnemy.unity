@@ -123,6 +123,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 1dac97849cd75b6458534e158a92001a, type: 2}
+--- !u!1 &13690168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 13690169}
+  m_Layer: 0
+  m_Name: LaunchOrientation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &13690169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13690168}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 805390496}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &413245156
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +185,7 @@ Transform:
   m_Children:
   - {fileID: 1757666174}
   m_Father: {fileID: 805390496}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &413245158
 Animator:
@@ -267,7 +297,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 805390496}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &805390490
 GameObject:
@@ -286,7 +316,7 @@ GameObject:
   - component: {fileID: 805390497}
   m_Layer: 0
   m_Name: KamikazeEnemy
-  m_TagString: ExplodeEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -334,7 +364,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 9
+  m_Speed: 1
   m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -420,6 +450,7 @@ Transform:
   m_LocalPosition: {x: -25.3, y: 1.64, z: 7.4349}
   m_LocalScale: {x: 0.50361586, y: 0.50361586, z: 0.50361586}
   m_Children:
+  - {fileID: 13690169}
   - {fileID: 1233188212}
   - {fileID: 721346211}
   - {fileID: 1890931832}
@@ -439,8 +470,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368943e7a78aa8c4abb62fb0d83e3662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 805390492}
   maxHealth: 1
   currentHealth: 0
+  exp: {fileID: 2126222279912443848, guid: d5408ebb60d998e41aa525e94b56f14c, type: 3}
+  explosionTrigger: {fileID: 1890931827}
+  animObject: {fileID: 413245156}
+  rendererObject: {fileID: 1233188211}
 --- !u!1 &898410689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,8 +1052,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368943e7a78aa8c4abb62fb0d83e3662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
   maxHealth: 60
   currentHealth: 0
+  exp: {fileID: 0}
+  explosionTrigger: {fileID: 0}
+  animObject: {fileID: 0}
+  rendererObject: {fileID: 0}
 --- !u!1 &1233188211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,7 +1090,7 @@ Transform:
   m_Children:
   - {fileID: 1817035267}
   m_Father: {fileID: 805390496}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1233188213
 MeshRenderer:
@@ -1545,7 +1586,7 @@ Transform:
   m_LocalScale: {x: 9.438147, y: 9.438147, z: 9.438147}
   m_Children: []
   m_Father: {fileID: 805390496}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1896416809
 Mesh:
@@ -1553,7 +1594,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17064
+  m_Name: pb_Mesh17160
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1950,6 +1991,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   wallRunForce: 200
+  wallJumpUpForce: 0
+  wallJumpSideForce: 0
+  jumpKey: 32
   wallCheckDistance: 0.7
   minJumpHeight: 1
   orientation: {fileID: 2446510939718736159}
@@ -1993,6 +2037,7 @@ MonoBehaviour:
   jumpForce: 15
   jumpCooldown: 0.25
   airMultiplier: 0.3
+  jumpCharge: 2
   crouchSpeed: 6
   crouchYScale: 0.5
   jumpKey: 32
@@ -2003,9 +2048,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   maxSlopeAngle: 360
-  knockBackForce: 6
+  knockBackForce: 4
   knockBackTime: 0.25
   orientation: {fileID: 2446510939718736159}
+  orientationEnemy: {fileID: 13690169}
   state: 0
   sliding: 0
   wallrunning: 0
@@ -2464,7 +2510,6 @@ MonoBehaviour:
   spreadMult: 20
   range: 100
   enemyTag: Enemy
-  enemyTag2: ExplodeEnemy
   instPos: {fileID: 2975414613390599447}
   muzzleFlash: {fileID: 7546666517062505097}
   damageToGive: 20

@@ -5,8 +5,13 @@ using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public NavMeshAgent agent;
     public float maxHealth;
     public float currentHealth;
+
+    [Header("Explode")]
+    public GameObject exp;
+    public GameObject explosionTrigger, animObject, rendererObject;
 
     ExplodeEnemy explode;
     // Start is called before the first frame update
@@ -23,23 +28,21 @@ public class EnemyHealth : MonoBehaviour
 
     public void HurtEnemy(float damage)
     {
-        Debug.Log("Damage");
-        currentHealth -= damage;
-
-        if(currentHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    public void ExplodeEnemy(float damage)
-    {
-        Debug.Log("Damage");
         currentHealth -= damage;
 
         if (currentHealth <= 0)
         {
-            explode.ExplodeImmediatley();
+            StartCoroutine(WaitToDie());
         }
+    }
+
+    IEnumerator WaitToDie()
+    {
+        agent.speed = 0;
+        GameObject explosion = Instantiate(exp, transform.position, transform.rotation);
+        explosionTrigger.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        Destroy(explosion, 0.5f);
+        Destroy(gameObject, 0.1f);
     }
 }

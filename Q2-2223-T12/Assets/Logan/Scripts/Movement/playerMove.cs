@@ -59,6 +59,7 @@ public class playerMove : MonoBehaviour
     private float knockBackCounter;
 
     public Transform orientation;
+    public Transform orientationEnemy;
 
     Vector3 moveDirection;
 
@@ -349,7 +350,7 @@ public class playerMove : MonoBehaviour
     {
         knockBackCounter = knockBackTime;
 
-        rb.AddForce(orientation.transform.forward.normalized * -knockBackForce * 10f, ForceMode.Impulse);
+        rb.AddForce(orientationEnemy.transform.forward.normalized * knockBackForce * 10f, ForceMode.Impulse);
         rb.AddForce(transform.up * knockBackForce, ForceMode.Impulse);
     }
 }

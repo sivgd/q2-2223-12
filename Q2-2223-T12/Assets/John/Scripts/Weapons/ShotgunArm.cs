@@ -10,7 +10,6 @@ public class ShotgunArm : MonoBehaviour
     //float rX, rY, rZ;
     public float range = 100f; 
     public string enemyTag;
-    public string enemyTag2;
     
     
     [Header("External References")]
@@ -85,12 +84,6 @@ public class ShotgunArm : MonoBehaviour
             //Damage enemy
             Debug.Log("Enemy Damaged");
             FindObjectOfType<EnemyHealth>().HurtEnemy(damageToGive);
-        }
-        else if (inputObj.CompareTag(enemyTag))
-        {
-            //Damage enemy
-            Debug.Log("Enemy Damaged");
-            FindObjectOfType<EnemyHealth>().ExplodeEnemy(damageToGive);
         }
     }
 }
