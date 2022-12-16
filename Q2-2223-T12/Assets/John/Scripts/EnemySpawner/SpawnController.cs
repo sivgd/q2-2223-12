@@ -8,10 +8,10 @@ public class SpawnController : MonoBehaviour
     public Spawn[] spawnLocations;
     //public SpawnTrigger[] spawnTriggers;
 
-    [Header("Wave Modifiers")]
+    [Header("Spawning Modifiers")]
    // public GameObject[] waveEnemies; 
-    public int waveNumber = 3;
-    public float waveDelay = 0.5f; 
+   // public int waveNumber = 3;
+    //public float spawnDelay = 0.5f; 
     /// <summary>
     /// Increases the amount of enemies per wave by the designated amount
     /// </summary>
@@ -47,6 +47,7 @@ public class SpawnController : MonoBehaviour
         else spawnLocationNum++;
         if (spawnLocationNum >= spawnLocations.Length) spawnLocationNum = 0; 
     }
+
 
 
 

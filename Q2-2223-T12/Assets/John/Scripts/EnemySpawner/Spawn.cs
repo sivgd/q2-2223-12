@@ -6,10 +6,12 @@ public class Spawn : MonoBehaviour
 {
     [Header("Outside References")]
     public GameObject[] enemyQueue;
-    public SpawnTrigger designatedTrigger; 
+    public SpawnTrigger designatedTrigger;
+    public SpawnController spawnController; 
 
     [Header("Preferences")]
     public int spawnsPerEnemy = 1;
+    public bool increaseEnemiesPerWave = false; 
     //public float spawnDelay = 0.2f;
 
     private int currentEnemy = 0;
@@ -18,18 +20,20 @@ public class Spawn : MonoBehaviour
     private bool enemyExsists;
 
 
+
     private void Start()
     {
-        instObj = new GameObject[enemyQueue.Length]; 
-    }
+        instObj = new GameObject[enemyQueue.Length];
+    }    
     /// <summary>
-    /// Spawns a new enemy if there aren't enemies in the scene
-    /// iterates on what enemy can be spawned after it spawns an enemy, and said enemy is destroyed
+    /// Spawns a new enemy if there aren't enemies in the scene. 
+    /// <para>Iterates on what enemy can be spawned after it spawns an enemy, and said enemy is destroyed</para>
+    /// </summary>
     /// <returns></returns>
     private IEnumerator SpawnEnemy()
      {
         yield return new WaitUntil(() => canSpawn);
-        EnemySpawn();
+        EnemySpawn(); 
         yield return new WaitWhile(() => enemyExsists);
         currentEnemy++;
      }
@@ -39,13 +43,18 @@ public class Spawn : MonoBehaviour
     void EnemySpawn()
     {
         Debug.Log($"Spawning {enemyQueue[currentEnemy].name}");
-       for(int i = 0; i< spawnsPerEnemy; i++)
-        {
-            instObj.SetValue(Instantiate(enemyQueue[currentEnemy], transform.position, transform.rotation),currentEnemy);
+        for(int i = 0; i < spawnsPerEnemy; i++)
+        {          
+            instObj.SetValue(Instantiate(enemyQueue[currentEnemy], transform.position, transform.rotation), currentEnemy);
             instObj[currentEnemy].name += name;
         }
+        
+        if (increaseEnemiesPerWave) spawnsPerEnemy += spawnController.enemyWaveIncrease;  
     }
-   
+    /// <summary>
+    /// Checks if there are currently any enemies exclusive to this gameobject in the scene
+    /// </summary>
+    /// <returns></returns>
     private bool CheckForEnemy()
     {
         for(int enemies = 0; enemies < instObj.Length; enemies++)
@@ -59,10 +68,6 @@ public class Spawn : MonoBehaviour
         StartCoroutine(SpawnEnemy());
         return; 
     }
-    /// <summary>
-    /// Checks if there are currently any enemies exclusive to this gameobject in the scene
-    /// </summary>
-    /// <returns></returns>
     public bool CanSpawn()
     {
         return canSpawn; 
