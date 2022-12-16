@@ -14,7 +14,8 @@ public class Lilypad : MonoBehaviour
     public float lifeTime = 10f; 
 
     [Header("External References")]
-    public string enemyTag = "Enemy"; 
+    public string enemyTag = "Enemy";
+    public string enemyTag2 = "ExplodingEnemy";
 
     private Rigidbody rb;
     private void Awake()
@@ -44,6 +45,12 @@ public class Lilypad : MonoBehaviour
             ApplyDamage(0);
             SticktoGameObject(collision.gameObject,collision); 
         }
+        else if(collision.CompareTag(enemyTag2))
+        {
+            ApplyDamage2(0);
+            SticktoGameObject(collision.gameObject, collision);
+
+        }
         else if(collision.name != "Player")
         {
             SticktoGameObject(collision.gameObject,collision); 
@@ -54,6 +61,11 @@ public class Lilypad : MonoBehaviour
     {
         /// apply damage
         FindObjectOfType<EnemyHealth>().HurtEnemy(damageToGive);
+    }
+    private void ApplyDamage2(int amt)
+    {
+        /// apply damage
+        FindObjectOfType<ExplodingEnemyHealth>().HurtEnemy(damageToGive);
     }
 
 }

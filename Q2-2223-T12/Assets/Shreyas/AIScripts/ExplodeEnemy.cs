@@ -25,7 +25,7 @@ public class ExplodeEnemy : MonoBehaviour
     public GameObject exp;
     public GameObject explosionTrigger, animObject, rendererObject;
 
-    EnemyHealth health;
+    ExplodingEnemyHealth health;
     // Start is called before the first frame update
     void Start()
     {

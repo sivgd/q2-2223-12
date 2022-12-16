@@ -10,6 +10,7 @@ public class ShotgunArm : MonoBehaviour
     //float rX, rY, rZ;
     public float range = 100f; 
     public string enemyTag;
+    public string enemyTag2;
     
     
     [Header("External References")]
@@ -60,7 +61,7 @@ public class ShotgunArm : MonoBehaviour
             Debug.Log($"{hit.collider.name} was hit"); 
             if(hit.collider.tag != null)
             {
-                if (hit.collider.CompareTag(enemyTag))
+                if (hit.collider.CompareTag(enemyTag) || hit.collider.CompareTag(enemyTag2))
                 {
                     ApplyDamage(hit.collider.gameObject);
                 }
@@ -84,6 +85,11 @@ public class ShotgunArm : MonoBehaviour
             //Damage enemy
             Debug.Log("Enemy Damaged");
             FindObjectOfType<EnemyHealth>().HurtEnemy(damageToGive);
+        }
+        else if(inputObj.CompareTag(enemyTag2))
+        {
+            Debug.Log("Explode");
+            FindObjectOfType<ExplodingEnemyHealth>().HurtEnemy(damageToGive);
         }
     }
 }

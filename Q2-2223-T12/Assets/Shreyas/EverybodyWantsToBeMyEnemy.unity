@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 805390497}
   m_Layer: 0
   m_Name: KamikazeEnemy
-  m_TagString: Enemy
+  m_TagString: ExplodingEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1049,16 +1049,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1148010077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368943e7a78aa8c4abb62fb0d83e3662, type: 3}
+  m_Script: {fileID: 11500000, guid: 76ed22d37c6f3c14794a2183bb9d088b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
   maxHealth: 60
   currentHealth: 0
-  exp: {fileID: 0}
-  explosionTrigger: {fileID: 0}
-  animObject: {fileID: 0}
-  rendererObject: {fileID: 0}
 --- !u!1 &1233188211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1492,7 +1487,7 @@ GameObject:
   - component: {fileID: 1890931828}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Enemy
+  m_TagString: ExplodingEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2510,6 +2505,7 @@ MonoBehaviour:
   spreadMult: 20
   range: 100
   enemyTag: Enemy
+  enemyTag2: ExplodingEnemy
   instPos: {fileID: 2975414613390599447}
   muzzleFlash: {fileID: 7546666517062505097}
   damageToGive: 20
@@ -2722,14 +2718,6 @@ Transform:
   m_Father: {fileID: 2975414614012387099}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &2975414614928018914
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2975414614928018940}
-  m_Enabled: 1
 --- !u!20 &2975414614928018915
 Camera:
   m_ObjectHideFlags: 0
@@ -2783,7 +2771,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2975414614928018941}
   - component: {fileID: 2975414614928018915}
-  - component: {fileID: 2975414614928018914}
   m_Layer: 0
   m_Name: Viewmodel Camera
   m_TagString: Untagged
