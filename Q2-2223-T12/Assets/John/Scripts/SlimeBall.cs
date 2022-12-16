@@ -70,7 +70,7 @@ public class SlimeBall : MonoBehaviour
         {
             if (enemy.CompareTag("Enemy"))
             {
-                FindObjectOfType<EnemyHealth>().HurtEnemy(damage);
+                FindObjectOfType<ExplodingEnemyHealth>().HurtEnemy(damage);
             }
         }
         return; 

@@ -23,6 +23,10 @@ public class HurtEnemy : MonoBehaviour
         {
             FindObjectOfType<EnemyHealth>().HurtEnemy(damageToGive);
         }
+        else if(col.gameObject.tag == "ExplodingEnemy")
+        {
+            FindObjectOfType<ExplodingEnemyHealth>().HurtEnemy(damageToGive);
+        }
 
     }
 }
