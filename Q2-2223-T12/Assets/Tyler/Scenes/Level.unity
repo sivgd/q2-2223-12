@@ -44398,9 +44398,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 887537440288829504, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
+      propertyPath: wallJumpUpForce
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 887537440288829504, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
+      propertyPath: wallJumpSideForce
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 887537440288829533, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 887537440288829534, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
+      propertyPath: jumpCooldown
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 887537440288829535, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
       propertyPath: m_RootOrder
