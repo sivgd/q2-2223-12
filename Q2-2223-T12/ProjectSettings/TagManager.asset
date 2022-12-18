@@ -8,6 +8,7 @@ TagManager:
   - Slimeball
   - Lily
   - ExplodingEnemy
+  - Ground
   layers:
   - Default
   - TransparentFX

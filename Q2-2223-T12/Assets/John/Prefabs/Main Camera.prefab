@@ -218,7 +218,6 @@ GameObject:
   - component: {fileID: 2975414613359069473}
   - component: {fileID: 2975414613359069477}
   - component: {fileID: 2975414613359069478}
-  - component: {fileID: 2975414613359069479}
   - component: {fileID: 2975414613359069472}
   m_Layer: 7
   m_Name: ShotgunArm
@@ -291,20 +290,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2975414613359069479
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2975414613359069474}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2975414613359069472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,8 +306,10 @@ MonoBehaviour:
   spreadMult: 20
   range: 100
   enemyTag: Enemy
+  enemyTag2: 
   instPos: {fileID: 2975414614282822398}
   muzzleFlash: {fileID: 7546666517915112800}
+  damageToGive: 0
 --- !u!1 &2975414614071183893
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +407,6 @@ GameObject:
   - component: {fileID: 2975414614268289561}
   - component: {fileID: 2975414614268289562}
   - component: {fileID: 2975414614268289563}
-  - component: {fileID: 2975414614268289572}
   - component: {fileID: 2975414614268289560}
   m_Layer: 7
   m_Name: Slimball Launcher
@@ -492,19 +478,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2975414614268289572
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2975414614268289573}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2975414614268289560
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ public class ShotgunArm : MonoBehaviour
     }
 
     /// <summary>
-    /// Casts a box at a designated range and origin (range & instpos) towards what the player is aimning at 
+    /// Casts a box at a designated range and origin (range & instpos) towards what the player is aiming at 
     /// The range can be changed in the editor
     /// There is also a spread that determines the width and height of the box, it can be modified to increase the amount of enemies hit on screen 
     /// </summary>
@@ -65,9 +65,10 @@ public class ShotgunArm : MonoBehaviour
                 {
                     ApplyDamage(hit.collider.gameObject);
                 }
-                if(hit.collider.gameObject.GetComponent<Rigidbody>() != null)
+                
+                if (hit.collider.gameObject.GetComponent<Rigidbody>() != null)
                 {
-                    PushEnemy(hit.collider.gameObject.GetComponent<Rigidbody>(),hit);
+                    PushEnemy(hit.collider.gameObject.GetComponent<Rigidbody>(), hit);
                 }
             }
         } 
@@ -76,7 +77,10 @@ public class ShotgunArm : MonoBehaviour
     private void PushEnemy(Rigidbody affectedRB,RaycastHit hit)
     {
 
-        affectedRB.AddExplosionForce(5000f, hit.point, 0.3f); 
+       if(affectedRB.CompareTag(enemyTag) || affectedRB.CompareTag(enemyTag2))
+       {
+            affectedRB.AddExplosionForce(5000f, hit.point, 0.3f);
+       }
     }
     private void ApplyDamage(GameObject inputObj)
     {
