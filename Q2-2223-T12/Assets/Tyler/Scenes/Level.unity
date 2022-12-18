@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1827529, g: 0.2258238, b: 0.29173777, a: 1}
+  m_IndirectSpecularColor: {r: 0.18275258, g: 0.22582349, b: 0.2917372, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -44398,6 +44398,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 887537438635088565, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: d953aa7530a599f41b46951bc82f66df, type: 2}
     - target: {fileID: 887537440288829504, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
       propertyPath: wallJumpUpForce
       value: 0.75
