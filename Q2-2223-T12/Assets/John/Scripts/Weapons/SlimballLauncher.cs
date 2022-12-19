@@ -50,8 +50,6 @@ public class SlimballLauncher : MonoBehaviour
         sb = GameObject.FindGameObjectWithTag("Slimeball").GetComponent<SlimeBall>();
         sb.setShootForce(sb.getShootForce() * charge); 
         sb.setDamage(sb.getDamage() * charge); 
-        
-        
     }
 
 }

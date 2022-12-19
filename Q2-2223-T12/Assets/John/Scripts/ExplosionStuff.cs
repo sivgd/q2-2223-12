@@ -4,13 +4,36 @@ using UnityEngine;
 
 public class ExplosionStuff : MonoBehaviour
 {
-    private void Awake()
+    private float scale = 0f;
+    float finalRadius;
+    float rate;
+    private bool canGrow; 
+    public void Grow(float finalRadius, float rate)
     {
-        StartCoroutine(DestroyAfterTime()); 
+        this.finalRadius = finalRadius;
+        this.rate = rate;
+        canGrow = true; 
     }
-    IEnumerator DestroyAfterTime()
+
+    private void FixedUpdate()
     {
-        yield return new WaitForSecondsRealtime(5f);
-        Destroy(gameObject); 
+        if (canGrow)
+        {
+            float averageScale = (transform.localScale.x + transform.localScale.y + transform.localScale.z) / 3;
+
+            if (averageScale < finalRadius)
+            {
+                scale += (rate) * Time.fixedDeltaTime;
+
+                transform.localScale = new Vector3(scale, scale, scale);
+            }
+            else
+            {
+                Destroy(gameObject); 
+            }
+        }
     }
+
+
+
 }

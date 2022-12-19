@@ -4,20 +4,31 @@ using UnityEngine;
 
 public class SlimeBall : MonoBehaviour
 {
+    [Header("Shooting Variables")]
+    public float shootForce = 50000f;
+    public float damage = 1f;
+
+    [Header("Explosion variables")]
+    public float explosionRadius = 12f;
+    public float explosionRadMult = 100f;
+    public int superExplosionMult = 3;
+    public float explosionGrowthRate = 30f; 
 
     [Header("External References")]
     public GameObject explosionSphere;
 
-    private static float shootForce = 50000f;
-    private static float explosionRadius = 12f;
-    private static float damage = 1f;
-    private static float explosionMult = 100f; 
+    private CameraEffectManager sfx; 
+   
+   
+    
+
     private Rigidbody rb;
 
     private void Awake()
     {
-        StartCoroutine(ApplyLaunchForce());
         rb = GetComponent<Rigidbody>();
+        sfx = FindObjectOfType<CameraEffectManager>(); 
+        StartCoroutine(ApplyLaunchForce());
     }
     IEnumerator ApplyLaunchForce()
     {
@@ -35,14 +46,16 @@ public class SlimeBall : MonoBehaviour
     private void Explode()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, calcExplosionRadius());
-        explosionSphere.transform.localScale = new Vector3(calcExplosionRadius(),calcExplosionRadius(),calcExplosionRadius());
-       // Instantiate(explosionSphere, transform.position,transform.rotation); 
-        foreach(Collider hit in colliders)
+        //explosionSphere.transform.localScale = new Vector3(calcExplosionRadius(),calcExplosionRadius(),calcExplosionRadius());
+        GameObject explosion  = Instantiate(explosionSphere, transform.position,transform.rotation);
+        explosion.SetActive(true);
+        explosion.GetComponent<ExplosionStuff>().Grow(calcExplosionRadius(), explosionGrowthRate);
+        foreach (Collider hit in colliders)
         {
             Rigidbody r = hit.GetComponent<Rigidbody>();
             if(r != null)
             {
-                r.AddExplosionForce(calcExplosionRadius() * explosionMult * Time.deltaTime, transform.position, calcExplosionRadius(),1f,ForceMode.Impulse);
+                r.AddExplosionForce(calcExplosionRadius() * explosionRadMult * Time.deltaTime, transform.position, calcExplosionRadius(),1f,ForceMode.Impulse);
                 ApplyDamage(r.gameObject,damage);
             }
            
@@ -51,14 +64,16 @@ public class SlimeBall : MonoBehaviour
     private void Explode(int superExplodeMult)
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, calcExplosionRadius());
-        explosionSphere.transform.localScale = new Vector3(calcExplosionRadius(), calcExplosionRadius(), calcExplosionRadius());
-       // Instantiate(explosionSphere, transform.position, transform.rotation);
+        //explosionSphere.transform.localScale = new Vector3(calcExplosionRadius(), calcExplosionRadius(), calcExplosionRadius());
+        GameObject explosion = Instantiate(explosionSphere, transform.position, transform.rotation);
+        explosion.SetActive(true);
+        explosion.GetComponent<ExplosionStuff>().Grow(calcExplosionRadius(), explosionGrowthRate);
         foreach (Collider hit in colliders)
         {
             Rigidbody r = hit.GetComponent<Rigidbody>();
             if (r != null)
             {
-                r.AddExplosionForce(calcExplosionRadius() * (explosionMult * superExplodeMult) * Time.deltaTime, transform.position, calcExplosionRadius(), 1f, ForceMode.Impulse);
+                r.AddExplosionForce(calcExplosionRadius() * (explosionRadMult * superExplodeMult) * Time.deltaTime, transform.position, calcExplosionRadius(), 1f, ForceMode.Impulse);
                 ApplyDamage(r.gameObject,damage);
             }
 
@@ -76,12 +91,13 @@ public class SlimeBall : MonoBehaviour
         return; 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         /// if you are good at the game you can make a super explosion 
-        if (collision.collider.CompareTag("Lily"))
+        if (collision.CompareTag("Lily"))
         {
-            Explode(3);
+            Explode(superExplosionMult);
+            sfx.CreateExplosionEffect(); 
             Destroy(collision.gameObject);
             Destroy(gameObject);
 
