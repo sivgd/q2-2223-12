@@ -21,12 +21,17 @@ public class SlimballLauncher : MonoBehaviour
 
     [Header("UI Stuff")]
     public float maxShake = 2f;
-
+    public Color unchargedColor,chargedColor;
     private Vector3 initialPos;
+    private Color currentColor;
+    private Renderer ballMat; 
 
     private void Start()
     {
-        initialPos = transform.localPosition; 
+        initialPos = transform.localPosition;
+        currentColor = unchargedColor;
+        ballMat = GetComponent<Renderer>();
+
     }
     private void Update()
     {
@@ -49,7 +54,7 @@ public class SlimballLauncher : MonoBehaviour
             Shoot();
             charge = 0f;
         }
-        
+        UpdateColor(); 
         coolDownTimer -= Time.deltaTime; 
     }
 
@@ -69,6 +74,18 @@ public class SlimballLauncher : MonoBehaviour
         float dY = transform.localPosition.y + Random.Range(-currShake, currShake);
         float dZ = transform.localPosition.z + Random.Range(-currShake, currShake);
         transform.localPosition = new Vector3(dX, dY, dZ);
+    }
+    void UpdateColor()
+    {
+        
+        float dR = ((chargedColor.r - unchargedColor.r) / chargeMult) * charge;
+        float dG = ((chargedColor.g - unchargedColor.g) / chargeMult) * charge;
+        float dB = ((chargedColor.b - unchargedColor.b) / chargeMult) * charge;
+        currentColor = new Color(unchargedColor.r + dR, unchargedColor.g + dG, unchargedColor.b + dB); 
+        
+        ballMat.material.SetColor("_Color", currentColor);
+        ballMat.material.SetColor("_EmissionColor", currentColor);
+        DynamicGI.UpdateEnvironment(); 
     }
     
 
