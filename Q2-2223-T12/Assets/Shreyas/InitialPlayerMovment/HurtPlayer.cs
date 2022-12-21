@@ -24,7 +24,10 @@ public class HurtPlayer : MonoBehaviour
         {
             if(explodeEnemy == true)
             {
-                FindObjectOfType<HealthManager>().explodeHurt(explodeDamage);
+                Vector3 hitDirection = col.transform.position - transform.position;
+                hitDirection = hitDirection.normalized;
+
+                FindObjectOfType<HealthManager>().explodeHurt(explodeDamage, hitDirection);
             }
             else
             {

@@ -50,7 +50,7 @@ public class ExplodeEnemy : MonoBehaviour
 
         if (playerInAttackRange && playerSightInRange)
         {
-            Attack1();
+            Attack();
         }
     }
 
@@ -92,7 +92,7 @@ public class ExplodeEnemy : MonoBehaviour
         agent.SetDestination(player.position);
     }
 
-    private void Attack1()
+    private void Attack()
     {
         agent.SetDestination(transform.position);
 

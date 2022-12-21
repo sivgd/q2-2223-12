@@ -27,11 +27,11 @@ public class HealthManager : MonoBehaviour
         currentHealth -= damage;
     }
 
-    public void explodeHurt(int explodeDamage)
+    public void explodeHurt(int explodeDamage, Vector3 direction)
     {
         currentHealth -= explodeDamage;
 
-        player.KnockBack();
+        player.KnockBack(direction);
     }
     
 

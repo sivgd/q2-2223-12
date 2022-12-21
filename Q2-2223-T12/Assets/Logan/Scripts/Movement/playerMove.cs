@@ -55,11 +55,11 @@ public class playerMove : MonoBehaviour
 
     [Header("KnockBack")]
     public float knockBackForce;
+    public float upForce;
     public float knockBackTime;
     private float knockBackCounter;
 
     public Transform orientation;
-    public Transform orientationEnemy;
 
     Vector3 moveDirection;
 
@@ -346,11 +346,11 @@ public class playerMove : MonoBehaviour
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
 
-    public void KnockBack()
+    public void KnockBack(Vector3 direction)
     {
         knockBackCounter = knockBackTime;
 
-        rb.AddForce(orientationEnemy.transform.forward.normalized * knockBackForce * 10f, ForceMode.Impulse);
-        rb.AddForce(transform.up * knockBackForce, ForceMode.Impulse);
+        rb.AddForce(direction * knockBackForce * 10f, ForceMode.Impulse);
+        rb.AddForce(transform.up * upForce, ForceMode.Impulse);
     }
 }
