@@ -11,13 +11,15 @@ public class Lilypad : MonoBehaviour
     /// <summary>
     /// The lifetime of the lilypad in seconds 
     /// </summary>
-    public float lifeTime = 10f; 
+    public float lifeTime = 10f;
 
+    
     [Header("External References")]
     public string enemyTag = "Enemy";
     public string enemyTag2 = "ExplodingEnemy";
 
     private Rigidbody rb;
+  
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -29,13 +31,21 @@ public class Lilypad : MonoBehaviour
         yield return new WaitForSecondsRealtime(lifeTime);
         Destroy(gameObject);
     }
-
+    /// <summary>
+    /// Allows the lilypad to get stuck in walls and enemies
+    /// placing a trigger infront of a wall stops the lilypad from going through 
+    /// </summary>
+    /// <param name="stickTo"></param> the gameobject to stick to
+    /// <param name="collider"></param> the collider of the gameobject 
     private void SticktoGameObject(GameObject stickTo,Collider collider)
     {
         rb.velocity = Vector3.zero;
         transform.SetParent(stickTo.transform);
-        transform.position = collider.ClosestPointOnBounds(transform.position); 
+        Vector3 closestPt = collider.ClosestPointOnBounds(transform.position);
+        transform.position = closestPt;
+        Debug.Log($"NAME: {name}, closestPt: {closestPt}");
     }
+    
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -53,8 +63,9 @@ public class Lilypad : MonoBehaviour
         }
         else if(collision.name != "Player")
         {
-            SticktoGameObject(collision.gameObject,collision); 
+            SticktoGameObject(collision.gameObject,collision);
         }
+
     }
 
     private void ApplyDamage(int amt)

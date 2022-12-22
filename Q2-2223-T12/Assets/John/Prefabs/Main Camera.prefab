@@ -486,6 +486,7 @@ MonoBehaviour:
   maxCoolDown: 5
   maxTimer: 4
   chargeMult: 3
+  maxShake: 0.07
 --- !u!1 &2975414614282822399
 GameObject:
   m_ObjectHideFlags: 0

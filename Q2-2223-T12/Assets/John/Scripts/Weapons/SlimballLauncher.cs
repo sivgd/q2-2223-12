@@ -19,8 +19,15 @@ public class SlimballLauncher : MonoBehaviour
 
     private SlimeBall sb;
 
- 
-   
+    [Header("UI Stuff")]
+    public float maxShake = 2f;
+
+    private Vector3 initialPos;
+
+    private void Start()
+    {
+        initialPos = transform.localPosition; 
+    }
     private void Update()
     {
        
@@ -29,12 +36,14 @@ public class SlimballLauncher : MonoBehaviour
         {
             heldTimer += Time.deltaTime;
             charge += Time.deltaTime;
+            StartCoroutine(SlimeBallShake()); 
             Debug.Log($"charge: {charge}"); 
         }
         
         if ((Input.GetButtonUp("Fire1") || heldTimer >= maxTimer) && coolDownTimer <= 0f)
         {
             charge = Mathf.Clamp(charge, 0.1f, chargeMult);
+            StopCoroutine(SlimeBallShake());
             heldTimer = 0f;
             coolDownTimer = maxCoolDown;
             Shoot();
@@ -51,5 +60,16 @@ public class SlimballLauncher : MonoBehaviour
         sb.setShootForce(sb.getShootForce() * charge); 
         sb.setDamage(sb.getDamage() * charge); 
     }
+    IEnumerator SlimeBallShake()
+    {
+        yield return new WaitForEndOfFrame();
+        transform.localPosition = initialPos;
+        float currShake = (maxShake / chargeMult) * charge; /// makes the shake dependant on the current charge of the slimeball 
+        float dX = transform.localPosition.x + Random.Range(-currShake, currShake); 
+        float dY = transform.localPosition.y + Random.Range(-currShake, currShake);
+        float dZ = transform.localPosition.z + Random.Range(-currShake, currShake);
+        transform.localPosition = new Vector3(dX, dY, dZ);
+    }
+    
 
 }
