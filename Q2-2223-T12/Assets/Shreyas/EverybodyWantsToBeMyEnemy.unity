@@ -447,7 +447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &805390491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47268,7 +47268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1148010078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47300,7 +47300,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   projectile: {fileID: 8038605628353633647, guid: 0190d47143dd47e49b71bab2e53c627c, type: 3}
   firingPoint: {fileID: 967009658}
-  shootForce: 4
+  shootForce: 15
   upwardForce: 0
   bulletsPerShot: 1
   bulletsShot: 0
@@ -47704,6 +47704,10 @@ PrefabInstance:
       propertyPath: knockBackForce
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2446510939789535229, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
+      propertyPath: tankKnockbackForce
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2446510939789535230, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
       propertyPath: m_Name
       value: Player
@@ -47735,7 +47739,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1664711276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47928,9 +47932,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80db17727b1b544cabda7b0d3c62da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageToGive: 30
+  tankEnemy: 1
   explodeEnemy: 0
+  damageToGive: 0
   explodeDamage: 0
+  tankDamage: 40
 --- !u!65 &1682974787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47942,8 +47948,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 6.8884163, y: 1.6288856, z: 1}
-  m_Center: {x: 2.944207, y: -0.31444293, z: 0}
+  m_Size: {x: 6.8884163, y: 2.2974985, z: 1}
+  m_Center: {x: 2.944207, y: -0.6487497, z: 0}
 --- !u!23 &1682974788
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -48101,9 +48107,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80db17727b1b544cabda7b0d3c62da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageToGive: 5
+  tankEnemy: 0
   explodeEnemy: 0
+  damageToGive: 5
   explodeDamage: 0
+  tankDamage: 0
 --- !u!1001 &1716204968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48489,7 +48497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ed22d37c6f3c14794a2183bb9d088b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 60
+  maxHealth: 500
   currentHealth: 0
 --- !u!114 &1769765065
 MonoBehaviour:
@@ -48514,18 +48522,18 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   walkPointRange: 5
-  timeBetweenAttack: 1
+  timeBetweenAttack: 5
   alreadyAttacked: 0
   sightRange: 11.18
   shootRange: 9.46
-  attackRange: 3
+  attackRange: 2
   playerSightInRange: 0
   playerInShootRange: 0
   playerInAttackRange: 0
-  projectile: {fileID: 8038605628353633647, guid: 0190d47143dd47e49b71bab2e53c627c, type: 3}
+  projectile: {fileID: 6714339479453000418, guid: 287d2045513037348ad14b228f83d9e3, type: 3}
   firingPoint: {fileID: 1111323612}
-  shootForce: 5
-  upwardForce: 0
+  shootForce: 20
+  upwardForce: 2
   bulletsPerShot: 1
   bulletsShot: 0
   shooting: 0
@@ -48623,8 +48631,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769765063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.51, y: 3.77, z: -28.69}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: -5.51, y: 2.54, z: -28.69}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 814964276}
   - {fileID: 1111323613}
@@ -48775,9 +48783,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80db17727b1b544cabda7b0d3c62da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageToGive: 5
+  tankEnemy: 0
   explodeEnemy: 1
+  damageToGive: 5
   explodeDamage: 40
+  tankDamage: 0
 --- !u!135 &1890931829
 SphereCollider:
   m_ObjectHideFlags: 0

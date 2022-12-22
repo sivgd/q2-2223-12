@@ -58,6 +58,7 @@ public class playerMove : MonoBehaviour
     public float upForce;
     public float knockBackTime;
     private float knockBackCounter;
+    public float tankKnockbackForce;
 
     public Transform orientation;
 
@@ -352,5 +353,11 @@ public class playerMove : MonoBehaviour
 
         rb.AddForce(direction * knockBackForce * 10f, ForceMode.Impulse);
         rb.AddForce(transform.up * upForce, ForceMode.Impulse);
+    }
+    public void tankKnockback()
+    {
+        knockBackCounter = knockBackTime;
+
+        rb.AddForce(transform.up * tankKnockbackForce, ForceMode.Impulse);
     }
 }

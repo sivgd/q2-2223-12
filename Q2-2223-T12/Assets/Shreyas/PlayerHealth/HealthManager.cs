@@ -33,7 +33,13 @@ public class HealthManager : MonoBehaviour
 
         player.KnockBack(direction);
     }
-    
+    public void tankHurt(int tankDamage)
+    {
+        currentHealth -= tankDamage;
+
+        player.tankKnockback();
+    }
+
 
 
 

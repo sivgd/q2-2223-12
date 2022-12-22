@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1975299738381960051}
   - component: {fileID: 8147587890673607425}
   - component: {fileID: 630716100629738314}
+  - component: {fileID: -1277055556292941774}
+  - component: {fileID: -6043153476053089780}
   m_Layer: 0
   m_Name: ProjectileBounce
   m_TagString: Untagged
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6714339479453000418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.3808117, y: 3.12, z: -1.4149103}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -91,7 +93,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6714339479453000418}
   m_Material: {fileID: 13400000, guid: 26f42ae85255bc946a5fdbf1ae1b3b21, type: 2}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -112,3 +114,32 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &-1277055556292941774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6714339479453000418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed14e2b78d38b4290bf6a1d95c62fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6043153476053089780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6714339479453000418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80db17727b1b544cabda7b0d3c62da3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tankEnemy: 0
+  explodeEnemy: 0
+  damageToGive: 5
+  explodeDamage: 0
+  tankDamage: 0

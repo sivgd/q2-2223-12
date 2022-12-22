@@ -46,21 +46,21 @@ public class TankEnemy : MonoBehaviour
         playerInShootRange = Physics.CheckSphere(transform.position, shootRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerSightInRange && !playerInAttackRange)
+        if (!playerSightInRange && !playerInShootRange && !playerInAttackRange)
         {
             Patrol();
         }
 
-        if (playerSightInRange && !playerInAttackRange)
+        if (playerSightInRange && !playerInShootRange && !playerInAttackRange)
         {
             Chase();
         }
 
-        if (playerInShootRange && playerSightInRange)
+        if (playerInShootRange && playerSightInRange && !playerInAttackRange)
         {
             Attack();
         }
-        if (playerInAttackRange && playerInShootRange && playerSightInRange)
+        if (playerInShootRange && playerSightInRange && playerInAttackRange)
         {
             Attack2();
         }
@@ -68,6 +68,7 @@ public class TankEnemy : MonoBehaviour
 
     private void Patrol()
     {
+        anim.SetBool("Attack", false);
         if (!walkPointSet)
         {
             SearchWalkPoint();
@@ -100,11 +101,14 @@ public class TankEnemy : MonoBehaviour
 
     private void Chase()
     {
+        anim.SetBool("Attack", false);
         agent.SetDestination(player.position);
     }
 
     private void Attack()
     {
+        anim.SetBool("Attack", false);
+        firingPoint.SetActive(true);
         agent.SetDestination(transform.position);
 
         transform.LookAt(player);
@@ -124,7 +128,8 @@ public class TankEnemy : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            Shoot();
+            anim.SetBool("Attack", true);
+            firingPoint.SetActive(false);
             alreadyAttacked = true;
             Invoke(nameof(Resetenemy), timeBetweenAttack);
         }
