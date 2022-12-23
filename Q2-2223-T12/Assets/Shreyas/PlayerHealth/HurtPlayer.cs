@@ -10,6 +10,7 @@ public class HurtPlayer : MonoBehaviour
     public int damageToGive;
     public int explodeDamage;
     public int tankDamage;
+
     // Start is called before the first frame update
     void Start()
     {

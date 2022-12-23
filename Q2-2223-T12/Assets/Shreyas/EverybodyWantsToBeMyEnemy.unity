@@ -447,7 +447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &805390491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47298,7 +47298,7 @@ MonoBehaviour:
   AttackRange: 9.64
   playerSightInRange: 0
   playerInAttackRange: 0
-  projectile: {fileID: 8038605628353633647, guid: 0190d47143dd47e49b71bab2e53c627c, type: 3}
+  projectile: {fileID: 4327793174593112311, guid: 856d7283df1af034983b7053e8628db2, type: 3}
   firingPoint: {fileID: 967009658}
   shootForce: 15
   upwardForce: 0
@@ -47648,6 +47648,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2446510939789535203, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
+      propertyPath: wallJumpUpForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446510939789535203, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
+      propertyPath: wallJumpSideForce
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2446510939789535228, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -47739,7 +47747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1664711276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48522,7 +48530,7 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   walkPointRange: 5
-  timeBetweenAttack: 5
+  timeBetweenAttack: 1
   alreadyAttacked: 0
   sightRange: 11.18
   shootRange: 9.46
@@ -48530,7 +48538,7 @@ MonoBehaviour:
   playerSightInRange: 0
   playerInShootRange: 0
   playerInAttackRange: 0
-  projectile: {fileID: 6714339479453000418, guid: 287d2045513037348ad14b228f83d9e3, type: 3}
+  projectile: {fileID: 4327793174593112311, guid: 856d7283df1af034983b7053e8628db2, type: 3}
   firingPoint: {fileID: 1111323612}
   shootForce: 20
   upwardForce: 2
@@ -48870,7 +48878,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh37090
+  m_Name: pb_Mesh17050
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
