@@ -45,50 +45,72 @@ public class SlimeBall : MonoBehaviour
     }
     private void Explode()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, calcExplosionRadius());
-        //explosionSphere.transform.localScale = new Vector3(calcExplosionRadius(),calcExplosionRadius(),calcExplosionRadius());
-        GameObject explosion  = Instantiate(explosionSphere, transform.position,transform.rotation);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, calcExplosionRadius()); /// Explosion sphere grows 
+
+        GameObject explosion  = Instantiate(explosionSphere, transform.position,transform.rotation);    /// Instantiates an explosion sphere (for visual / feedback purposes only) 
+
         explosion.SetActive(true);
         explosion.GetComponent<ExplosionStuff>().Grow(calcExplosionRadius(), explosionGrowthRate);
-        foreach (Collider hit in colliders)
+
+        foreach (Collider hit in colliders)  /// Checks each collider hit in the spherecast, and whether they have rigidbodies 
         {
             Rigidbody r = hit.GetComponent<Rigidbody>();
             if(r != null)
             {
+                float explosionDist = Vector3.Distance(rb.position, r.position);
                 r.AddExplosionForce(calcExplosionRadius() * explosionRadMult * Time.deltaTime, transform.position, calcExplosionRadius(),1f,ForceMode.Impulse);
-                ApplyDamage(r.gameObject,damage);
+                ApplyDamage(r.gameObject,damage,explosionDist,calcExplosionRadius());
             }
            
         }
     }
+
     private void Explode(int superExplodeMult)
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, calcExplosionRadius());
-        //explosionSphere.transform.localScale = new Vector3(calcExplosionRadius(), calcExplosionRadius(), calcExplosionRadius());
-        GameObject explosion = Instantiate(explosionSphere, transform.position, transform.rotation);
+
+        GameObject explosion = Instantiate(explosionSphere, transform.position, transform.rotation); /// Instantiates an explosion sphere (for visual / feedback purposes only) 
+
         explosion.SetActive(true);
-        explosion.GetComponent<ExplosionStuff>().Grow(calcExplosionRadius(), explosionGrowthRate);
-        foreach (Collider hit in colliders)
+        explosion.GetComponent<ExplosionStuff>().Grow(calcExplosionRadius(), explosionGrowthRate); /// Explosion sphere grows 
+
+        foreach (Collider hit in colliders)  /// Checks each collider hit in the spherecast, and whether they have rigidbodies 
         {
             Rigidbody r = hit.GetComponent<Rigidbody>();
             if (r != null)
             {
+                float explosionDist = Vector3.Distance(rb.position, r.position); 
                 r.AddExplosionForce(calcExplosionRadius() * (explosionRadMult * superExplodeMult) * Time.deltaTime, transform.position, calcExplosionRadius(), 1f, ForceMode.Impulse);
-                ApplyDamage(r.gameObject,damage);
+                ApplyDamage(r.gameObject,damage,explosionDist,calcExplosionRadius());
             }
 
         }
     }
-    private void ApplyDamage(GameObject enemy,float damage)
+    private void ApplyDamage(GameObject enemy,float damage,float distance,float explosionRadius)
     {
         if(enemy.tag != null )
         {
             if (enemy.CompareTag("Enemy"))
             {
-                FindObjectOfType<ExplodingEnemyHealth>().HurtEnemy(damage);
+                float localDamage = CalculateDamageFromDistance(distance, explosionRadius); 
+                FindObjectOfType<ExplodingEnemyHealth>().HurtEnemy(localDamage);
             }
         }
         return; 
+    }
+    /// <summary>
+    /// Calculates the damage given by the explosion based on its distance 
+    /// </summary>
+    /// <param name="distance"></param> the distance of the gameobject from the explosion 
+    /// <param name="radius"></param> the radius of the explosion 
+    /// <returns></returns>
+    private float CalculateDamageFromDistance(float distance, float radius)
+    {
+        float distRatio = radius / distance;
+        if (distRatio >= 1) return damage;
+        else if (distRatio >= 0.75) return (damage * 0.75f);
+        else return 0f; 
+
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -109,7 +131,7 @@ public class SlimeBall : MonoBehaviour
         }
 
     }
-        #region Accessors and Mutators
+    #region Accessors and Mutators
     public float getShootForce()
     {
         return shootForce; 
