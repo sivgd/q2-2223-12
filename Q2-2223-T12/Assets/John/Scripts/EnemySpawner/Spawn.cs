@@ -27,11 +27,12 @@ public class Spawn : MonoBehaviour
     }    
     /// <summary>
     /// Spawns a new enemy if there aren't enemies in the scene. 
-    /// <para>Iterates on what enemy can be spawned after it spawns an enemy, and said enemy is destroyed</para>
+    /// <para>Iterates on what enemy can be spawned after it spawns an enemy and said enemy is destroyed</para>
     /// </summary>
     /// <returns></returns>
     private IEnumerator SpawnEnemy()
      {
+
         yield return new WaitUntil(() => canSpawn);
         EnemySpawn(); 
         yield return new WaitWhile(() => enemyExsists);
@@ -42,6 +43,7 @@ public class Spawn : MonoBehaviour
     /// </summary>
     void EnemySpawn()
     {
+        
         Debug.Log($"Spawning {enemyQueue[currentEnemy].name}");
         for(int i = 0; i < spawnsPerEnemy; i++)
         {          
@@ -49,7 +51,8 @@ public class Spawn : MonoBehaviour
             instObj[currentEnemy].name += name;
         }
         
-        if (increaseEnemiesPerWave) spawnsPerEnemy += spawnController.enemyWaveIncrease;  
+        if (increaseEnemiesPerWave) spawnsPerEnemy += spawnController.enemyWaveIncrease;
+       // StopCoroutine(EnemySpawn()); 
     }
     /// <summary>
     /// Checks if there are currently any enemies exclusive to this gameobject in the scene
