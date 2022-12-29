@@ -25,6 +25,11 @@ public class ExplodeEnemy : MonoBehaviour
     public GameObject exp;
     public GameObject explosionTrigger, animObject, rendererObject;
 
+    [Header("Look")]
+    public float turnSpeed;
+    Quaternion rotGoal;
+    Vector3 direction;
+
     ExplodingEnemyHealth health;
     // Start is called before the first frame update
     void Start()
@@ -88,7 +93,9 @@ public class ExplodeEnemy : MonoBehaviour
 
     private void Chase()
     {
-        transform.LookAt(player);
+        direction = (player.position - transform.position).normalized;
+        rotGoal = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
         agent.SetDestination(player.position);
     }
 
@@ -96,7 +103,9 @@ public class ExplodeEnemy : MonoBehaviour
     {
         agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        direction = (player.position - transform.position).normalized;
+        rotGoal = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
 
         if (!alreadyAttacked)
         {

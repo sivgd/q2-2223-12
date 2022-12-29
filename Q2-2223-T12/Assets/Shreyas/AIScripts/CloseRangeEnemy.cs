@@ -24,7 +24,10 @@ public class CloseRangeEnemy : MonoBehaviour
     [Header("Attack")]
     public Animator anim;
 
-
+    [Header("Look")]
+    public float turnSpeed;
+    Quaternion rotGoal;
+    Vector3 direction;
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -95,7 +98,9 @@ public class CloseRangeEnemy : MonoBehaviour
     {
         agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        direction = (player.position - transform.position).normalized;
+        rotGoal = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
 
         if (!alreadyAttacked)
         {

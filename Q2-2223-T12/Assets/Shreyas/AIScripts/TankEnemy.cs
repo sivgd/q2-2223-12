@@ -34,6 +34,10 @@ public class TankEnemy : MonoBehaviour
     [Header("Attack")]
     public Animator anim;
 
+    [Header("Look")]
+    public float turnSpeed;
+    Quaternion rotGoal;
+    Vector3 direction;
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -111,7 +115,9 @@ public class TankEnemy : MonoBehaviour
         firingPoint.SetActive(true);
         agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        direction = (player.position - transform.position).normalized;
+        rotGoal = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
 
         if (!alreadyAttacked)
         {
@@ -124,7 +130,9 @@ public class TankEnemy : MonoBehaviour
     {
         agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        direction = (player.position - transform.position).normalized;
+        rotGoal = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
 
         if (!alreadyAttacked)
         {
@@ -164,6 +172,8 @@ public class TankEnemy : MonoBehaviour
         currentBullet.GetComponent<Rigidbody>().AddForce(directionWithoutSpread.normalized * shootForce, ForceMode.Impulse);
         currentBullet.GetComponent<Rigidbody>().AddForce(firingPoint.transform.up * upwardForce, ForceMode.Impulse);
     }
+
+   
 
     private void OnDrawGizmosSelected()
     {

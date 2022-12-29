@@ -23,6 +23,7 @@ public class ProjectileEnemy : MonoBehaviour
     [Header("Shoot")]
     public GameObject projectile;
     public GameObject firingPoint;
+    public GameObject head;
     public float shootForce, upwardForce;
     public int bulletsPerShot;
     [HideInInspector]
@@ -30,7 +31,10 @@ public class ProjectileEnemy : MonoBehaviour
     [HideInInspector]
     public bool shooting;
 
-
+    [Header("Look")]
+    public float turnSpeed;
+    Quaternion rotGoal;
+    Vector3 direction;
 
     private void Awake()
     {
@@ -100,9 +104,14 @@ public class ProjectileEnemy : MonoBehaviour
     {
         agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        direction = (player.position - transform.position).normalized;
+        rotGoal = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
 
-        if(!alreadyAttacked)
+        firingPoint.transform.LookAt(player);
+        head.transform.LookAt(player);
+
+        if (!alreadyAttacked)
         {
             Shoot();
             alreadyAttacked = true;
