@@ -489,6 +489,7 @@ MonoBehaviour:
   maxShake: 0.07
   unchargedColor: {r: 1, g: 1, b: 0, a: 1}
   chargedColor: {r: 0.078431375, g: 1, b: 0, a: 1}
+  sfx: {fileID: 0}
 --- !u!1 &2975414614282822399
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,8 +670,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72408cc2eb33219408038dad65aeee2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialCameraPosition: {fileID: 0}
   explosionWindup: {fileID: 210873497095733050}
   explosionLight: {fileID: 6768039025550832326}
+  explosionScreenShake: 0.6
+  recoilDuration: 0.3
 --- !u!1 &6768039025550832326
 GameObject:
   m_ObjectHideFlags: 0
