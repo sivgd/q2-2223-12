@@ -57,9 +57,9 @@ public class SlimeBall : MonoBehaviour
             Rigidbody r = hit.GetComponent<Rigidbody>();
             if(r != null)
             {
-                float explosionDist = Vector3.Distance(rb.position, r.position);
+                
                 r.AddExplosionForce(calcExplosionRadius() * explosionRadMult * Time.deltaTime, transform.position, calcExplosionRadius(),1f,ForceMode.Impulse);
-                ApplyDamage(r.gameObject,damage,explosionDist,calcExplosionRadius());
+                ApplyDamage(r.gameObject,damage);
             }
            
         }
@@ -79,27 +79,25 @@ public class SlimeBall : MonoBehaviour
             Rigidbody r = hit.GetComponent<Rigidbody>();
             if (r != null)
             {
-                float explosionDist = Vector3.Distance(rb.position, r.position); 
+               
                 r.AddExplosionForce(calcExplosionRadius() * (explosionRadMult * superExplodeMult) * Time.deltaTime, transform.position, calcExplosionRadius(), 1f, ForceMode.Impulse);
-                ApplyDamage(r.gameObject,damage,explosionDist,calcExplosionRadius());
+                ApplyDamage(r.gameObject,damage);
             }
 
         }
     }
-    private void ApplyDamage(GameObject enemy,float damage,float distance,float explosionRadius)
+    private void ApplyDamage(GameObject enemy,float damage)
     {
-        float localDamage;  
+       
         if(enemy.tag != null )
         {
             if (enemy.CompareTag("Enemy"))
-            {
-                localDamage = CalculateDamageFromDistance(distance, explosionRadius);
-                enemy.GetComponent<EnemyHealth>().HurtEnemy(localDamage);
+            { 
+                enemy.GetComponent<EnemyHealth>().HurtEnemy(damage);
             }
             if (enemy.CompareTag("ExplodingEnemy"))
             {
-                localDamage = CalculateDamageFromDistance(distance, explosionRadius);
-                enemy.GetComponent<ExplodingEnemyHealth>().HurtEnemy(localDamage);
+                enemy.GetComponent<ExplodingEnemyHealth>().HurtEnemy(damage);
             }
         }
         return; 
@@ -110,14 +108,14 @@ public class SlimeBall : MonoBehaviour
     /// <param name="distance"></param> the distance of the gameobject from the explosion 
     /// <param name="radius"></param> the radius of the explosion 
     /// <returns></returns>
-    private float CalculateDamageFromDistance(float distance, float radius)
+    /*private float CalculateDamageFromDistance(float distance, float radius)
     {
         float distRatio = radius / distance;
         if (distRatio >= 1) return damage;
         else if (distRatio >= 0.75) return (damage * 0.75f);
         else return 0f; 
 
-    }
+    }*/
 
     private void OnTriggerEnter(Collider collision)
     {

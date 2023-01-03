@@ -32,7 +32,7 @@ public class CameraEffectManager : MonoBehaviour
     {
         float dX, dY, dZ; 
         yield return new WaitForEndOfFrame();
-        //transform.position = 
+        //transform.position = ;
         dX = Random.Range(0f, shakeAmt); 
         dY = Random.Range(0f, shakeAmt);
         dZ = Random.Range(0f, shakeAmt);
