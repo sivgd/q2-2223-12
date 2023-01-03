@@ -32,6 +32,7 @@ public class CameraEffectManager : MonoBehaviour
     {
         float dX, dY, dZ; 
         yield return new WaitForEndOfFrame(); 
+         
 
     }
 }
