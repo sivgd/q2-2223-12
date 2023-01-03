@@ -22,10 +22,9 @@ public class SlimballLauncher : MonoBehaviour
     [Header("UI Stuff")]
     public float maxShake = 2f;
     public Color unchargedColor,chargedColor;
-    public CameraEffectManager sfx; 
     private Vector3 initialPos;
     private Color currentColor;
-    private Renderer ballMat;
+    private Renderer ballMat; 
 
     private void Start()
     {
@@ -42,7 +41,7 @@ public class SlimballLauncher : MonoBehaviour
         {
             heldTimer += Time.deltaTime;
             charge += Time.deltaTime;
-            SlimeBallShake();
+            SlimeBallShake(); 
             Debug.Log($"charge: {charge}"); 
         }
         
@@ -70,7 +69,6 @@ public class SlimballLauncher : MonoBehaviour
     {
         transform.localPosition = initialPos;
         float currShake = (maxShake / chargeMult) * charge; /// makes the shake dependant on the current charge of the slimeball 
-        sfx.ScreenShake(currShake);
         float dX = transform.localPosition.x + Random.Range(-currShake, currShake); 
         float dY = transform.localPosition.y + Random.Range(-currShake, currShake);
         float dZ = transform.localPosition.z + Random.Range(-currShake, currShake);
