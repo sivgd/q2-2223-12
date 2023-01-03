@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Lilypad : MonoBehaviour
 {
-    
+
     [Header("Shooting Variables")]
     public float shootForce = 10000f;
     public float damageToGive;
@@ -13,18 +13,18 @@ public class Lilypad : MonoBehaviour
     /// </summary>
     public float lifeTime = 10f;
 
-    
+
     [Header("External References")]
     public string enemyTag = "Enemy";
     public string enemyTag2 = "ExplodingEnemy";
 
     private Rigidbody rb;
-  
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * shootForce * Time.deltaTime, ForceMode.Impulse);
-        StartCoroutine(LifeTimer());  
+        StartCoroutine(LifeTimer());
     }
     IEnumerator LifeTimer()
     {
@@ -37,7 +37,7 @@ public class Lilypad : MonoBehaviour
     /// </summary>
     /// <param name="stickTo"></param> the gameobject to stick to
     /// <param name="collider"></param> the collider of the gameobject 
-    private void SticktoGameObject(GameObject stickTo,Collider collider)
+    private void SticktoGameObject(GameObject stickTo, Collider collider)
     {
         rb.velocity = Vector3.zero;
         transform.SetParent(stickTo.transform);
@@ -45,38 +45,38 @@ public class Lilypad : MonoBehaviour
         transform.position = closestPt;
         Debug.Log($"NAME: {name}, closestPt: {closestPt}");
     }
-    
+
 
     private void OnTriggerEnter(Collider collision)
     {
-        
+
         if (collision.CompareTag(enemyTag))
         {
-            ApplyDamage(0);
-            SticktoGameObject(collision.gameObject,collision); 
+            ApplyDamage(collision.gameObject);
+            SticktoGameObject(collision.gameObject, collision);
         }
-        else if(collision.CompareTag(enemyTag2))
+        else if (collision.CompareTag(enemyTag2))
         {
-            ApplyDamage2(0);
+            ApplyDamage2(collision.gameObject);
             SticktoGameObject(collision.gameObject, collision);
 
         }
-        else if(collision.name != "Player")
+        else if (collision.name != "Player")
         {
-            SticktoGameObject(collision.gameObject,collision);
+            SticktoGameObject(collision.gameObject, collision);
         }
 
     }
 
-    private void ApplyDamage(int amt)
+    private void ApplyDamage(GameObject hitObj)
     {
         /// apply damage
-        FindObjectOfType<EnemyHealth>().HurtEnemy(damageToGive);
-    }
-    private void ApplyDamage2(int amt)
-    {
-        /// apply damage
-        FindObjectOfType<ExplodingEnemyHealth>().HurtEnemy(damageToGive);
-    }
+        hitObj.GetComponent<EnemyHealth>().HurtEnemy(damageToGive);
 
+    }
+    private void ApplyDamage2(GameObject hitObj)
+    {
+        /// apply damage
+        hitObj.GetComponent<ExplodingEnemyHealth>().HurtEnemy(damageToGive);
+    }
 }

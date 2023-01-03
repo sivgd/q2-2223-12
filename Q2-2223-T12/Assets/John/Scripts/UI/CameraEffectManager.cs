@@ -7,6 +7,7 @@ public class CameraEffectManager : MonoBehaviour
     [Header("Explosion SFX")]
     public AudioSource explosionWindup;
     public GameObject explosionLight;
+    public float explosionScreenShake; 
 
     private float explosionWindupRatio; 
     private void Update()
@@ -27,6 +28,10 @@ public class CameraEffectManager : MonoBehaviour
     {
         StartCoroutine(ExplosionSFX()); 
     }
+    IEnumerator ScreenShake(float shakeAmt, float shakeDuration)
+    {
+        float dX, dY, dZ; 
+        yield return new WaitForEndOfFrame(); 
 
-
+    }
 }
