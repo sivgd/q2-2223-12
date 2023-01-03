@@ -31,8 +31,11 @@ public class CameraEffectManager : MonoBehaviour
     IEnumerator ScreenShake(float shakeAmt, float shakeDuration)
     {
         float dX, dY, dZ; 
-        yield return new WaitForEndOfFrame(); 
-         
+        yield return new WaitForEndOfFrame();
+        //transform.position = 
+        dX = Random.Range(0f, shakeAmt); 
+        dY = Random.Range(0f, shakeAmt);
+        dZ = Random.Range(0f, shakeAmt);
 
     }
 }

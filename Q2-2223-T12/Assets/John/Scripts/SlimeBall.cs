@@ -88,12 +88,18 @@ public class SlimeBall : MonoBehaviour
     }
     private void ApplyDamage(GameObject enemy,float damage,float distance,float explosionRadius)
     {
+        float localDamage;  
         if(enemy.tag != null )
         {
             if (enemy.CompareTag("Enemy"))
             {
-                float localDamage = CalculateDamageFromDistance(distance, explosionRadius); 
-                FindObjectOfType<ExplodingEnemyHealth>().HurtEnemy(localDamage);
+                localDamage = CalculateDamageFromDistance(distance, explosionRadius);
+                enemy.GetComponent<EnemyHealth>().HurtEnemy(localDamage);
+            }
+            if (enemy.CompareTag("ExplodingEnemy"))
+            {
+                localDamage = CalculateDamageFromDistance(distance, explosionRadius);
+                enemy.GetComponent<ExplodingEnemyHealth>().HurtEnemy(localDamage);
             }
         }
         return; 
