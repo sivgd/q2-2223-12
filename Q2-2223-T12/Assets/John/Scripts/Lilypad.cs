@@ -61,7 +61,7 @@ public class Lilypad : MonoBehaviour
             SticktoGameObject(collision.gameObject, collision);
 
         }
-        else if (collision.name != "Player")
+        else if (collision.name != "Player" && !collision.CompareTag("EnemyBullet"))
         {
             SticktoGameObject(collision.gameObject, collision);
         }
