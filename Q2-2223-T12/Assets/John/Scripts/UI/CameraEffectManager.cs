@@ -14,11 +14,13 @@ public class CameraEffectManager : MonoBehaviour
     private float explosionWindupRatio; 
     [Header("Recoil SFX")]
     public float recoilDuration = 0.3f;
+    private Vector3 initialPos; 
    
     private void Update()
     {
         explosionWindupRatio = explosionWindup.time / explosionWindup.clip.length;
         if (isShaking) ScreenShake(explosionScreenShake); 
+        
     }
     IEnumerator ExplosionSFX()
     {
@@ -49,16 +51,16 @@ public class CameraEffectManager : MonoBehaviour
         newPosition = new Vector3(dX, dY, dZ);
         transform.position = newPosition;
     }
-    private IEnumerator RecoilSFX(float recoilForce,Transform affectedTransform)
-    {
-        /// @TODO: need reference to initial pos
-        Vector3 offset = (affectedTransform.forward * recoilForce) + (affectedTransform.right * recoilForce * 0.2f);
-        affectedTransform.localPosition -= offset; 
+    private IEnumerator RecoilSFX(float recoilForce,Transform affectedTransform,Vector3 initialPos)
+    { 
+        Vector3 offset = affectedTransform.forward * recoilForce;
+        affectedTransform.position -= offset; 
         yield return new WaitForSecondsRealtime(recoilDuration);
-       // affectedTransform
+        affectedTransform.localPosition = initialPos; 
     }
-    public void ApplyRecoil(float recoilForce,Transform affectedTransform)
+    public void ApplyRecoil(float recoilForce,Transform affectedTransform,Vector3 initialPosition)
     {
-        StartCoroutine(RecoilSFX(recoilForce,affectedTransform)); 
+        StartCoroutine(RecoilSFX(recoilForce,affectedTransform,initialPosition)); 
     }
+    
 }

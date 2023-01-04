@@ -8,21 +8,28 @@ public class ShotgunArm : MonoBehaviour
     public float shotSpread=0.2f;
     public float spreadMult;
     //float rX, rY, rZ;
-    public float range = 100f; 
+    public float range = 100f;
+    public float recoil = 3f; 
     public string enemyTag;
     public string enemyTag2;
-    
+
+    private Vector3 initialPos; 
     
     [Header("External References")]
     private RaycastHit hit; 
     public Transform instPos;
     public GameObject muzzleFlash;
     public int damageToGive;
+    private CameraEffectManager sfx;
 
 
 
     //[SerializeField] Ray[] pellets;
-
+    private void Start()
+    {
+        sfx = FindObjectOfType<CameraEffectManager>().GetComponent<CameraEffectManager>();
+        initialPos = transform.localPosition; 
+    }
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -36,12 +43,13 @@ public class ShotgunArm : MonoBehaviour
     IEnumerator MuzzleFlash()
     {
         muzzleFlash.SetActive(true);
-        yield return new WaitForSecondsRealtime(0.3f);
+        yield return new WaitForSecondsRealtime(0.1f);
         muzzleFlash.SetActive(false); 
     }
     private void Fire()
     {
-        GenerateBullets(); 
+        GenerateBullets();
+        sfx.ApplyRecoil(recoil, transform, initialPos); 
     }
 
     /// <summary>
