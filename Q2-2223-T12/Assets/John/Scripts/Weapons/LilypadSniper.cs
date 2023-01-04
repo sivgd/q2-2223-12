@@ -28,7 +28,7 @@ public class LilypadSniper : MonoBehaviour
     {
         sfx.ApplyRecoil(recoilAmt,transform);
         Instantiate(lilypadPrefab, instPos.position, instPos.rotation);
-        transform.localPosition = transform.localPosition
+        //transform.localPosition = transform.localPosition; 
         
     }
 
