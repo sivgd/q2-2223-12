@@ -307,7 +307,7 @@ MonoBehaviour:
   shotSpread: 1
   spreadMult: 20
   range: 100
-  recoil: 3
+  recoil: 0.1
   enemyTag: Enemy
   enemyTag2: 
   instPos: {fileID: 2975414614282822398}
