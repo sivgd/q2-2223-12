@@ -14828,6 +14828,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 887537438635088565, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: d953aa7530a599f41b46951bc82f66df, type: 2}
     - target: {fileID: 887537440288829504, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
       propertyPath: wallJumpUpForce
       value: 0.75
