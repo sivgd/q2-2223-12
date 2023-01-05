@@ -34,6 +34,10 @@ public class SlimballLauncher : MonoBehaviour
         ballMat = GetComponent<Renderer>();
 
     }
+    private void Awake()
+    {
+        charge = 0f; // resets charge when weapon switched
+    }
     private void Update()
     {
        

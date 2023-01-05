@@ -175,10 +175,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca041a7799c38724aab5e982fdbd120c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoilAmt: 10
+  recoilAmt: 0.3
   lilypadPrefab: {fileID: 7908084654540729946, guid: 89cff152712d0d04c95c9298facc14bc, type: 3}
   instPos: {fileID: 2975414613159873400}
-  sfx: {fileID: 0}
+  sfx: {fileID: 1775020043438172880}
 --- !u!1 &2975414613159873401
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,12 +237,12 @@ Transform:
   m_GameObject: {fileID: 2975414613359069474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.34, y: -0.33, z: 0.9}
-  m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 0.29999998}
+  m_LocalScale: {x: 0.29999998, y: 0.01, z: 1.15}
   m_Children:
   - {fileID: 7201525847350202330}
   m_Father: {fileID: 2975414614071183892}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2975414613359069477
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -492,7 +492,7 @@ MonoBehaviour:
   maxShake: 0.07
   unchargedColor: {r: 1, g: 1, b: 0, a: 1}
   chargedColor: {r: 0.078431375, g: 1, b: 0, a: 1}
-  sfx: {fileID: 0}
+  sfx: {fileID: 1775020043438172880}
 --- !u!1 &2975414614282822399
 GameObject:
   m_ObjectHideFlags: 0
