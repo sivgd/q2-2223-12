@@ -32,7 +32,6 @@ public class Spawn : MonoBehaviour
     /// <returns></returns>
     private IEnumerator SpawnEnemy()
      {
-
         yield return new WaitUntil(() => canSpawn);
         EnemySpawn(); 
         yield return new WaitWhile(() => enemyExsists);
