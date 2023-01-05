@@ -27,6 +27,7 @@ public class SlimballLauncher : MonoBehaviour
     private Color currentColor;
     private Renderer ballMat;
 
+    ///@TODO: reset charge when player switches weapons 
     private void Start()
     {
         initialPos = transform.localPosition;
@@ -34,10 +35,7 @@ public class SlimballLauncher : MonoBehaviour
         ballMat = GetComponent<Renderer>();
 
     }
-    private void Awake()
-    {
-        charge = 0f; // resets charge when weapon switched
-    }
+    
     private void Update()
     {
        
@@ -92,6 +90,17 @@ public class SlimballLauncher : MonoBehaviour
         ballMat.material.SetColor("_EmissionColor", currentColor);
         DynamicGI.UpdateEnvironment(); 
     }
-    
 
+    #region ACCESSORS AND MUTATORS 
+
+    public float getCharge()
+    {
+        return charge; 
+    }
+    public Color getColor()
+    {
+        return currentColor; 
+    }
+
+    #endregion
 }
