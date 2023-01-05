@@ -7,6 +7,8 @@ public class WeaponManager : MonoBehaviour
     public GameObject[] weapons = new GameObject[3];
     [SerializeField] private bool w1Active = false, w2Active= false, w3Active = false;
 
+    ///@TODO: impliment weapon pickup / progression
+
     public void Update()
     {
         /*
