@@ -10,7 +10,6 @@ public class ExplodeEnemy : MonoBehaviour
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public Vector3 walkPoint;
-    public Animator animator;
     [HideInInspector]
     public bool walkPointSet;
     public float walkPointRange;
@@ -35,7 +34,6 @@ public class ExplodeEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
         explosionTrigger.SetActive(false);
         animObject.SetActive(false);
     }
@@ -48,7 +46,6 @@ public class ExplodeEnemy : MonoBehaviour
         if (!playerSightInRange && !playerInAttackRange)
         {
             Patrol();
-            animator.SetBool("Patrolling", true);
         }
 
         if (playerSightInRange && !playerInAttackRange)
