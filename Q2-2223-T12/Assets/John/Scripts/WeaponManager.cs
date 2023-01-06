@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    public GameObject[] weapons = new GameObject[3];
+    [Header("Keybinds")]
+    public KeyCode FirstSlotKeybind = KeyCode.Alpha1;
+    public KeyCode SecondSlotKeybind = KeyCode.Alpha2;
+    public KeyCode ThirdSlotKeybind = KeyCode.Alpha3;
+    [Header("Weapons")]
+    public GameObject shotgunArm;
+    public GameObject slimeballLauncher;
+    public GameObject lillypadLauncher; 
+
     [SerializeField] private bool w1Active = false, w2Active= false, w3Active = false;
-
-    ///@TODO: impliment weapon pickup / progression
-
+    public bool w1Equipped = true, w2Equipped = true, w3Equipped = true; 
     public void Update()
     {
         /*
@@ -16,19 +22,19 @@ public class WeaponManager : MonoBehaviour
          * 2 = Slimeball launcher (big boom)
          * 3 = Lillypad Sniper 
          */
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (Input.GetKey(FirstSlotKeybind))
         {
             w1Active = true;
             w2Active = false;
             w3Active = false; 
         }
-        if (Input.GetKey(KeyCode.Alpha2))
+        if (Input.GetKey(SecondSlotKeybind))
         {
             w1Active = false;
             w2Active = true;
             w3Active = false;
         }
-        if (Input.GetKey(KeyCode.Alpha3))
+        if (Input.GetKey(ThirdSlotKeybind))
         {
             w1Active = false;
             w2Active = false;
@@ -36,13 +42,18 @@ public class WeaponManager : MonoBehaviour
         }
         RefreshWeapons(); 
     }
+   
     private void RefreshWeapons()
     {
-        weapons[0].SetActive(w1Active);
-        weapons[1].SetActive(w2Active);
-        weapons[2].SetActive(w3Active);
-        Debug.Log($"weapon 1 active: {weapons[0].activeInHierarchy}\nweapon 2 active: {weapons[1].activeInHierarchy}\nweapon 3 active: {weapons[2].activeInHierarchy}"); 
-    }
-    
+        w1Active = w1Active && w1Equipped;
+        w2Active = w2Active && w2Equipped;
+        w3Active = w3Active && w3Equipped; 
 
+        shotgunArm.SetActive(w1Active); 
+        slimeballLauncher.SetActive(w2Active);
+        lillypadLauncher.SetActive(w3Active);
+        if (!w2Active) slimeballLauncher.GetComponent<SlimballLauncher>().resetCharge(); 
+        Debug.Log($"WeaponManager: Weapon States: (Shotgun, {w1Active}) (Slimeball, {w2Active}) (Lillypad, {w3Active})");
+    }
 }
+

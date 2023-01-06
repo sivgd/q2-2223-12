@@ -654,13 +654,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fd76e5ab45e4548944a4b53197162a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 2975414613359069474}
-  - {fileID: 2975414614268289573}
-  - {fileID: 2975414613145243466}
+  FirstSlotKeybind: 49
+  SecondSlotKeybind: 50
+  ThirdSlotKeybind: 51
+  shotgunArm: {fileID: 2975414613359069474}
+  slimeballLauncher: {fileID: 2975414614268289573}
+  lillypadLauncher: {fileID: 2975414613145243466}
   w1Active: 0
   w2Active: 0
   w3Active: 0
+  w1Equipped: 0
+  w2Equipped: 0
+  w3Equipped: 1
 --- !u!114 &1775020043438172880
 MonoBehaviour:
   m_ObjectHideFlags: 0
