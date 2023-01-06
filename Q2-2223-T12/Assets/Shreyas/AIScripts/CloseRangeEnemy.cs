@@ -10,6 +10,7 @@ public class CloseRangeEnemy : MonoBehaviour
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public Vector3 walkPoint;
+    Animator animator;
     [HideInInspector]
     public bool walkPointSet;
     public float walkPointRange;
@@ -30,6 +31,7 @@ public class CloseRangeEnemy : MonoBehaviour
     Vector3 direction;
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
@@ -57,6 +59,8 @@ public class CloseRangeEnemy : MonoBehaviour
 
     private void Patrol()
     {
+        agent.speed = 5;
+        anim.SetFloat("Blend", agent.velocity.magnitude);
         anim.SetBool("Attack", false);
         if (!walkPointSet)
         {
@@ -92,6 +96,8 @@ public class CloseRangeEnemy : MonoBehaviour
     {
         anim.SetBool("Attack", false);
         agent.SetDestination(player.position);
+        agent.speed = 9;
+        anim.SetFloat("Blend", agent.velocity.magnitude);
     }
 
     private void Attack()
