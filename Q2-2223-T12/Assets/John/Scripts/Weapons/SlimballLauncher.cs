@@ -33,7 +33,6 @@ public class SlimballLauncher : MonoBehaviour
         initialPos = transform.localPosition;
         currentColor = unchargedColor;
         ballMat = GetComponent<Renderer>();
-
     }
     
     private void Update()
@@ -101,6 +100,17 @@ public class SlimballLauncher : MonoBehaviour
     {
         return currentColor; 
     }
-
+    public void setCharge(float newCharge)
+    {
+        charge = newCharge; 
+    }
+    public void setColor(Color newColor)
+    {
+        currentColor = newColor; 
+    }
+    public void resetCharge()
+    {
+        charge = 0; 
+    }
     #endregion
 }
