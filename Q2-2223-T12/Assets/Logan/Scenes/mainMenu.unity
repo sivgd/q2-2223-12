@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -344,7 +344,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -289, y: -52}
-  m_SizeDelta: {x: 430, y: 140}
+  m_SizeDelta: {x: 430, y: 102.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &257019499
 MonoBehaviour:
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 99c59e62671b42f4ca327082d04e0d0a, type: 3}
+  m_Texture: {fileID: 2800000, guid: a7eff11abb0f3334d9975fc2e5bc50f7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -620,7 +620,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -289, y: 90}
-  m_SizeDelta: {x: 430, y: 140}
+  m_SizeDelta: {x: 430, y: 105.71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1983350857
 MonoBehaviour:
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 32d266e31c1d9c7409f9cbeecc272812, type: 3}
+  m_Texture: {fileID: 2800000, guid: b85972f420be97746b85bf0dc36af612, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
