@@ -8,10 +8,15 @@ public class startButtonManager : MonoBehaviour
 
     public string startButtonScene;
     private GameObject creditSceneCanvas;
+    private GameObject mainMenuCanvas;
 
     private void Start()
     {
         creditSceneCanvas = GameObject.Find("creditSceneCanvas"); 
+        mainMenuCanvas = GameObject.Find("mainMenuCanvas");
+
+        creditSceneCanvas.SetActive(false);
+
     }
 
     public void startButtonClicked()
@@ -21,7 +26,14 @@ public class startButtonManager : MonoBehaviour
 
     public void creditsScene()
     {
-        
+        creditSceneCanvas.SetActive(true);
+        mainMenuCanvas.SetActive(false);
+    }
+
+    public void unCreditsScene()
+    {
+        creditSceneCanvas.SetActive(false);
+        mainMenuCanvas.SetActive(true);
     }
 
 }

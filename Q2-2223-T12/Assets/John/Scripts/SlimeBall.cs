@@ -16,10 +16,7 @@ public class SlimeBall : MonoBehaviour
 
     [Header("External References")]
     public GameObject explosionSphere;
-
     private CameraEffectManager sfx; 
-   
-   
     
 
     private Rigidbody rb;
