@@ -6,10 +6,12 @@ using UnityEngine.AI;
 public class CloseRangeEnemy : MonoBehaviour
 {
     [Header("EnemyMove")]
-    public NavMeshAgent agent;
+    NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public Vector3 walkPoint;
+    public float patrolSpeed;
+    public float chaseSpeed;
     Animator animator;
     [HideInInspector]
     public bool walkPointSet;
@@ -55,13 +57,14 @@ public class CloseRangeEnemy : MonoBehaviour
         {
             Attack();
         }
+
+        animator.SetFloat("Move", agent.velocity.magnitude);
     }
 
     private void Patrol()
     {
-        agent.speed = 5;
-        anim.SetFloat("Blend", agent.velocity.magnitude);
-        anim.SetBool("Attack", false);
+        agent.speed = patrolSpeed;
+        animator.SetBool("Attack", false);
         if (!walkPointSet)
         {
             SearchWalkPoint();
@@ -94,10 +97,9 @@ public class CloseRangeEnemy : MonoBehaviour
 
     private void Chase()
     {
-        anim.SetBool("Attack", false);
+        agent.speed = chaseSpeed;
+        animator.SetBool("Attack", false);
         agent.SetDestination(player.position);
-        agent.speed = 9;
-        anim.SetFloat("Blend", agent.velocity.magnitude);
     }
 
     private void Attack()
@@ -110,7 +112,7 @@ public class CloseRangeEnemy : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            anim.SetBool("Attack", true);
+            animator.SetBool("Attack", true);
             alreadyAttacked = true;
             Invoke(nameof(Resetenemy), timeBetweenAttack);
         }
@@ -119,6 +121,7 @@ public class CloseRangeEnemy : MonoBehaviour
     private void Resetenemy()
     {
         alreadyAttacked = false;
+        animator.SetBool("Attack", false);
     }
 
 
