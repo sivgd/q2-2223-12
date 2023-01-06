@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro; 
 
 public class SlimballLauncher : MonoBehaviour
 {
     [Header("Outside References")]
     public GameObject slimeBall;
-    public Transform instPos; 
+    public Transform instPos;
+    public TextMeshProUGUI chargeText;
 
     [Header("Shooting Variables")]
     public float maxCoolDown = 5f;
@@ -57,7 +59,8 @@ public class SlimballLauncher : MonoBehaviour
             charge = 0f;
         }
         UpdateColor(); 
-        coolDownTimer -= Time.deltaTime; 
+       // coolDownTimer -= Time.deltaTime;
+        chargeText.text = $"Charge: {charge}";
     }
 
     public void Shoot()
@@ -100,6 +103,14 @@ public class SlimballLauncher : MonoBehaviour
     {
         return currentColor; 
     }
+    public float getMaxCoolDown()
+    {
+        return maxCoolDown; 
+    }
+    public float getCoolDownTimer()
+    {
+        return coolDownTimer;
+    }
     public void setCharge(float newCharge)
     {
         charge = newCharge; 
@@ -111,6 +122,10 @@ public class SlimballLauncher : MonoBehaviour
     public void resetCharge()
     {
         charge = 0; 
+    }
+    public void setCoolDownTimer(float newTime)
+    {
+        coolDownTimer = newTime; 
     }
     #endregion
 }
