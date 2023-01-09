@@ -9,6 +9,7 @@ public class SlimballLauncher : MonoBehaviour
     public GameObject slimeBall;
     public Transform instPos;
     public TextMeshProUGUI chargeText;
+    //public GameObject animSlimeBall; 
 
     [Header("Shooting Variables")]
     public float maxCoolDown = 5f;
