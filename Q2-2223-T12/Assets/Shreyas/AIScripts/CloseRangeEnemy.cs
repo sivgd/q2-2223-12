@@ -112,18 +112,21 @@ public class CloseRangeEnemy : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            animator.SetBool("Attack", true);
-            alreadyAttacked = true;
-            Invoke(nameof(Resetenemy), timeBetweenAttack);
+            StartCoroutine(attackAnim());
         }
     }
-
+    IEnumerator attackAnim()
+    {
+        animator.SetBool("Attack", true);
+        alreadyAttacked = true;
+        yield return new WaitForSeconds(2.15f);
+        animator.SetBool("Attack", false);
+        Invoke(nameof(Resetenemy), timeBetweenAttack);
+    }
     private void Resetenemy()
     {
         alreadyAttacked = false;
-        animator.SetBool("Attack", false);
     }
-
 
     private void OnDrawGizmosSelected()
     {
