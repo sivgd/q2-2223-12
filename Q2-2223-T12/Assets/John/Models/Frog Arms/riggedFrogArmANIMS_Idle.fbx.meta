@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a4fc40a809469be42a9d2c91c81992c9
+guid: 8640ffe929592064f94bd2c20783f99e
 ModelImporter:
   serializedVersion: 20300
   internalIDToNameTable:
@@ -36,22 +36,7 @@ ModelImporter:
   - first:
       74: 6639205238635089029
     second: Icosphere|IcosphereAction
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.002
-    second: {fileID: 2100000, guid: cecb69a338681294eaca7bb94bf1b6bd, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.004
-    second: {fileID: 2100000, guid: a8e84bb4dfcb0e04bb0aa5d2ebe32ed2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.005
-    second: {fileID: 2100000, guid: 702080bda2840c047a4453c700cb639a, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -71,7 +56,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 0
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -84,7 +69,7 @@ ModelImporter:
       takeName: Armature|ArmatureAction
       internalID: 0
       firstFrame: 0
-      lastFrame: 18
+      lastFrame: 250
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

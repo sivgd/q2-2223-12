@@ -15,7 +15,7 @@ public class ShotgunArm : MonoBehaviour
     public string enemyTag2;
 
     private Vector3 initialPos;
-    private bool canFire; 
+    private bool canFire = true; 
 
     [Header("External References")]
     private RaycastHit hit; 
@@ -23,14 +23,15 @@ public class ShotgunArm : MonoBehaviour
     //public GameObject muzzleFlash;
     public int damageToGive;
     private CameraEffectManager sfx;
-
+    Animator animator; 
 
 
     //[SerializeField] Ray[] pellets;
     private void Start()
     {
         sfx = FindObjectOfType<CameraEffectManager>().GetComponent<CameraEffectManager>();
-        initialPos = transform.localPosition; 
+        initialPos = transform.localPosition;
+        animator = GetComponent<Animator>(); 
     }
     private void Update()
     {
@@ -50,15 +51,21 @@ public class ShotgunArm : MonoBehaviour
     }*/
     private void Fire()
     {
-        GenerateBullets();
-        sfx.ApplyRecoil(recoil, transform, initialPos);
-        StartCoroutine(Delay(shotDelay)); 
+        if (canFire)
+        {
+            animator.SetBool("IsShotgunFire", true);
+            GenerateBullets();
+            sfx.ApplyRecoil(recoil, transform, initialPos);
+            StartCoroutine(Delay(shotDelay));
+        }
+
     }
     IEnumerator Delay(float shotDelay)
     {
         canFire = false; 
         yield return new WaitForSecondsRealtime(shotDelay);
-        canFire = true; 
+        canFire = true;
+        animator.SetBool("IsShotgunFire", false);
     }
     /// <summary>
     /// Casts a box at a designated range and origin (range & instpos) towards what the player is aiming at 
