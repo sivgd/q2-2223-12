@@ -7,18 +7,20 @@ public class ShotgunArm : MonoBehaviour
     [Header("Shooting Variables")]
     public float shotSpread=0.2f;
     public float spreadMult;
+    public float shotDelay = 0.3f; 
     //float rX, rY, rZ;
     public float range = 100f;
     public float recoil = 3f; 
     public string enemyTag;
     public string enemyTag2;
 
-    private Vector3 initialPos; 
-    
+    private Vector3 initialPos;
+    private bool canFire; 
+
     [Header("External References")]
     private RaycastHit hit; 
     public Transform instPos;
-    public GameObject muzzleFlash;
+    //public GameObject muzzleFlash;
     public int damageToGive;
     private CameraEffectManager sfx;
 
@@ -35,23 +37,29 @@ public class ShotgunArm : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Fire();
-            StartCoroutine("MuzzleFlash"); 
+            //StartCoroutine("MuzzleFlash"); 
 
         }
        
     }
-    IEnumerator MuzzleFlash()
+    /*IEnumerator MuzzleFlash()
     {
         muzzleFlash.SetActive(true);
         yield return new WaitForSecondsRealtime(0.1f);
         muzzleFlash.SetActive(false); 
-    }
+    }*/
     private void Fire()
     {
         GenerateBullets();
-        sfx.ApplyRecoil(recoil, transform, initialPos); 
+        sfx.ApplyRecoil(recoil, transform, initialPos);
+        StartCoroutine(Delay(shotDelay)); 
     }
-
+    IEnumerator Delay(float shotDelay)
+    {
+        canFire = false; 
+        yield return new WaitForSecondsRealtime(shotDelay);
+        canFire = true; 
+    }
     /// <summary>
     /// Casts a box at a designated range and origin (range & instpos) towards what the player is aiming at 
     /// The range can be changed in the editor

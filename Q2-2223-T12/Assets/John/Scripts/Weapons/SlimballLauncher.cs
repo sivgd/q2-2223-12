@@ -24,6 +24,8 @@ public class SlimballLauncher : MonoBehaviour
 
     [Header("UI Stuff")]
     public float maxShake = 2f;
+    public float maxScale = 0.3f;
+    public Vector3 initialScale = new Vector3(0.1f, 0.1f, 0.1f); 
     public Color unchargedColor,chargedColor;
     public CameraEffectManager sfx; 
     private Vector3 initialPos;
@@ -36,6 +38,7 @@ public class SlimballLauncher : MonoBehaviour
         initialPos = transform.localPosition;
         currentColor = unchargedColor;
         ballMat = GetComponent<Renderer>();
+        transform.localScale = initialScale; 
     }
     
     private void Update()
@@ -47,6 +50,7 @@ public class SlimballLauncher : MonoBehaviour
             heldTimer += Time.deltaTime;
             charge += Time.deltaTime;
             SlimeBallShake();
+            GrowSlimeball(); 
             Debug.Log($"charge: {charge}"); 
         }
         
@@ -54,7 +58,8 @@ public class SlimballLauncher : MonoBehaviour
         {
             charge = Mathf.Clamp(charge, 0.1f, chargeMult);
             heldTimer = 0f;
-            transform.localPosition = initialPos; 
+            transform.localPosition = initialPos;
+            transform.localScale = initialScale; 
             coolDownTimer = maxCoolDown;
             Shoot();
             charge = 0f;
@@ -80,6 +85,11 @@ public class SlimballLauncher : MonoBehaviour
         float dY = transform.localPosition.y + Random.Range(-currShake, currShake);
         float dZ = transform.localPosition.z + Random.Range(-currShake, currShake);
         transform.localPosition = new Vector3(dX, dY, dZ);
+    }
+    void GrowSlimeball()
+    {
+        float newScale = (maxScale / chargeMult) * charge;
+        transform.localScale = new Vector3(newScale, newScale, newScale); 
     }
     void UpdateColor()
     {
