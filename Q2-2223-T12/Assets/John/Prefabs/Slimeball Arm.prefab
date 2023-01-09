@@ -168,6 +168,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6707088215905208161}
   - component: {fileID: 1339455618222925665}
+  - component: {fileID: 2512991526179621003}
+  - component: {fileID: 5869521975515905119}
+  - component: {fileID: 2309949758974215914}
   m_Layer: 7
   m_Name: Slimeball Arm
   m_TagString: Untagged
@@ -182,7 +185,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2603494937702914361}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 5.36, y: -1.426, z: -2.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -210,6 +213,62 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &2512991526179621003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2603494937702914361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e6f8e4823619e4d87262bce424a7a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotSpread: 1
+  spreadMult: 20
+  shotDelay: 0.3
+  range: 100
+  recoil: 0
+  enemyTag: 
+  enemyTag2: 
+  instPos: {fileID: 0}
+  damageToGive: 3
+--- !u!114 &5869521975515905119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2603494937702914361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca041a7799c38724aab5e982fdbd120c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilAmt: 0
+  lilypadPrefab: {fileID: 7908084654540729946, guid: 89cff152712d0d04c95c9298facc14bc, type: 3}
+  instPos: {fileID: 0}
+  sfx: {fileID: 0}
+--- !u!95 &2309949758974215914
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2603494937702914361}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 79447e4867d23da479fe7e6de2be3ff8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2609737551456383535
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +453,36 @@ Transform:
   m_Father: {fileID: 5830365371995209482}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -13.192517, y: 23.627508, z: -1.523858}
+--- !u!1 &3829758093789584537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8830005410605897646}
+  m_Layer: 7
+  m_Name: Slimeball Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8830005410605897646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3829758093789584537}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0, z: -0.006}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4852187953515269357}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4501361540122349332
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +768,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.99999994, z: 1}
   m_Children:
   - {fileID: 769338077245676137}
+  - {fileID: 8830005410605897646}
   m_Father: {fileID: 8747349995944976449}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

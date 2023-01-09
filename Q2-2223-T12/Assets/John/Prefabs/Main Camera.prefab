@@ -1,103 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2975414613145243466
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2975414613145243470}
-  - component: {fileID: 2975414613145243471}
-  - component: {fileID: 2975414613145243464}
-  - component: {fileID: 2975414613145243465}
-  m_Layer: 7
-  m_Name: Lilypad Sniper
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2975414613145243470
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2975414613145243466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34, y: -0.33, z: 0.9}
-  m_LocalScale: {x: 0.5, y: 0.01, z: 0.5}
-  m_Children: []
-  m_Father: {fileID: 2975414614071183892}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2975414613145243471
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2975414613145243466}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2975414613145243464
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2975414613145243466}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: d3bc529b150633f4a8f169cc9d9df5b7, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2975414613145243465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2975414613145243466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca041a7799c38724aab5e982fdbd120c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recoilAmt: 0.3
-  lilypadPrefab: {fileID: 7908084654540729946, guid: 89cff152712d0d04c95c9298facc14bc, type: 3}
-  instPos: {fileID: 2975414613159873400}
-  sfx: {fileID: 1775020043438172880}
 --- !u!1 &2975414613159873401
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +58,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2975414613145243470}
   - {fileID: 2975414614268289561}
   - {fileID: 8125094470375552047}
   m_Father: {fileID: 2975414614734706930}
@@ -237,7 +138,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2975414614071183892}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2975414614268289562
 MeshFilter:
@@ -324,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d897eccf8d9fa4e9a26c9afe10452a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bone: {fileID: 0}
+  bone: {fileID: 6294911112831149280}
 --- !u!1 &2975414614282822399
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +393,7 @@ MonoBehaviour:
   ThirdSlotKeybind: 51
   shotgunArm: {fileID: 0}
   slimeballLauncher: {fileID: 2975414614268289573}
-  lillypadLauncher: {fileID: 2975414613145243466}
+  lillypadLauncher: {fileID: 0}
   w1Active: 0
   w2Active: 0
   w3Active: 0
@@ -516,36 +417,6 @@ MonoBehaviour:
   explosionLight: {fileID: 6768039025550832326}
   explosionScreenShake: 0.6
   recoilDuration: 0.3
---- !u!1 &5068080812968302264
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5256033968526601856}
-  m_Layer: 7
-  m_Name: Slimeball Pos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5256033968526601856
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5068080812968302264}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0, z: -0.006}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7962382082539372451}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6768039025550832326
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,41 +614,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2975414614071183892}
     m_Modifications:
+    - target: {fileID: 2512991526179621003, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
+      propertyPath: instPos
+      value: 
+      objectReference: {fileID: 2975414614282822398}
     - target: {fileID: 2603494937702914361, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
       propertyPath: m_Name
       value: Arm
       objectReference: {fileID: 0}
+    - target: {fileID: 5869521975515905119, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
+      propertyPath: sfx
+      value: 
+      objectReference: {fileID: 1775020043438172880}
+    - target: {fileID: 5869521975515905119, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
+      propertyPath: instPos
+      value: 
+      objectReference: {fileID: 2975414613159873400}
     - target: {fileID: 6707088215905208161, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
       propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6707088215905208161, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 6707088215905208161, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.426
-      objectReference: {fileID: 0}
-    - target: {fileID: 6707088215905208161, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6707088215905208161, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
-      propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6707088215905208161, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
+      propertyPath: m_LocalPosition.x
+      value: 1.562
       objectReference: {fileID: 0}
     - target: {fileID: 6707088215905208161, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
+      propertyPath: m_LocalPosition.y
+      value: -0.548
       objectReference: {fileID: 0}
     - target: {fileID: 6707088215905208161, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
+      propertyPath: m_LocalPosition.z
+      value: 5.23
       objectReference: {fileID: 0}
     - target: {fileID: 6707088215905208161, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -798,8 +665,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6707088215905208161, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
   m_PrefabInstance: {fileID: 3302967483170075470}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7962382082539372451 stripped
+--- !u!4 &6294911112831149280 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4852187953515269357, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8830005410605897646, guid: 5c4c26eb7eb5f414f9484ddd522a71f2, type: 3}
   m_PrefabInstance: {fileID: 3302967483170075470}
   m_PrefabAsset: {fileID: 0}

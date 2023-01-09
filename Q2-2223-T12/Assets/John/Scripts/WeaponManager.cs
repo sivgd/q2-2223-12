@@ -13,9 +13,10 @@ public class WeaponManager : MonoBehaviour
     public KeyCode SecondSlotKeybind = KeyCode.Alpha2;
     public KeyCode ThirdSlotKeybind = KeyCode.Alpha3;
     [Header("Weapons")]
-    public GameObject shotgunArm;
+    public ShotgunArm shotgunArm;
+    //public GameObject slimeballArm; 
     public GameObject slimeballLauncher;
-    public GameObject lillypadLauncher; 
+    public LilypadSniper lillypadLauncher; 
 
     [SerializeField] private bool w1Active = false, w2Active= false, w3Active = false;
     public bool w1Equipped = true, w2Equipped = true, w3Equipped = true;
@@ -58,10 +59,11 @@ public class WeaponManager : MonoBehaviour
         w1Active = w1Active && w1Equipped;
         w2Active = w2Active && w2Equipped;
         w3Active = w3Active && w3Equipped;
-        SlimeballCoolDown(); 
-        shotgunArm.SetActive(w1Active); 
+        SlimeballCoolDown();
+        shotgunArm.enabled = w1Active;
         slimeballLauncher.SetActive(w2Active);
-        lillypadLauncher.SetActive(w3Active);
+        //slimeballArm.SetActive(w2Active); 
+        lillypadLauncher.enabled = w3Active;
         Debug.Log($"WeaponManager: Weapon States: (Shotgun, {w1Active}) (Slimeball, {w2Active}) (Lillypad, {w3Active})");
     }
     private void SlimeballCoolDown()
