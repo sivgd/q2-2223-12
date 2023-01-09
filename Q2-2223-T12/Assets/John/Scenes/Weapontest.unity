@@ -3818,10 +3818,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 568808786}
     - target: {fileID: 2975414614268289560, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
-      propertyPath: maxScale
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975414614268289560, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: timerText
       value: 
       objectReference: {fileID: 959584059}
@@ -4595,15 +4591,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8125094470375552047, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.85
       objectReference: {fileID: 0}
     - target: {fileID: 8125094470375552047, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8125094470375552047, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 6.25
       objectReference: {fileID: 0}
     - target: {fileID: 8125094470375552047, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
