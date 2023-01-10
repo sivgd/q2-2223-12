@@ -31,6 +31,8 @@ public class CloseRangeEnemy : MonoBehaviour
     public float turnSpeed;
     Quaternion rotGoal;
     Vector3 direction;
+
+    AIManager aimanager;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -43,12 +45,7 @@ public class CloseRangeEnemy : MonoBehaviour
         playerSightInRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, whatIsPlayer);
 
-        if (!playerSightInRange && !playerInAttackRange)
-        {
-            Patrol();
-        }
-
-        if (playerSightInRange && !playerInAttackRange)
+        if (!playerInAttackRange)
         {
             Chase();
         }
