@@ -53,19 +53,26 @@ public class ShotgunArm : MonoBehaviour
     {
         if (canFire)
         {
-            animator.SetBool("IsShotgunFire", true);
             GenerateBullets();
             sfx.ApplyRecoil(recoil, transform, initialPos);
             StartCoroutine(Delay(shotDelay));
         }
 
     }
+    /// <summary>
+    /// Shot Delay
+    /// </summary>
+    /// <param name="shotDelay"></param>
+    /// <returns></returns>
     IEnumerator Delay(float shotDelay)
     {
+        animator.SetTrigger("IsShotgunFire"); 
         canFire = false; 
         yield return new WaitForSecondsRealtime(shotDelay);
         canFire = true;
-        animator.SetBool("IsShotgunFire", false);
+        animator.ResetTrigger("IsShotgunFire"); 
+
+        
     }
     /// <summary>
     /// Casts a box at a designated range and origin (range & instpos) towards what the player is aiming at 
