@@ -10,17 +10,19 @@ public class LilypadSniper : MonoBehaviour
     public GameObject lilypadPrefab;
     public Transform instPos;
     public CameraEffectManager sfx;
+    private Animator animator; 
 
     private Vector3 initialPos;
     private void Start()
     {
-        initialPos = transform.localPosition; 
+        initialPos = transform.localPosition;
+        animator = GetComponent<Animator>(); 
     }
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Shoot(); 
+            Shoot();
         }
     }
 
@@ -28,8 +30,13 @@ public class LilypadSniper : MonoBehaviour
     {
         sfx.ApplyRecoil(recoilAmt,transform,initialPos);
         Instantiate(lilypadPrefab, instPos.position, instPos.rotation);
-        //transform.localPosition = transform.localPosition; 
-        
+        animator.SetBool("IsLilyFling", true);
+        //transform.localPosition = transform.localPosition;     
     }
+   /* IEnumerator WaitForAnimationEnd()
+    {
+        animator.SetBool("IsLilyFling", true);
+        //yield return new WaitUntil(animator.GetBehaviour<>)
+    }*/
 
 }
