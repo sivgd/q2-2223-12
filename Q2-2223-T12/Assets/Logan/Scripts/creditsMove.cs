@@ -6,7 +6,7 @@ public class creditsMove : MonoBehaviour
 {
 
     public float moveSpeed = -0.02f;
-    private bool paused;
+    public bool paused;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,18 @@ public class creditsMove : MonoBehaviour
     {
         this.gameObject.transform.position -= new Vector3(0, moveSpeed, 0);
 
-        if(Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.Space) && paused == false)
+        {
+            paused = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && paused == true)
+        {
+            paused = false;
+        }
+
+
+
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             moveSpeed = -0.05f;
         }
@@ -28,18 +39,14 @@ public class creditsMove : MonoBehaviour
             moveSpeed = -0.005f;
         }
 
-        if(paused != true && Input.GetKey(KeyCode.Space))
-        {
-            moveSpeed = 0;
-        }
-        if (paused == true && Input.GetKey(KeyCode.Space))
+        
+        if (paused != true)
         {
             moveSpeed = -0.02f;
         }
-
-        else if (paused != true)
+        if (paused == true)
         {
-            moveSpeed = -0.02f;
+            moveSpeed = 0f;
         }
 
     }
