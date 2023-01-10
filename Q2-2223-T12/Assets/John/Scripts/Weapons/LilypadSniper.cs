@@ -5,13 +5,16 @@ using UnityEngine;
 public class LilypadSniper : MonoBehaviour
 {
     [Header("Shooting Variables")]
-    public float recoilAmt = 10f; 
+    public float recoilAmt = 10f;
+    public float animTime = 3f; 
     [Header("External References")]
+    public Vector3 idleOffset = new Vector3(0.55f, 0.28f, 3.25f);
     public GameObject lilypadPrefab;
     public Transform instPos;
     public CameraEffectManager sfx;
     private Animator animator; 
 
+    private bool isAnimating = false; 
     private Vector3 initialPos;
     private void Start()
     {
@@ -29,14 +32,21 @@ public class LilypadSniper : MonoBehaviour
     private void Shoot()
     {
         sfx.ApplyRecoil(recoilAmt,transform,initialPos);
+        animator.SetTrigger("IsLilyFling");
+        isAnimating = true;
+        StartCoroutine(WaitForAnimationDone()); 
         Instantiate(lilypadPrefab, instPos.position, instPos.rotation);
-        animator.SetBool("IsLilyFling", true);
-        //transform.localPosition = transform.localPosition;     
+       //transform.localPosition = transform.localPosition;     
     }
-   /* IEnumerator WaitForAnimationEnd()
+    IEnumerator WaitForAnimationDone()
     {
-        animator.SetBool("IsLilyFling", true);
-        //yield return new WaitUntil(animator.GetBehaviour<>)
-    }*/
+        yield return new WaitForSecondsRealtime(animTime - 0.01f);
+        isAnimating = false;
+        transform.localPosition = idleOffset; 
+    }
+    public bool GetAnimating()
+    {
+        return isAnimating; 
+    }
 
 }

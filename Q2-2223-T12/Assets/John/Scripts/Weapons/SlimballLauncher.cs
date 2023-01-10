@@ -9,6 +9,8 @@ public class SlimballLauncher : MonoBehaviour
     public GameObject slimeBall;
     public Transform instPos;
     public TextMeshProUGUI chargeText;
+  
+    public Animator animator; 
     //public GameObject animSlimeBall; 
 
     [Header("Shooting Variables")]
@@ -25,6 +27,7 @@ public class SlimballLauncher : MonoBehaviour
     [Header("UI Stuff")]
     public float maxShake = 2f;
     public float maxScale = 0.3f;
+    public Vector3 chargePos; 
     public Vector3 initialScale = new Vector3(0.1f, 0.1f, 0.1f); 
     public Color unchargedColor,chargedColor;
     public CameraEffectManager sfx; 
@@ -32,7 +35,9 @@ public class SlimballLauncher : MonoBehaviour
     private Color currentColor;
     private Renderer ballMat;
 
-    ///@TODO: reset charge when player switches weapons 
+    private bool isAnimating = false; 
+
+    
     private void Start()
     {
         initialPos = transform.localPosition;
@@ -53,9 +58,14 @@ public class SlimballLauncher : MonoBehaviour
             GrowSlimeball(); 
             Debug.Log($"charge: {charge}"); 
         }
-        
+        if(Input.GetButtonDown("Fire1") && coolDownTimer <= 0f)
+        {
+            animator.SetTrigger("Slimeball Trigger");
+            isAnimating = true; 
+        }
         if ((Input.GetButtonUp("Fire1") || heldTimer >= maxTimer) && coolDownTimer <= 0f)
         {
+            animator.SetTrigger("Slimeball Fling Trigger");
             charge = Mathf.Clamp(charge, 0.1f, chargeMult);
             heldTimer = 0f;
             transform.localPosition = initialPos;
@@ -65,6 +75,7 @@ public class SlimballLauncher : MonoBehaviour
             charge = 0f;
         }
         UpdateColor(); 
+
        // coolDownTimer -= Time.deltaTime;
         chargeText.text = $"Charge: {charge}";
     }
@@ -89,7 +100,8 @@ public class SlimballLauncher : MonoBehaviour
     void GrowSlimeball()
     {
         float newScale = (maxScale / chargeMult) * charge;
-        transform.localScale = new Vector3(newScale, newScale, newScale); 
+        transform.localScale = new Vector3(newScale, newScale, newScale);
+
     }
     void UpdateColor()
     {
@@ -104,6 +116,7 @@ public class SlimballLauncher : MonoBehaviour
         DynamicGI.UpdateEnvironment(); 
     }
 
+   
     #region ACCESSORS AND MUTATORS 
 
     public float getCharge()
