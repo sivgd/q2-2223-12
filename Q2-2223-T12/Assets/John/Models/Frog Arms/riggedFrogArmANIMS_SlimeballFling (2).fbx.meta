@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8096ee74a481495439b68899bbd08f5c
+guid: 30ab02795e4dcf94cad6950d0191fc24
 ModelImporter:
   serializedVersion: 20300
   internalIDToNameTable:
@@ -7,8 +7,32 @@ ModelImporter:
       74: 4781951162920444690
     second: Armature|ArmatureAction
   - first:
+      74: 7705805807172298677
+    second: Armature|Cylinder.001Action
+  - first:
+      74: -7082745615850405094
+    second: Armature|Cylinder.003Action
+  - first:
+      74: -6356422069307315363
+    second: Armature|Cylinder.004Action
+  - first:
+      74: 271997525282036724
+    second: Armature|CylinderAction
+  - first:
       74: -4141349546125388587
     second: Armature|IcosphereAction
+  - first:
+      74: -3124032385594859644
+    second: Icosphere|Cylinder.001Action
+  - first:
+      74: -1446194063431705185
+    second: Icosphere|Cylinder.003Action
+  - first:
+      74: -6043814142934701477
+    second: Icosphere|Cylinder.004Action
+  - first:
+      74: -6736847080589436340
+    second: Icosphere|CylinderAction
   - first:
       74: 6639205238635089029
     second: Icosphere|IcosphereAction

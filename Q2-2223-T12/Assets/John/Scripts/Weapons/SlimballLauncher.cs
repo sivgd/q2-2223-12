@@ -35,7 +35,7 @@ public class SlimballLauncher : MonoBehaviour
     private Color currentColor;
     private Renderer ballMat;
 
-    private bool isAnimating = false; 
+    private bool isAnimating = false;
 
     
     private void Start()
@@ -48,7 +48,11 @@ public class SlimballLauncher : MonoBehaviour
     
     private void Update()
     {
-       
+        if (!gameObject.activeInHierarchy)
+        {
+            charge = 0f;
+            animator.SetTrigger("IsIdle"); 
+        }
         //charges the thingy
         if (Input.GetButton("Fire1") && coolDownTimer <= 0f)
         {
@@ -60,12 +64,13 @@ public class SlimballLauncher : MonoBehaviour
         }
         if(Input.GetButtonDown("Fire1") && coolDownTimer <= 0f)
         {
-            animator.SetTrigger("Slimeball Trigger");
+            animator.SetTrigger("IsCharge");
             isAnimating = true; 
         }
+        if(Input.GetButtonUp("Fire1")) animator.ResetTrigger("IsCharge"); 
         if ((Input.GetButtonUp("Fire1") || heldTimer >= maxTimer) && coolDownTimer <= 0f)
         {
-            animator.SetTrigger("Slimeball Fling Trigger");
+            animator.SetTrigger("IsSlimeballFire");
             charge = Mathf.Clamp(charge, 0.1f, chargeMult);
             heldTimer = 0f;
             transform.localPosition = initialPos;
