@@ -14,6 +14,10 @@ public class startButtonManager : MonoBehaviour
 
     private void Start()
     {
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+
         creditSceneCanvas = GameObject.Find("creditSceneCanvas"); 
         mainMenuCanvas = GameObject.Find("mainMenuCanvas");
 
