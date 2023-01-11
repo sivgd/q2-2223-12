@@ -9,6 +9,8 @@ public class startButtonManager : MonoBehaviour
     public string startButtonScene;
     private GameObject creditSceneCanvas;
     private GameObject mainMenuCanvas;
+    public GameObject creditSceneMoveThing;
+    public float yPositionStopThing;
 
     private void Start()
     {
@@ -26,6 +28,7 @@ public class startButtonManager : MonoBehaviour
 
     public void creditsScene()
     {
+        creditSceneMoveThing.transform.localPosition =  new Vector3(0, -4523, 0);
         creditSceneCanvas.SetActive(true);
         mainMenuCanvas.SetActive(false);
     }
@@ -35,5 +38,25 @@ public class startButtonManager : MonoBehaviour
         creditSceneCanvas.SetActive(false);
         mainMenuCanvas.SetActive(true);
     }
+
+    public void exitGame()
+    {
+        Application.Quit();
+    }
+
+    private void Update()
+    {
+        if(creditSceneMoveThing.transform.localPosition.y >= yPositionStopThing)
+        {
+            unCreditsScene();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            unCreditsScene();
+        }
+    }
+
+    
 
 }

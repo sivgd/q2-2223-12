@@ -31,20 +31,20 @@ public class creditsMove : MonoBehaviour
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            moveSpeed = -0.05f;
+            moveSpeed = -0.1f;
         }
 
         else if (Input.GetKey(KeyCode.UpArrow))
         {
-            moveSpeed = -0.005f;
+            moveSpeed = 0.1f;
         }
 
         
-        if (paused != true)
+        else if (paused != true)
         {
             moveSpeed = -0.02f;
         }
-        if (paused == true)
+        else if (paused == true)
         {
             moveSpeed = 0f;
         }
