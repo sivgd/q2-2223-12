@@ -1,27 +1,18 @@
 fileFormatVersion: 2
-guid: 10759b5d73df553428f3f6501451c7bc
+guid: bdbe5225e9419804db481a79e64ee3b7
 ModelImporter:
   serializedVersion: 20300
   internalIDToNameTable:
   - first:
-      74: -623603649343465320
-    second: Scene
-  externalObjects:
+      74: 4781951162920444690
+    second: Armature|ArmatureAction
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.002
-    second: {fileID: 2100000, guid: bf0bb60bca7c87f4b8b28de4f5e5d429, type: 2}
+      74: -4141349546125388587
+    second: Armature|IcosphereAction
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.004
-    second: {fileID: 2100000, guid: 84f4e377721503241ac240c360213aeb, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.005
-    second: {fileID: 2100000, guid: c42e25a1da56c5c4d88a32693dd24437, type: 2}
+      74: 6639205238635089029
+    second: Icosphere|IcosphereAction
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -41,43 +32,14 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 0
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Scene
-      takeName: Scene
-      internalID: 0
-      firstFrame: 1
-      lastFrame: 40
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []

@@ -54,7 +54,7 @@ public class ShotgunArm : MonoBehaviour
         if (canFire)
         {
             GenerateBullets();
-            sfx.ApplyRecoil(recoil, transform, initialPos);
+            //sfx.ApplyRecoil(recoil, transform, initialPos);
             StartCoroutine(Delay(shotDelay));
         }
 

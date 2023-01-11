@@ -60,12 +60,13 @@ public class SlimballLauncher : MonoBehaviour
         }
         if(Input.GetButtonDown("Fire1") && coolDownTimer <= 0f)
         {
-            animator.SetTrigger("Slimeball Trigger");
+            animator.SetTrigger("IsCharge");
             isAnimating = true; 
         }
+        if(Input.GetButtonUp("Fire1")) animator.ResetTrigger("IsCharge"); 
         if ((Input.GetButtonUp("Fire1") || heldTimer >= maxTimer) && coolDownTimer <= 0f)
         {
-            animator.SetTrigger("Slimeball Fling Trigger");
+            animator.SetTrigger("IsSlimeballFire");
             charge = Mathf.Clamp(charge, 0.1f, chargeMult);
             heldTimer = 0f;
             transform.localPosition = initialPos;

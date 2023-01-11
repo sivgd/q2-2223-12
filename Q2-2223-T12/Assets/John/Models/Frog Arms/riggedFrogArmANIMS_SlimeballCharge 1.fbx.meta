@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8640ffe929592064f94bd2c20783f99e
+guid: bf8d6da1db304fb4cbf91414e60e558d
 ModelImporter:
   serializedVersion: 20300
   internalIDToNameTable:
@@ -7,32 +7,32 @@ ModelImporter:
       74: 4781951162920444690
     second: Armature|ArmatureAction
   - first:
-      74: -9001816489268782072
-    second: Armature|Camera.001Action
+      74: 7705805807172298677
+    second: Armature|Cylinder.001Action
   - first:
-      74: -4535528490933305616
-    second: Armature|Camera.002Action
+      74: -7082745615850405094
+    second: Armature|Cylinder.003Action
   - first:
-      74: 1412875733129326222
-    second: Armature|Camera.003Action
+      74: -6356422069307315363
+    second: Armature|Cylinder.004Action
   - first:
-      74: 4743084820616853705
-    second: Armature|CameraAction
+      74: 271997525282036724
+    second: Armature|CylinderAction
   - first:
       74: -4141349546125388587
     second: Armature|IcosphereAction
   - first:
-      74: -9183352268731475041
-    second: Icosphere|Camera.001Action
+      74: -3124032385594859644
+    second: Icosphere|Cylinder.001Action
   - first:
-      74: -7726473122505505984
-    second: Icosphere|Camera.002Action
+      74: -1446194063431705185
+    second: Icosphere|Cylinder.003Action
   - first:
-      74: -8522281071858128897
-    second: Icosphere|Camera.003Action
+      74: -6043814142934701477
+    second: Icosphere|Cylinder.004Action
   - first:
-      74: 6917005492960053097
-    second: Icosphere|CameraAction
+      74: -6736847080589436340
+    second: Icosphere|CylinderAction
   - first:
       74: 6639205238635089029
     second: Icosphere|IcosphereAction
@@ -69,7 +69,7 @@ ModelImporter:
       takeName: Armature|ArmatureAction
       internalID: 0
       firstFrame: 0
-      lastFrame: 378
+      lastFrame: 315
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -94,11 +94,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Camera.001Action
-      takeName: Armature|Camera.001Action
+      name: Armature|Cylinder.001Action
+      takeName: Armature|Cylinder.001Action
       internalID: 0
       firstFrame: 0
-      lastFrame: 58
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -123,11 +123,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Camera.002Action
-      takeName: Armature|Camera.002Action
+      name: Armature|Cylinder.003Action
+      takeName: Armature|Cylinder.003Action
       internalID: 0
       firstFrame: 0
-      lastFrame: 58
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -152,11 +152,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Camera.003Action
-      takeName: Armature|Camera.003Action
+      name: Armature|Cylinder.004Action
+      takeName: Armature|Cylinder.004Action
       internalID: 0
       firstFrame: 0
-      lastFrame: 58
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -181,11 +181,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|CameraAction
-      takeName: Armature|CameraAction
+      name: Armature|CylinderAction
+      takeName: Armature|CylinderAction
       internalID: 0
       firstFrame: 0
-      lastFrame: 58
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -239,11 +239,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Icosphere|Camera.001Action
-      takeName: Icosphere|Camera.001Action
+      name: Icosphere|Cylinder.001Action
+      takeName: Icosphere|Cylinder.001Action
       internalID: 0
       firstFrame: 0
-      lastFrame: 58
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -268,11 +268,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Icosphere|Camera.002Action
-      takeName: Icosphere|Camera.002Action
+      name: Icosphere|Cylinder.003Action
+      takeName: Icosphere|Cylinder.003Action
       internalID: 0
       firstFrame: 0
-      lastFrame: 58
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -297,11 +297,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Icosphere|Camera.003Action
-      takeName: Icosphere|Camera.003Action
+      name: Icosphere|Cylinder.004Action
+      takeName: Icosphere|Cylinder.004Action
       internalID: 0
       firstFrame: 0
-      lastFrame: 58
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -326,11 +326,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Icosphere|CameraAction
-      takeName: Icosphere|CameraAction
+      name: Icosphere|CylinderAction
+      takeName: Icosphere|CylinderAction
       internalID: 0
       firstFrame: 0
-      lastFrame: 58
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -437,7 +437,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

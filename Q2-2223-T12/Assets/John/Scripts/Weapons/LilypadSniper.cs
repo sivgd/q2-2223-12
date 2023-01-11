@@ -31,19 +31,19 @@ public class LilypadSniper : MonoBehaviour
 
     private void Shoot()
     {
-        sfx.ApplyRecoil(recoilAmt,transform,initialPos);
+        //sfx.ApplyRecoil(recoilAmt,transform,initialPos);
         animator.SetTrigger("IsLilyFling");
         isAnimating = true;
-        StartCoroutine(WaitForAnimationDone()); 
+       
         Instantiate(lilypadPrefab, instPos.position, instPos.rotation);
        //transform.localPosition = transform.localPosition;     
     }
-    IEnumerator WaitForAnimationDone()
+   /* IEnumerator WaitForAnimationDone()
     {
         yield return new WaitForSecondsRealtime(animTime - 0.01f);
         isAnimating = false;
         transform.localPosition = idleOffset; 
-    }
+    }*/
     public bool GetAnimating()
     {
         return isAnimating; 
