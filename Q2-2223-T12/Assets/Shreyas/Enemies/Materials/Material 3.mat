@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Material.002 3
+  m_Name: Material 3
   m_Shader: {fileID: 4800000, guid: 1f53b2e079258874d987bc2948630b78, type: 3}
   m_ShaderKeywords: _DETAILSOURCE_SPECULARALPHA _ENABLETRIPLANARPROJECTION_ON _SOURCE_SPECULARALPHA
     _TRIPLANARSPACEPROJECTION_OBJECTSPACE _USEAOFROMMAINPROPERTIES_ON _USEEMISSIONFROMMAINPROPERTIES_ON
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c4f725317ad76864e862d3b60492f589, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _CutoutMap:
@@ -49,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: baa4556820df8dc4ba34a092d92f3002, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -76,7 +76,7 @@ Material:
     - _AoIntensity: 1
     - _BlendMainNormal: 0
     - _BlendmodeOverlay: 0
-    - _Brightness: 1
+    - _Brightness: 4.43
     - _BumpScale: 1
     - _ContrastDetailMap: 0
     - _Cull: 0

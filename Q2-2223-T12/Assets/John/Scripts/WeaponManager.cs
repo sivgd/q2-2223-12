@@ -60,7 +60,7 @@ public class WeaponManager : MonoBehaviour
         w2Active = w2Active && w2Equipped;
         w3Active = w3Active && w3Equipped;
         SlimeballCoolDown();
-        shotgunArm.enabled = w1Active;
+        shotgunArm.enabled = w1Active; 
         slimeballLauncher.SetActive(w2Active);
         //slimeballArm.SetActive(w2Active); 
         lillypadLauncher.enabled = w3Active;
