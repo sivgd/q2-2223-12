@@ -5424,8 +5424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recoilAmt: 10
-  animTime: 3
-  idleOffset: {x: 0.55, y: 0.28, z: 3.25}
+  animTime: 0.625
   lilypadPrefab: {fileID: 7908084654540729946, guid: 89cff152712d0d04c95c9298facc14bc, type: 3}
   instPos: {fileID: 433412427}
   sfx: {fileID: 568808786}
