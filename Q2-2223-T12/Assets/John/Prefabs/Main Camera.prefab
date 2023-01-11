@@ -675,9 +675,9 @@ MonoBehaviour:
   FirstSlotKeybind: 49
   SecondSlotKeybind: 50
   ThirdSlotKeybind: 51
-  shotgunArm: {fileID: 0}
+  shotgunArm: {fileID: 3060562325807904366}
   slimeballLauncher: {fileID: 2975414614268289573}
-  lillypadLauncher: {fileID: 0}
+  lillypadLauncher: {fileID: 5888661453218123652}
   w1Active: 0
   w2Active: 0
   w3Active: 0
