@@ -4150,10 +4150,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 99.435646
       objectReference: {fileID: 0}
-    - target: {fileID: 5068057827420221536, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5073803118999481186, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -4849,35 +4845,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 428348206514013066, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
+    - target: {fileID: 0}
       propertyPath: shotgunArm
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 428348206514013066, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
+    - target: {fileID: 0}
       propertyPath: w1Equipped
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 428348206514013066, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
+    - target: {fileID: 0}
       propertyPath: w2Equipped
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 428348206514013066, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
+    - target: {fileID: 0}
       propertyPath: lillypadLauncher
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 428348206514013066, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
+    - target: {fileID: 0}
       propertyPath: slimeballLauncher
       value: 
       objectReference: {fileID: 1387264798}
-    - target: {fileID: 428348206514013066, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
+    - target: {fileID: 0}
       propertyPath: weapons.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 428348206514013066, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
+    - target: {fileID: 0}
       propertyPath: weapons.Array.data[1]
       value: 
       objectReference: {fileID: 1387264798}
-    - target: {fileID: 428348206514013066, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
+    - target: {fileID: 0}
       propertyPath: weapons.Array.data[2]
       value: 
       objectReference: {fileID: 0}
@@ -4887,15 +4883,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2446510939789535228, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.49
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2446510939789535228, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.67
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2446510939789535228, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2446510939789535228, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4929,6 +4925,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 428348206514013066, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
