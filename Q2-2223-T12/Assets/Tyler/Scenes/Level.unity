@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.16159819, g: 0.18780607, b: 0.20918548, a: 1}
+  m_IndirectSpecularColor: {r: 0.16159838, g: 0.18780635, b: 0.2091859, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -35379,6 +35379,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4935558220901346458, guid: 50df8dde6e338d54781c1573f5a3e6b5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 671634108}
     - target: {fileID: 4935558220901346459, guid: 50df8dde6e338d54781c1573f5a3e6b5, type: 3}
       propertyPath: m_Name
       value: KamikazeMonke
@@ -41574,7 +41578,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.46764863, g: 0.62698025, b: 0.8773585, a: 0}
+  m_BackGroundColor: {r: 0.16384317, g: 0.4245283, b: 0.062077247, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -43604,12 +43608,28 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 887537440288829534, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
+      propertyPath: upForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 887537440288829534, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
       propertyPath: sprintSpeed
       value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 887537440288829534, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
       propertyPath: jumpCooldown
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 887537440288829534, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
+      propertyPath: knockBackTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 887537440288829534, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
+      propertyPath: knockBackForce
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 887537440288829534, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
+      propertyPath: tankKnockbackForce
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 887537440288829535, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
       propertyPath: m_RootOrder
