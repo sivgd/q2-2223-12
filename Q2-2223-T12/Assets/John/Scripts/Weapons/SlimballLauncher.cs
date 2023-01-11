@@ -35,7 +35,7 @@ public class SlimballLauncher : MonoBehaviour
     private Color currentColor;
     private Renderer ballMat;
 
-    private bool isAnimating = false; 
+    private bool isAnimating = false;
 
     
     private void Start()
@@ -48,7 +48,11 @@ public class SlimballLauncher : MonoBehaviour
     
     private void Update()
     {
-       
+        if (!gameObject.activeInHierarchy)
+        {
+            charge = 0f;
+            animator.SetTrigger("IsIdle"); 
+        }
         //charges the thingy
         if (Input.GetButton("Fire1") && coolDownTimer <= 0f)
         {
