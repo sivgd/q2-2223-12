@@ -2286,7 +2286,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18682
+  m_Name: pb_Mesh18854
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3569,6 +3569,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 853562599787344825, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 67c33a0273f342f41b840b3d7a816d25, type: 2}
     - target: {fileID: 896741456969181409, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -3609,6 +3613,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShotgunArm
       objectReference: {fileID: 0}
+    - target: {fileID: 1236200225149024035, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 67c33a0273f342f41b840b3d7a816d25, type: 2}
     - target: {fileID: 1269758603542440939, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -3681,6 +3689,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -6.457055
       objectReference: {fileID: 0}
+    - target: {fileID: 1786231477680778518, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a8e84bb4dfcb0e04bb0aa5d2ebe32ed2, type: 2}
     - target: {fileID: 1807176377405901829, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -89.98021
@@ -4321,6 +4333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lilypad Arm
       objectReference: {fileID: 0}
+    - target: {fileID: 6687533090352504470, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 67c33a0273f342f41b840b3d7a816d25, type: 2}
     - target: {fileID: 6767106125955452254, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_Layer
       value: 7
