@@ -92,7 +92,8 @@ GameObject:
   - component: {fileID: 3303626095622647155}
   - component: {fileID: 6853646917642509996}
   - component: {fileID: 5621864974564465313}
-  m_Layer: 0
+  - component: {fileID: 3850171612111420127}
+  m_Layer: 10
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,6 +163,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3850171612111420127
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530364280896694695}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3562073674547505438, guid: cbb640c9272e39a4f8e95d80bead8d21, type: 3}
 --- !u!1 &1564256358232313656
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +269,8 @@ GameObject:
   - component: {fileID: 5285530498605263235}
   - component: {fileID: 4787287358424140518}
   - component: {fileID: 8520066632660165525}
-  m_Layer: 0
+  - component: {fileID: 2165469412878037683}
+  m_Layer: 10
   m_Name: Porch Beams
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,6 +340,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2165469412878037683
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902525247443985970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4502446255128795542, guid: cbb640c9272e39a4f8e95d80bead8d21, type: 3}
 --- !u!1 &1928554275578707402
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +365,8 @@ GameObject:
   - component: {fileID: 2935673991287171916}
   - component: {fileID: 5285725730595638952}
   - component: {fileID: 3130244322109870244}
-  m_Layer: 0
+  - component: {fileID: 4052007259149331261}
+  m_Layer: 10
   m_Name: Porch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,6 +436,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4052007259149331261
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928554275578707402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2734063371654208272, guid: cbb640c9272e39a4f8e95d80bead8d21, type: 3}
 --- !u!1 &2448163533904833379
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +623,8 @@ GameObject:
   - component: {fileID: 2906145226458962316}
   - component: {fileID: 8026605237005521147}
   - component: {fileID: 4494289675277199977}
-  m_Layer: 0
+  - component: {fileID: 3646923758657634919}
+  m_Layer: 10
   m_Name: Porch roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,6 +694,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3646923758657634919
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4959361440019003613}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 325425880767246177, guid: cbb640c9272e39a4f8e95d80bead8d21, type: 3}
 --- !u!1 &5416719681194767824
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,7 +1043,8 @@ GameObject:
   - component: {fileID: 4271932502499646251}
   - component: {fileID: 5701818393956849805}
   - component: {fileID: 4443464421093022803}
-  m_Layer: 0
+  - component: {fileID: 7194389009632126719}
+  m_Layer: 12
   m_Name: Clapboards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1053,6 +1114,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7194389009632126719
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232291335264335704}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1807988496228910536, guid: cbb640c9272e39a4f8e95d80bead8d21, type: 3}
 --- !u!1 &8247519794105087128
 GameObject:
   m_ObjectHideFlags: 0
