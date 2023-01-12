@@ -9,6 +9,7 @@ public class SlimballLauncher : MonoBehaviour
     public GameObject slimeBall;
     public Transform instPos;
     public TextMeshProUGUI chargeText;
+    public Transform viewmodelPosition; 
   
     public Animator animator; 
     //public GameObject animSlimeBall; 
@@ -40,7 +41,7 @@ public class SlimballLauncher : MonoBehaviour
     
     private void Start()
     {
-        initialPos = transform.localPosition;
+        initialPos = viewmodelPosition.position;
         currentColor = unchargedColor;
         ballMat = GetComponent<Renderer>();
         transform.localScale = initialScale; 

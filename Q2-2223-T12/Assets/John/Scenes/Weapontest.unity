@@ -3773,14 +3773,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -44.308952
       objectReference: {fileID: 0}
-    - target: {fileID: 2595670908689123652, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
-      propertyPath: bone
-      value: 
-      objectReference: {fileID: 1265053869}
-    - target: {fileID: 2595670908689123652, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
-      propertyPath: offsett.y
-      value: -0.16
-      objectReference: {fileID: 0}
     - target: {fileID: 2844941852374575399, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -16.745262
@@ -3833,6 +3825,10 @@ PrefabInstance:
       propertyPath: chargeText
       value: 
       objectReference: {fileID: 1725670044}
+    - target: {fileID: 2975414614268289560, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
+      propertyPath: viewmodelPosition
+      value: 
+      objectReference: {fileID: 1265053869}
     - target: {fileID: 2975414614268289561, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.01
