@@ -82,7 +82,7 @@ public class SlimballLauncher : MonoBehaviour
         UpdateColor(); 
 
        // coolDownTimer -= Time.deltaTime;
-        chargeText.text = $"Charge: {charge}";
+        //chargeText.text = $"Charge: {charge}";
     }
 
     public void Shoot()
