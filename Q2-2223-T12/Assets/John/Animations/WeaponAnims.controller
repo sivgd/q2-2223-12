@@ -47,7 +47,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 4781951162920444690, guid: bf8d6da1db304fb4cbf91414e60e558d, type: 3}
+  m_Motion: {fileID: 4781951162920444690, guid: 3dc285eef913de4419a48644e9308606, type: 3}
   m_Tag: 
   m_SpeedParameter: slimeballCharge
   m_MirrorParameter: 

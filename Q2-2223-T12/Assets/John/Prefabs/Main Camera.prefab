@@ -400,7 +400,6 @@ GameObject:
   - component: {fileID: 2975414614268289562}
   - component: {fileID: 2975414614268289563}
   - component: {fileID: 2975414614268289560}
-  - component: {fileID: 2595670908689123652}
   m_Layer: 7
   m_Name: Slimball Launcher
   m_TagString: Untagged
@@ -497,19 +496,6 @@ MonoBehaviour:
   unchargedColor: {r: 1, g: 1, b: 0, a: 1}
   chargedColor: {r: 0.078431375, g: 1, b: 0, a: 1}
   sfx: {fileID: 1775020043438172880}
---- !u!114 &2595670908689123652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2975414614268289573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1d897eccf8d9fa4e9a26c9afe10452a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bone: {fileID: 0}
 --- !u!1 &2975414614282822399
 GameObject:
   m_ObjectHideFlags: 0
