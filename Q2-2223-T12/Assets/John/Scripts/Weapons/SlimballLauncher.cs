@@ -41,7 +41,7 @@ public class SlimballLauncher : MonoBehaviour
     
     private void Start()
     {
-        initialPos = viewmodelPosition.position;
+       // initialPos = viewmodelPosition.position; this one line of code has caused me so much pain and misery, it shall remain here as a testiment to my sins
         currentColor = unchargedColor;
         ballMat = GetComponent<Renderer>();
         transform.localScale = initialScale; 
@@ -49,6 +49,8 @@ public class SlimballLauncher : MonoBehaviour
     
     private void Update()
     {
+        initialPos = viewmodelPosition.position; 
+        transform.position = initialPos;
         if (!gameObject.activeInHierarchy)
         {
             charge = 0f;
@@ -74,7 +76,7 @@ public class SlimballLauncher : MonoBehaviour
             animator.SetTrigger("IsSlimeballFire");
             charge = Mathf.Clamp(charge, 0.1f, chargeMult);
             heldTimer = 0f;
-            transform.localPosition = initialPos;
+           
             transform.localScale = initialScale; 
             coolDownTimer = maxCoolDown;
             Shoot();
@@ -95,8 +97,9 @@ public class SlimballLauncher : MonoBehaviour
     }
     void SlimeBallShake()
     {
-        transform.localPosition = initialPos;
+        transform.position = initialPos;
         float currShake = (maxShake / chargeMult) * charge; /// makes the shake dependant on the current charge of the slimeball 
+        Debug.Log($"Currshake: {currShake}"); 
         sfx.ScreenShake(currShake);
         float dX = transform.localPosition.x + Random.Range(-currShake, currShake); 
         float dY = transform.localPosition.y + Random.Range(-currShake, currShake);
@@ -107,7 +110,6 @@ public class SlimballLauncher : MonoBehaviour
     {
         float newScale = (maxScale / chargeMult) * charge;
         transform.localScale = new Vector3(newScale, newScale, newScale);
-
     }
     void UpdateColor()
     {
