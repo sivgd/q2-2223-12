@@ -12,7 +12,7 @@ public class CloseRangeEnemy : MonoBehaviour
     public Vector3 walkPoint;
     public float patrolSpeed;
     public float chaseSpeed;
-    Animator animator;
+    public Animator animator;
     [HideInInspector]
     public bool walkPointSet;
     public float walkPointRange;
@@ -35,7 +35,6 @@ public class CloseRangeEnemy : MonoBehaviour
     AIManager aimanager;
     private void Awake()
     {
-        animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -61,6 +60,7 @@ public class CloseRangeEnemy : MonoBehaviour
     {
         agent.speed = patrolSpeed;
         animator.SetBool("Attack", false);
+        animator.SetBool("Move", true);
         if (!walkPointSet)
         {
             SearchWalkPoint();
@@ -95,6 +95,7 @@ public class CloseRangeEnemy : MonoBehaviour
     {
         agent.speed = chaseSpeed;
         animator.SetBool("Attack", false);
+        animator.SetBool("Move", true);
         agent.SetDestination(player.position);
     }
 
