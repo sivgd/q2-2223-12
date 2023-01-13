@@ -15,7 +15,7 @@ public class ExplosionStuff : MonoBehaviour
         canGrow = true; 
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (canGrow)
         {
@@ -23,13 +23,13 @@ public class ExplosionStuff : MonoBehaviour
 
             if (averageScale < finalRadius)
             {
-                scale += (rate) * Time.fixedDeltaTime;
+                scale += (rate) * Time.deltaTime;
 
                 transform.localScale = new Vector3(scale, scale, scale);
             }
             else
             {
-                Destroy(gameObject); 
+                Destroy(gameObject);
             }
         }
     }

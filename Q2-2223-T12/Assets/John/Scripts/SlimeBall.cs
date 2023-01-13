@@ -12,13 +12,13 @@ public class SlimeBall : MonoBehaviour
     public float explosionRadius = 12f;
     public float explosionRadMult = 100f;
     public int superExplosionMult = 3;
-    public float explosionGrowthRate = 30f; 
+    public float explosionGrowthRate = 30f;
 
     [Header("External References")]
     public GameObject explosionSphere;
-    private CameraEffectManager sfx; 
-    
-
+    private CameraEffectManager sfx;
+    public string enemyTagOne = "Enemy";
+    public string enemyTagTwo; 
     private Rigidbody rb;
 
     private void Awake()
@@ -47,6 +47,7 @@ public class SlimeBall : MonoBehaviour
         GameObject explosion  = Instantiate(explosionSphere, transform.position,transform.rotation);    /// Instantiates an explosion sphere (for visual / feedback purposes only) 
 
         explosion.SetActive(true);
+        explosion.GetComponent<ExplosionStuff>().enabled = true; 
         explosion.GetComponent<ExplosionStuff>().Grow(calcExplosionRadius(), explosionGrowthRate);
 
         foreach (Collider hit in colliders)  /// Checks each collider hit in the spherecast, and whether they have rigidbodies 
@@ -69,6 +70,7 @@ public class SlimeBall : MonoBehaviour
         GameObject explosion = Instantiate(explosionSphere, transform.position, transform.rotation); /// Instantiates an explosion sphere (for visual / feedback purposes only) 
 
         explosion.SetActive(true);
+        explosion.GetComponent<ExplosionStuff>().enabled = true; 
         explosion.GetComponent<ExplosionStuff>().Grow(calcExplosionRadius(), explosionGrowthRate); /// Explosion sphere grows 
 
         foreach (Collider hit in colliders)  /// Checks each collider hit in the spherecast, and whether they have rigidbodies 
@@ -114,14 +116,15 @@ public class SlimeBall : MonoBehaviour
 
     }*/
 
-    private void OnTriggerEnter(Collider collision)
+   
+    
+    private void OnTriggerEnter(Collider other)
     {
-        /// if you are good at the game you can make a super explosion 
-        if (collision.CompareTag("Lily"))
+        if (other.CompareTag("Lily"))
         {
             Explode(superExplosionMult);
-            sfx.CreateExplosionEffect(); 
-            Destroy(collision.gameObject);
+            sfx.CreateExplosionEffect();
+            Destroy(other.gameObject);
             Destroy(gameObject);
 
         }
@@ -130,7 +133,6 @@ public class SlimeBall : MonoBehaviour
             Explode();
             Destroy(gameObject);
         }
-
     }
     #region Accessors and Mutators
     public float getShootForce()
