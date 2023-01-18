@@ -5,7 +5,7 @@ using UnityEngine;
 public class creditsMove : MonoBehaviour
 {
 
-    public float moveSpeed = -0.02f;
+    public float moveSpeed = -0.15f;
     public bool paused;
     // Start is called before the first frame update
     void Start()
@@ -31,18 +31,18 @@ public class creditsMove : MonoBehaviour
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            moveSpeed = -0.1f;
+            moveSpeed = -0.3f;
         }
 
         else if (Input.GetKey(KeyCode.UpArrow))
         {
-            moveSpeed = 0.1f;
+            moveSpeed = 0.3f;
         }
 
         
         else if (paused != true)
         {
-            moveSpeed = -0.02f;
+            moveSpeed = -0.15f;
         }
         else if (paused == true)
         {
