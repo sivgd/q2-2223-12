@@ -116,7 +116,7 @@ public class CloseRangeEnemy : MonoBehaviour
     {
         animator.SetBool("Attack", true);
         alreadyAttacked = true;
-        yield return new WaitForSeconds(2.15f);
+        yield return new WaitForSeconds(2.17f);
         animator.SetBool("Attack", false);
         Invoke(nameof(Resetenemy), timeBetweenAttack);
     }
