@@ -2,25 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; 
+using TMPro;
+using System;
+using System.Text.RegularExpressions; 
 
 public class StyleMeterController : MonoBehaviour
 {
     [Header("UI")]
     public TMP_Text[] actionDisplay;
     public Slider styleMeter;
-    public TMP_Text grade; 
+    public TMP_Text grade;
     [Header("Level Specific")]
     public float maxStyle = 100f;
 
     [Header("Preferences")]
     public float styleDecayRate = 0.1f;
     public float maxMovementMult = 3f;
-    public int[] rankRequirements = {40,60,80,100};
+    public float textLifeTime = 3f;
+    public Color[] gradeColors;
+    //public int[] rankRequirements = {};
     public string[] grades = { "D", "C", "B", "A", "S" }; 
-    [Header("Debug")]
-    [SerializeField] float overallStyle;
-    [SerializeField] float currentStyle; 
+    [Header("Debug (Read only)")]
+    [SerializeField] float currentStyle;
+    [SerializeField] private float dStyle = 0f;
 
 
     private void Start()
@@ -43,69 +47,104 @@ public class StyleMeterController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             addTextToQueue("TEST");
-            addToCurrentStyle(5); 
-            StartCoroutine(updateStyleScore());
+            addToStyleScore(1); 
         }
+        updateStyleMeter(); 
+        
     }
     public void updateStyleMeter()
     {
-       
+        decayStyle();
+        updateStyleScore();
     }
     public void addTextToQueue(string text)
     {
-        for(int i = 0; i< actionDisplay.Length; i++)
+        int reps = 0; 
+        for (int i = 0; i < actionDisplay.Length; i++)
         {
-            if (actionDisplay[i].text == "")
+            if (actionDisplay[i].text.Contains(text))
             {
-                actionDisplay[i].text = text;
-                Debug.Log($"addTextToQueue(): Writing to text queue {actionDisplay[i].name}");
+                if (actionDisplay[i].text.Contains("("))
+                {
+                    reps = getNumFromString(actionDisplay[i].text); 
+                }
+                reps++;
+                actionDisplay[i].text = $"({reps}x) {text}";
+                StartCoroutine(removeText(i, $"({reps}x) {text}")); 
+                return; 
+            }
+            else if(actionDisplay[i].text == "")
+            {
+                reps++; 
+                actionDisplay[i].text = $"({reps}x) {text}";
+                StartCoroutine(removeText(i, $"({reps}x) {text}"));
                 return; 
             }
         }
-        Debug.Log("addTextToQueue(): Empty text slot not available"); 
+        Debug.Log("addTextToQueue(): Empty text slot not available");
+        return; 
     }
-    public void addToCurrentStyle(int amt)
+    /// <summary>
+    /// Removes the specified test from the specified index
+    /// </summary>
+    /// <param name="index"></param> the index of the text
+    /// <param name="text"></param> the text to remove 
+    /// <returns></returns>
+    IEnumerator removeText(int index,string text)
     {
-        currentStyle += amt;
+        yield return new WaitForSecondsRealtime(textLifeTime);
+        if (actionDisplay[index].text == text)
+        {
+            actionDisplay[index].text = "";
+        }
+        yield break; 
     }
-    IEnumerator decayStyle()
+   
+    void decayStyle()
     {
-        yield return new WaitForEndOfFrame();
-        while (currentStyle > 0) currentStyle -= (styleDecayRate * Time.deltaTime); 
+        if (dStyle > 0) dStyle -= (styleDecayRate * Time.deltaTime); 
     }
-    IEnumerator updateStyleScore()
+    void updateStyleScore()
     {
-        int maxVal = 1;
-        float currentSliderValue; 
-        yield return new WaitForEndOfFrame();
-        currentSliderValue = styleMeter.value;
-        if (currentStyle >= rankRequirements[3])
+        int maxVal = grades.Length;
+        int minVal = 0; 
+        int currGrade = Mathf.Clamp((int)Math.Floor(dStyle / grades.Length),0, grades.Length * grades.Length); 
+        switch (currGrade)
         {
-            grade.text = grades[4];
-            maxVal = rankRequirements[3]; 
+            case 0:
+                grade.text = grades[0];
+                grade.color = gradeColors[0];
+                minVal = 0;
+                maxVal = grades.Length;
+                break;
+            case 1:
+                grade.text = grades[1];
+                grade.color = gradeColors[1];
+                minVal = grades.Length;
+                maxVal = grades.Length * 2;
+                break;
+            case 2:
+                grade.text = grades[2];
+                grade.color = gradeColors[2];
+                minVal = grades.Length*2;
+                maxVal = grades.Length * 3;
+                break;
+            case 3:
+                grade.text = grades[3];
+                grade.color = gradeColors[3];
+                minVal = grades.Length*3;
+                maxVal = grades.Length * 4;
+                break;
+            case 4:
+                grade.text = grades[4];
+                grade.color = gradeColors[0];
+                minVal = grades.Length * 3;
+                maxVal = grades.Length * 4;
+                break; 
         }
-        else if (currentStyle >= rankRequirements[2])
-        {
-            grade.text = grades[3];
-            maxVal = rankRequirements[3]; 
-        }
-        else if (currentStyle >= rankRequirements[1])
-        {
-            grade.text = grades[2];
-            maxVal = rankRequirements[2]; 
-        }
-        else if (currentStyle >= rankRequirements[0])
-        {
-            grade.text = grades[1];
-            maxVal = rankRequirements[1]; 
-        }
-        else
-        {
-            grade.text = grades[0];
-            maxVal = rankRequirements[0]; 
-        }
-        styleMeter.maxValue = maxVal;
-        styleMeter.value = currentStyle;
+
+        styleMeter.maxValue = maxVal - minVal;
+        styleMeter.value = dStyle - minVal ;
 
     }
     private void resetActionQueue()
@@ -115,5 +154,24 @@ public class StyleMeterController : MonoBehaviour
             t.text = "";
             Debug.Log($"resetActionQueue(): Reset {t.name}"); 
         }
+    }
+    public void addToStyleScore(int amt)
+    {
+        dStyle += amt;
+        currentStyle += amt; 
+    }
+    private int getNumFromString(string str)
+    {
+        char[] strAsArray = str.ToCharArray();
+        string numString = "+";
+        for (int i = 0; i < strAsArray.Length; i++)
+        {
+            if (Char.IsDigit(strAsArray[i]))
+            {
+                numString += strAsArray[i];
+            }
+        }
+        int output = Int32.Parse(numString);
+        return output;
     }
 }
