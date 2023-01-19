@@ -7,10 +7,12 @@ public class EnemyHealth : MonoBehaviour
 {
     public float maxHealth;
     public float currentHealth;
+    public string deathType; 
 
     void Start()
     {
         currentHealth = maxHealth;
+        
     }
 
     // Update is called once per frame
@@ -29,3 +31,4 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 }
+

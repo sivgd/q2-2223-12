@@ -25,7 +25,7 @@ public class StyleMeterController : MonoBehaviour
     [Header("Debug (Read only)")]
     [SerializeField] float currentStyle;
     [SerializeField] private float dStyle = 0f;
-
+    [SerializeField] private float decayRollingMult = 1f; 
 
     private void Start()
     {
@@ -102,7 +102,11 @@ public class StyleMeterController : MonoBehaviour
    
     void decayStyle()
     {
-        if (dStyle > 0) dStyle -= (styleDecayRate * Time.deltaTime); 
+        if (dStyle > 0)
+        {
+            //decayRollingMult += Time.deltaTime;
+            dStyle -= ((styleDecayRate * decayRollingMult) * Time.deltaTime);
+        }
     }
     void updateStyleScore()
     {
@@ -137,7 +141,7 @@ public class StyleMeterController : MonoBehaviour
                 break;
             case 4:
                 grade.text = grades[4];
-                grade.color = gradeColors[0];
+                grade.color = gradeColors[4];
                 minVal = grades.Length * 3;
                 maxVal = grades.Length * 4;
                 break; 
@@ -158,7 +162,22 @@ public class StyleMeterController : MonoBehaviour
     public void addToStyleScore(int amt)
     {
         dStyle += amt;
-        currentStyle += amt; 
+        currentStyle += amt;
+        //decayRollingMult = 1f; 
+    }
+    public void filterStyleFromDeathType(DeathType deathType, int style)
+    {
+        switch (deathType)
+        {
+            case DeathType.Explosion:
+                addTextToQueue("BOOM");
+                addToStyleScore(style); 
+                break;
+            case DeathType.Normal:
+                addTextToQueue("KILL");
+                addToStyleScore(style);
+                break; 
+        }
     }
     private int getNumFromString(string str)
     {
@@ -174,4 +193,9 @@ public class StyleMeterController : MonoBehaviour
         int output = Int32.Parse(numString);
         return output;
     }
+}
+public enum DeathType
+{
+    Explosion,
+    Normal
 }

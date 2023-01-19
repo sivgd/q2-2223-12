@@ -114,9 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686cc0ce04db68b44a91cf137b53fb6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBounces: 3
   shootForce: 5000
-  damage: 1
+  damage: 5
   explosionRadius: 12
   explosionRadMult: 100
   superExplosionMult: 3

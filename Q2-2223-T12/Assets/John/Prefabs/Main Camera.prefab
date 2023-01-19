@@ -485,8 +485,8 @@ MonoBehaviour:
   slimeBall: {fileID: 624056384090442364, guid: 49de6e2cacd041848bf7d042f7439128, type: 3}
   instPos: {fileID: 2975414614282822398}
   chargeText: {fileID: 0}
-  viewmodelPosition: {fileID: 0}
-  animator: {fileID: 0}
+  viewmodelPosition: {fileID: 6392135916640574568}
+  animator: {fileID: 3847427355936109938}
   maxCoolDown: 5
   maxTimer: 4
   chargeMult: 3
@@ -917,10 +917,10 @@ MonoBehaviour:
   shotDelay: 0.3
   range: 100
   recoil: 3
-  enemyTag: 
-  enemyTag2: 
+  enemyTag: Enemy
+  enemyTag2: ExplodingEnemy
   instPos: {fileID: 2975414614282822398}
-  damageToGive: 0
+  damageToGive: 10
 --- !u!114 &5888661453218123652
 MonoBehaviour:
   m_ObjectHideFlags: 0

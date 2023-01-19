@@ -51,7 +51,7 @@ public class WeaponManager : MonoBehaviour
             w3Active = true;
         }
         RefreshWeapons();
-        timerText.text = $"Cooldwn: {sBL.getCoolDownTimer()}";
+        //timerText.text = $"Cooldwn: {sBL.getCoolDownTimer()}";
     }
    
     private void RefreshWeapons()
