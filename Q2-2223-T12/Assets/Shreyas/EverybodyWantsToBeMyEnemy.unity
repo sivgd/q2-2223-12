@@ -47918,6 +47918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 60
   currentHealth: 0
+  style: {fileID: 0}
 --- !u!4 &1216287972 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2446510939789535228, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
@@ -48144,6 +48145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 0
+  style: {fileID: 0}
 --- !u!114 &1664711277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48815,6 +48817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 500
   currentHealth: 0
+  style: {fileID: 0}
 --- !u!114 &1769765065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51274,6 +51277,7 @@ GameObject:
   - component: {fileID: 1625703964624142294}
   - component: {fileID: 1625703964624142293}
   - component: {fileID: 1625703964624142297}
+  - component: {fileID: 1625703964624142298}
   - component: {fileID: 1625703964624142292}
   m_Layer: 0
   m_Name: Gibbon_SteppySteppyFinal
@@ -51312,6 +51316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 0
+  style: {fileID: 0}
 --- !u!114 &1625703964624142294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51394,6 +51399,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1625703964624142295}
+--- !u!114 &1625703964624142298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625703964624142291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58aa0ef5013bad84098cc2bbee41668b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  styleGiven: 3
+  styleMeter: {fileID: 0}
 --- !u!4 &1672772505574046888
 Transform:
   m_ObjectHideFlags: 0
@@ -52125,6 +52144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 0
+  style: {fileID: 0}
 --- !u!114 &3714965934461015891
 MonoBehaviour:
   m_ObjectHideFlags: 0

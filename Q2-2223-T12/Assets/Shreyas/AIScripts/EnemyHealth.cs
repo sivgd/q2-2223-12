@@ -7,8 +7,9 @@ public class EnemyHealth : MonoBehaviour
 {
     public float maxHealth;
     public float currentHealth;
-    public string deathType; 
 
+    [Header("External References")]
+    public EnemyStyle style; 
     void Start()
     {
         currentHealth = maxHealth;
@@ -21,6 +22,24 @@ public class EnemyHealth : MonoBehaviour
 
     }
 
+    public void HurtEnemy(float damage,DamageSource damageSource)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+            switch (damageSource)
+            {
+                case DamageSource.Slimeball:
+                    style.broadcastDeath(DeathType.Explosion);
+                    break;
+                default:
+                    style.broadcastDeath(DeathType.Normal);
+                    break;
+            }
+        }
+    }
     public void HurtEnemy(float damage)
     {
         currentHealth -= damage;

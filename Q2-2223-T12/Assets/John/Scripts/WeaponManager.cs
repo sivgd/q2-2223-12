@@ -79,4 +79,10 @@ public class WeaponManager : MonoBehaviour
         sBL.setCoolDownTimer(sBL.getCoolDownTimer() - Time.deltaTime); 
     }
 }
+public enum DamageSource
+{
+    Slimeball,
+    Lilypad,
+    Shotgun
+}
 
