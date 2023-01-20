@@ -8,19 +8,23 @@ public class EnemyHealth : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
 
-    [Header("External References")]
-    public EnemyStyle style; 
+    
+    private EnemyStyle style; 
     void Start()
     {
         currentHealth = maxHealth;
-        
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-
+        currentHealth = maxHealth; 
+        if(gameObject.GetComponent<EnemyStyle>() != null)
+        {
+            style = gameObject.GetComponent<EnemyStyle>(); 
+        }
+        else style = gameObject.AddComponent<EnemyStyle>();
+       
     }
+
 
     public void HurtEnemy(float damage,DamageSource damageSource)
     {
@@ -28,7 +32,6 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
             switch (damageSource)
             {
                 case DamageSource.Slimeball:
@@ -38,6 +41,7 @@ public class EnemyHealth : MonoBehaviour
                     style.broadcastDeath(DeathType.Normal);
                     break;
             }
+            Destroy(gameObject);
         }
     }
     public void HurtEnemy(float damage)

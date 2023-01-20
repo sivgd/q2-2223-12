@@ -71,12 +71,12 @@ public class Lilypad : MonoBehaviour
     private void ApplyDamage(GameObject hitObj)
     {
         /// apply damage
-        hitObj.GetComponent<EnemyHealth>().HurtEnemy(damageToGive);
+        hitObj.GetComponent<EnemyHealth>().HurtEnemy(damageToGive,DamageSource.Lilypad);
 
     }
     private void ApplyDamage2(GameObject hitObj)
     {
         /// apply damage
-        hitObj.GetComponent<ExplodingEnemyHealth>().HurtEnemy(damageToGive);
+        hitObj.GetComponent<ExplodingEnemyHealth>().HurtEnemy(damageToGive,DamageSource.Lilypad);
     }
 }
