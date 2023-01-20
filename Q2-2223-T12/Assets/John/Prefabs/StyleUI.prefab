@@ -100,7 +100,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 31799
 --- !u!114 &7674593227826824526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +139,7 @@ MonoBehaviour:
   - S
   currentStyle: 0
   dStyle: 0
+  decayRollingMult: 1
 --- !u!1 &7674593227924819635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,10 +1003,10 @@ RectTransform:
   m_Father: {fileID: 7674593227826824521}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 370.9999, y: 136.02135}
-  m_SizeDelta: {x: -741.9999, y: -427.4958}
+  m_SizeDelta: {x: 282.00012, y: 340.5042}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7674593229004505892
 CanvasRenderer:

@@ -146,7 +146,10 @@ public class StyleMeterController : MonoBehaviour
                 maxVal = grades.Length * 4;
                 break; 
         }
-
+        if(currGrade > 0.5 * grades.Length)
+        {
+            Debug.Log("Player is on fire"); 
+        }
         styleMeter.maxValue = maxVal - minVal;
         styleMeter.value = dStyle - minVal ;
 
