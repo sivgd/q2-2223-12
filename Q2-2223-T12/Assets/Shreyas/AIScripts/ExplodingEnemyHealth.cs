@@ -9,6 +9,7 @@ public class ExplodingEnemyHealth : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
 
+    private EnemyStyle style; 
     [Header("Explode")]
     public GameObject exp;
     public GameObject explosionTrigger, animObject, rendererObject;
@@ -17,6 +18,7 @@ public class ExplodingEnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        style = GetComponent<EnemyStyle>(); 
         currentHealth = maxHealth;
     }
 
@@ -25,7 +27,25 @@ public class ExplodingEnemyHealth : MonoBehaviour
     {
 
     }
+    
+    public void HurtEnemy(float damage, DamageSource damageSource)
+    {
+        currentHealth -= damage;
 
+        if (currentHealth <= 0)
+        {
+            switch (damageSource)
+            {
+                case DamageSource.Slimeball:
+                    style.broadcastDeath(DeathType.Explosion);
+                    break;
+                default:
+                    style.broadcastDeath(DeathType.Normal);
+                    break;
+            }
+            StartCoroutine(WaitToDie());
+        }
+    }
     public void HurtEnemy(float damage)
     {
         currentHealth -= damage;
@@ -35,6 +55,9 @@ public class ExplodingEnemyHealth : MonoBehaviour
             StartCoroutine(WaitToDie());
         }
     }
+   
+
+   
 
     IEnumerator WaitToDie()
     {

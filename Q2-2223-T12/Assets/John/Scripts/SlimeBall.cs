@@ -92,11 +92,11 @@ public class SlimeBall : MonoBehaviour
         {
             if (enemy.CompareTag("Enemy"))
             { 
-                enemy.GetComponent<EnemyHealth>().HurtEnemy(damage);
+                enemy.GetComponent<EnemyHealth>().HurtEnemy(damage,DamageSource.Slimeball);
             }
             if (enemy.CompareTag("ExplodingEnemy"))
             {
-                enemy.GetComponent<ExplodingEnemyHealth>().HurtEnemy(damage);
+                enemy.GetComponent<ExplodingEnemyHealth>().HurtEnemy(damage,DamageSource.Slimeball);
             }
         }
         return; 

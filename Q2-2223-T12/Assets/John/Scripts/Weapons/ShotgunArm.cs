@@ -118,12 +118,12 @@ public class ShotgunArm : MonoBehaviour
         {
             //Damage enemy
             Debug.Log("Enemy Damaged");
-            inputObj.GetComponent<EnemyHealth>().HurtEnemy(damageToGive);
+            inputObj.GetComponent<EnemyHealth>().HurtEnemy(damageToGive,DamageSource.Shotgun);
         }
         else if(inputObj.CompareTag(enemyTag2))
         {
             Debug.Log("Explode");
-            inputObj.GetComponent<ExplodingEnemyHealth>().HurtEnemy(damageToGive);
+            inputObj.GetComponent<ExplodingEnemyHealth>().HurtEnemy(damageToGive,DamageSource.Shotgun);
         }
     }
 }
