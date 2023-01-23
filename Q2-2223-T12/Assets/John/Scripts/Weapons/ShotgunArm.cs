@@ -15,7 +15,14 @@ public class ShotgunArm : MonoBehaviour
     public string enemyTag2;
 
     private Vector3 initialPos;
-    private bool canFire = true; 
+    private bool canFire = true;
+
+    [Header("Particle Settings")]
+    public bool hasParticles = true; 
+    public int particleAmount = 5;
+    public float angleSpread = 10f;
+    public GameObject particle;
+    public Transform particleSpawnPoint; 
 
     [Header("External References")]
     private RaycastHit hit; 
@@ -39,7 +46,6 @@ public class ShotgunArm : MonoBehaviour
         {
             Fire();
             //StartCoroutine("MuzzleFlash"); 
-
         }
        
     }
@@ -54,6 +60,7 @@ public class ShotgunArm : MonoBehaviour
         if (canFire)
         {
             GenerateBullets();
+            if (hasParticles) GenerateParticles(); 
             //sfx.ApplyRecoil(recoil, transform, initialPos);
             StartCoroutine(Delay(shotDelay));
         }
@@ -73,6 +80,15 @@ public class ShotgunArm : MonoBehaviour
         animator.ResetTrigger("IsShotgunFire"); 
 
         
+    }
+    private void GenerateParticles()
+    {
+        for(int i = 0; i <= particleAmount; i++)
+        {
+           
+            Instantiate(particle, particleSpawnPoint.position, instPos.rotation);
+           
+        } 
     }
     /// <summary>
     /// Casts a box at a designated range and origin (range & instpos) towards what the player is aiming at 
