@@ -668,8 +668,8 @@ MonoBehaviour:
   w1Active: 0
   w2Active: 0
   w3Active: 0
-  w1Equipped: 0
-  w2Equipped: 0
+  w1Equipped: 1
+  w2Equipped: 1
   w3Equipped: 1
 --- !u!114 &1775020043438172880
 MonoBehaviour:

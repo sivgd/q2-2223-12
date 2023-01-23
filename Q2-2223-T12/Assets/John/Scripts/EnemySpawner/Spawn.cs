@@ -12,18 +12,18 @@ public class Spawn : MonoBehaviour
     [Header("Preferences")]
     public int spawnsPerEnemy = 1;
     public bool increaseEnemiesPerWave = false; 
-    //public float spawnDelay = 0.2f;
+    public float spawnDelay = 0.2f;
 
     private int currentEnemy = 0;
+    private int persistantIndex = 0; 
     private bool canSpawn = false;
     private GameObject[] instObj;
     private bool enemyExsists;
 
 
-
     private void Start()
     {
-        instObj = new GameObject[enemyQueue.Length];
+        instObj = new GameObject[enemyQueue.Length * spawnsPerEnemy];
     }    
     /// <summary>
     /// Spawns a new enemy if there aren't enemies in the scene. 
@@ -33,25 +33,31 @@ public class Spawn : MonoBehaviour
     private IEnumerator SpawnEnemy()
      {
         yield return new WaitUntil(() => canSpawn);
-        EnemySpawn(); 
-        yield return new WaitWhile(() => enemyExsists);
+        StartCoroutine(EnemySpawn()); 
+        yield return new WaitWhile(() => !enemyExsists);
         currentEnemy++;
+        Debug.Log("Incrementing Current Enemy"); 
      }
     /// <summary>
     /// Spawns an enemy and adds them to the array of enemies exclusive to this spawnpoint 
     /// </summary>
-    void EnemySpawn()
+    IEnumerator EnemySpawn()
     {
-        
         Debug.Log($"Spawning {enemyQueue[currentEnemy].name}");
         for(int i = 0; i < spawnsPerEnemy; i++)
         {          
-            instObj.SetValue(Instantiate(enemyQueue[currentEnemy], transform.position, transform.rotation), currentEnemy);
+            instObj.SetValue(Instantiate(enemyQueue[currentEnemy], transform.position, transform.rotation), persistantIndex);
             instObj[currentEnemy].name += name;
+            persistantIndex++; 
+            yield return StartCoroutine(spawnTimer()); 
         }
         
         if (increaseEnemiesPerWave) spawnsPerEnemy += spawnController.enemyWaveIncrease;
        // StopCoroutine(EnemySpawn()); 
+    }
+    IEnumerator spawnTimer()
+    {
+        yield return new WaitForSecondsRealtime(spawnDelay); 
     }
     /// <summary>
     /// Checks if there are currently any enemies exclusive to this gameobject in the scene
