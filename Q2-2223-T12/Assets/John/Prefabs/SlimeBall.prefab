@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootForce: 5000
-  damage: 5
+  damage: 7
   explosionRadius: 12
   explosionRadMult: 100
   superExplosionMult: 3
