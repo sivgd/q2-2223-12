@@ -8,11 +8,19 @@ using UnityEngine.AI;
 public class AIUnit : MonoBehaviour
 {
     public NavMeshAgent agent;
+    public EnemyHealth health;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         AIManager.Instance.Units.Add(this);
+    }
+    void Update()
+    {
+        if(health.currentHealth <= 10)
+        {
+            AIManager.Instance.Units.Clear();
+        }
     }
 
     public void MoveTo(Vector3 Position)

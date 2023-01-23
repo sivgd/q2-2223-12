@@ -35,7 +35,10 @@ public class AIManager : MonoBehaviour
 
     private void Update()
     {
-        MakeAgentsCircleTarget();
+        if(gameObject != null)
+        {
+            MakeAgentsCircleTarget();
+        }
     }
 
     private void MakeAgentsCircleTarget()

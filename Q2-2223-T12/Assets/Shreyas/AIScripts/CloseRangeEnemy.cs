@@ -48,7 +48,7 @@ public class CloseRangeEnemy : MonoBehaviour
             Chase();
         }
 
-        if (playerInAttackRange && playerSightInRange)
+        if (playerInAttackRange && playerSightInRange && agent.velocity.magnitude == 0)
         {
             Attack();
         }
