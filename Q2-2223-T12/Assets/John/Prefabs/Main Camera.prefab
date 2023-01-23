@@ -919,6 +919,11 @@ MonoBehaviour:
   recoil: 3
   enemyTag: Enemy
   enemyTag2: ExplodingEnemy
+  hasParticles: 1
+  particleAmount: 5
+  angleSpread: 10
+  particle: {fileID: 1833689760132313936, guid: f42095894183d3b4d8ec2b7d9fb65bc0, type: 3}
+  particleSpawnPoint: {fileID: 6392135916640574568}
   instPos: {fileID: 2975414614282822398}
   damageToGive: 10
 --- !u!114 &5888661453218123652

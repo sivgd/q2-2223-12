@@ -33,8 +33,9 @@ public class Spawn : MonoBehaviour
     private IEnumerator SpawnEnemy()
      {
         yield return new WaitUntil(() => canSpawn);
-        StartCoroutine(EnemySpawn()); 
-        yield return new WaitWhile(() => !enemyExsists);
+        StartCoroutine(EnemySpawn());
+        yield return new WaitForSecondsRealtime(spawnDelay); 
+        yield return new WaitWhile(() => enemyExsists);
         currentEnemy++;
         Debug.Log("Incrementing Current Enemy"); 
      }
@@ -47,7 +48,7 @@ public class Spawn : MonoBehaviour
         for(int i = 0; i < spawnsPerEnemy; i++)
         {          
             instObj.SetValue(Instantiate(enemyQueue[currentEnemy], transform.position, transform.rotation), persistantIndex);
-            instObj[currentEnemy].name += name;
+            instObj[persistantIndex].name += name;
             persistantIndex++; 
             yield return StartCoroutine(spawnTimer()); 
         }
