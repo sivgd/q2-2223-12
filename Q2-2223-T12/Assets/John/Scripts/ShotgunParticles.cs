@@ -33,6 +33,6 @@ public class ShotgunParticles : MonoBehaviour
     void pelletTravel()
     {
         transform.localPosition = Vector3.Lerp(transform.localPosition, transform.localPosition + (transform.up.normalized * rangeOfTravel),pointInTravel );
-        if (transform.position.Equals(transform.position + (transform.up * rangeOfTravel))) Destroy(gameObject); 
+        if (transform.position.Equals(transform.position + (transform.up.normalized * rangeOfTravel))) Destroy(gameObject); 
     }
 }
