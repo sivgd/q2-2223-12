@@ -94,5 +94,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c91cb359b413944a98972c8b2a08bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spread: 3
-  pelletSpeed: 0.0001
+  spread: 0
+  pelletSpeed: 1
