@@ -41,7 +41,7 @@ public class EnemyHealth : MonoBehaviour
                     style.broadcastDeath(DeathType.Normal);
                     break;
             }
-            Destroy(gameObject);
+            StartCoroutine(WaitToDie());
         }
     }
     public void HurtEnemy(float damage)
@@ -50,8 +50,15 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            StartCoroutine(WaitToDie());
         }
+    }
+
+
+    IEnumerator WaitToDie()
+    {
+        yield return new WaitForSeconds(0.2f);
+        Destroy(gameObject);
     }
 
 }
