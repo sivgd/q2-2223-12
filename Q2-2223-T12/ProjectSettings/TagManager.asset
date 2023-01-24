@@ -11,6 +11,7 @@ TagManager:
   - Ground
   - EnemyBullet
   - test
+  - ignoreLPad
   layers:
   - Default
   - TransparentFX

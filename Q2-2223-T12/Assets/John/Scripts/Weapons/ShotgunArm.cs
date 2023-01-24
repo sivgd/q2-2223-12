@@ -5,11 +5,11 @@ using UnityEngine;
 public class ShotgunArm : MonoBehaviour
 {
     [Header("Shooting Variables")]
-    public float shotSpread=0.2f;
-    public float spreadMult;
+   /* public float shotSpread=0.2f;
+    public float spreadMult;*/
     public float shotDelay = 0.3f; 
     //float rX, rY, rZ;
-    public float range = 100f;
+  //  public float range = 100f;
     public float recoil = 3f; 
     public string enemyTag;
     public string enemyTag2;
@@ -26,6 +26,7 @@ public class ShotgunArm : MonoBehaviour
     [Header("External References")]
     private RaycastHit hit; 
     public Transform instPos;
+    public ReturnEnemies shotgunRangeBox; 
     //public GameObject muzzleFlash;
     public int damageToGive;
     private CameraEffectManager sfx;
@@ -94,11 +95,16 @@ public class ShotgunArm : MonoBehaviour
     /// </summary>
    private void GenerateBullets()
    {
-
-        Ray boxRay = new Ray(instPos.position, instPos.forward);
+        shotgunRangeBox.gameObject.SetActive(true);
+        Collider[] colHit = shotgunRangeBox.getColliders();  
+        
+        /*Ray boxRay = new Ray(instPos.position, instPos.forward);
         Vector3 boxRange = new Vector3(shotSpread,shotSpread/3,shotSpread);
         Quaternion boxOrientation = instPos.rotation;
-        Debug.DrawRay(boxRay.origin, boxRay.direction,Color.red);
+        Debug.DrawRay(boxRay.origin, boxRay.direction * range,Color.red);
+
+
+       
         if (Physics.BoxCast(boxRay.origin, boxRange, boxRay.direction, out hit, boxOrientation, range))
         {
             Debug.Log($"{hit.collider.name} was hit"); 
@@ -114,7 +120,7 @@ public class ShotgunArm : MonoBehaviour
                     PushEnemy(hit.collider.gameObject.GetComponent<Rigidbody>(), hit);
                 }
             }
-        } 
+        } */
 
    }
     private void PushEnemy(Rigidbody affectedRB,RaycastHit hit)
