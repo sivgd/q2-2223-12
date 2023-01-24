@@ -112,7 +112,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3846018093981099296, guid: 818071321d651734f920b8627ee1b67c, type: 3}
+  - {fileID: 2100000, guid: 67c33a0273f342f41b840b3d7a816d25, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -414,9 +414,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2975414614268289573}
-  m_LocalRotation: {x: 0.00000016858736, y: 0.00000023841855, z: 0.00000016858736, w: 1}
-  m_LocalPosition: {x: 0.34300035, y: 0, z: 1.0920008}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.9}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 2975414614071183892}
   m_RootOrder: 0
@@ -542,6 +542,7 @@ GameObject:
   - component: {fileID: 2975414614734706942}
   - component: {fileID: 3388497672036299190}
   - component: {fileID: 1775020043438172880}
+  - component: {fileID: 1184264564551828638}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -592,7 +593,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -688,6 +689,39 @@ MonoBehaviour:
   explosionLight: {fileID: 6768039025550832326}
   explosionScreenShake: 0.6
   recoilDuration: 0.3
+--- !u!114 &1184264564551828638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2975414614734706943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &3393386194491218781
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,7 +954,7 @@ MonoBehaviour:
   enemyTag: Enemy
   enemyTag2: ExplodingEnemy
   hasParticles: 1
-  particleAmount: 5
+  particleAmount: 10
   angleSpread: 10
   particle: {fileID: 1833689760132313936, guid: f42095894183d3b4d8ec2b7d9fb65bc0, type: 3}
   particleSpawnPoint: {fileID: 6392135916640574568}
@@ -1339,7 +1373,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3846018093981099296, guid: 818071321d651734f920b8627ee1b67c, type: 3}
+  - {fileID: 2100000, guid: 67c33a0273f342f41b840b3d7a816d25, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1528,7 +1562,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3846018093981099296, guid: 818071321d651734f920b8627ee1b67c, type: 3}
+  - {fileID: 2100000, guid: 67c33a0273f342f41b840b3d7a816d25, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1625,7 +1659,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6922793697723135513, guid: 818071321d651734f920b8627ee1b67c, type: 3}
+  - {fileID: 2100000, guid: a8e84bb4dfcb0e04bb0aa5d2ebe32ed2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

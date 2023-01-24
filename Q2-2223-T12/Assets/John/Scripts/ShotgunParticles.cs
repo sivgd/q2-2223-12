@@ -5,21 +5,24 @@ using UnityEngine;
 public class ShotgunParticles : MonoBehaviour
 {
     private float rangeOfTravel = 1f;
+    public float lifeTime = 1f; 
     public float spread = 0.1f; 
     public float pelletSpeed = 0.3f;
     private bool allowForPelletTravel;
-    private float pointInTravel = 0f; 
+    private Vector3 spreadVector;
+    private Rigidbody rb; 
     
     private void Awake()
     {
+        rb = GetComponent <Rigidbody>(); 
         float dX, dY, dZ;
         dX = Random.Range(-spread, spread);
         dY = Random.Range(-spread, spread);
         dZ = Random.Range(-spread, spread);
-        Vector3 spreadVector = new Vector3(dX, dY, dZ);
-        Vector3 v = transform.position + (transform.up+ spreadVector); 
+        spreadVector = new Vector3(dX, dY, dZ); 
         allowForPelletTravel = true;
-        transform.rotation = Quaternion.LookRotation(v); 
+        transform.rotation = Quaternion.LookRotation(transform.forward + spreadVector);
+        StartCoroutine(destroyAfterTime()); 
     }
 
     private void Update()
@@ -27,12 +30,15 @@ public class ShotgunParticles : MonoBehaviour
         if (allowForPelletTravel)
         {
             pelletTravel();
-            pointInTravel += Time.deltaTime * pelletSpeed; 
         }
     }
     void pelletTravel()
     {
-        transform.position = Vector3.Lerp(transform.position, transform.position + (-transform.up * rangeOfTravel), pointInTravel);
-        if (transform.position.Equals(transform.position + (-transform.up * rangeOfTravel))) Destroy(gameObject); 
+        rb.velocity = transform.forward * pelletSpeed * Time.deltaTime; 
+    }
+    IEnumerator destroyAfterTime()
+    {
+        yield return new WaitForSecondsRealtime(lifeTime);
+        Destroy(gameObject); 
     }
 }

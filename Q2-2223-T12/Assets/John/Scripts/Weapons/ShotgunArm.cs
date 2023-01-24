@@ -20,7 +20,6 @@ public class ShotgunArm : MonoBehaviour
     [Header("Particle Settings")]
     public bool hasParticles = true; 
     public int particleAmount = 5;
-    public float angleSpread = 10f;
     public GameObject particle;
     public Transform particleSpawnPoint; 
 
@@ -85,9 +84,7 @@ public class ShotgunArm : MonoBehaviour
     {
         for(int i = 0; i <= particleAmount; i++)
         {
-           
             Instantiate(particle, particleSpawnPoint.position, instPos.rotation);
-           
         } 
     }
     /// <summary>
