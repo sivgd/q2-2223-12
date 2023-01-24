@@ -954,7 +954,7 @@ MonoBehaviour:
   enemyTag: Enemy
   enemyTag2: ExplodingEnemy
   hasParticles: 1
-  particleAmount: 5
+  particleAmount: 10
   angleSpread: 10
   particle: {fileID: 1833689760132313936, guid: f42095894183d3b4d8ec2b7d9fb65bc0, type: 3}
   particleSpawnPoint: {fileID: 6392135916640574568}
