@@ -17,9 +17,9 @@ public class AIUnit : MonoBehaviour
     }
     void Update()
     {
-        if(health.currentHealth <= 10)
+        if(health.currentHealth <= 0)
         {
-            AIManager.Instance.Units.Clear();
+            AIManager.Instance.Units.Remove(this);
         }
     }
 

@@ -714,6 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2278721822976176218}
+  health: {fileID: 2278721822976176216}
 --- !u!114 &2278721822976176198
 MonoBehaviour:
   m_ObjectHideFlags: 0
