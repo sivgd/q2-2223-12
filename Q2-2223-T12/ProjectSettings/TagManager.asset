@@ -12,6 +12,8 @@ TagManager:
   - EnemyBullet
   - test
   - ignoreLPad
+  - BulletEffect
+  - Level
   layers:
   - Default
   - TransparentFX

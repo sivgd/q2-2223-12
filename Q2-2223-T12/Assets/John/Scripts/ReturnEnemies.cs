@@ -5,25 +5,52 @@ using UnityEngine;
 public class ReturnEnemies : MonoBehaviour
 {
     private List<Collider> collidersHit = new List<Collider>();
-    private bool active; 
-    private void Awake()
+    private Collider thisCol; 
+    bool active = false;
+    Ray checkForWall;
+    public string levelTag;
+    RaycastHit hit; 
+    private void Start()
     {
-        active = true; 
+        thisCol = GetComponent<Collider>(); 
     }
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider other)
     {
+
         if (active)
         {
-            if (!collidersHit.Contains(collision)) collidersHit.Add(collision); 
+            if (!other.gameObject.layer.Equals("player") && !other.gameObject.layer.Equals(levelTag))
+            {
+
+                checkForWall.origin = transform.position;
+                checkForWall.direction = other.transform.position;
+                
+                if (Physics.Raycast(checkForWall,out hit, thisCol.bounds.size.z))
+                {
+                    if(!hit.collider.CompareTag(levelTag))
+                    {
+                        collidersHit.Add(other); 
+                    }
+                }
+            }
         }
+
     }
     public Collider[] getColliders()
     {
+        Debug.Log(collidersHit.ToString());
         return collidersHit.ToArray(); 
     }
-    private void OnDisable()
+    public void clearColliderList()
     {
-        collidersHit.Clear();
-        active = false; 
+        collidersHit.Clear(); 
+    }
+    public void setActive(bool newActive)
+    {
+        active = newActive; 
+    }
+    public bool getActive()
+    {
+        return active; 
     }
 }

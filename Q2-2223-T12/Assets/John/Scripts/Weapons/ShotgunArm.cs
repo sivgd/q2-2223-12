@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine; 
 
 public class ShotgunArm : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class ShotgunArm : MonoBehaviour
     public string enemyTag;
     public string enemyTag2;
 
-    private Vector3 initialPos;
+   // private Vector3 initialPos;
     private bool canFire = true;
 
     [Header("Particle Settings")]
@@ -24,7 +24,7 @@ public class ShotgunArm : MonoBehaviour
     public Transform particleSpawnPoint; 
 
     [Header("External References")]
-    private RaycastHit hit; 
+    //private RaycastHit hit; 
     public Transform instPos;
     public ReturnEnemies shotgunRangeBox; 
     //public GameObject muzzleFlash;
@@ -37,7 +37,7 @@ public class ShotgunArm : MonoBehaviour
     private void Start()
     {
         sfx = FindObjectOfType<CameraEffectManager>().GetComponent<CameraEffectManager>();
-        initialPos = transform.localPosition;
+      //  initialPos = transform.localPosition;
         animator = GetComponent<Animator>(); 
     }
     private void Update()
@@ -95,9 +95,22 @@ public class ShotgunArm : MonoBehaviour
     /// </summary>
    private void GenerateBullets()
    {
-        shotgunRangeBox.gameObject.SetActive(true);
-        Collider[] colHit = shotgunRangeBox.getColliders();  
-        
+        string names = ""; 
+        shotgunRangeBox.setActive(true); 
+        Collider[] colHit = shotgunRangeBox.getColliders();
+
+        foreach(Collider col in colHit)
+        {
+            names += col.name + ", "; 
+            if (!col.CompareTag("BulletEffect"))
+            {
+                Debug.Log($"{col.name} was hit");
+                if (col.CompareTag(enemyTag) || col.CompareTag(enemyTag2)) ApplyDamage(col.gameObject);
+            }
+        }
+        Debug.Log($"[{names}]"); 
+        //shotgunRangeBox.setActive(false);
+        shotgunRangeBox.clearColliderList(); 
         /*Ray boxRay = new Ray(instPos.position, instPos.forward);
         Vector3 boxRange = new Vector3(shotSpread,shotSpread/3,shotSpread);
         Quaternion boxOrientation = instPos.rotation;
