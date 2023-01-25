@@ -2352,7 +2352,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21786
+  m_Name: pb_Mesh23020
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3948,10 +3948,6 @@ PrefabInstance:
       propertyPath: debugBox
       value: 
       objectReference: {fileID: 2000728843}
-    - target: {fileID: 3060562325807904366, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
-      propertyPath: shotgunRangeBox
-      value: 
-      objectReference: {fileID: 2975414613418989884}
     - target: {fileID: 3137052990088977134, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -4051,6 +4047,14 @@ PrefabInstance:
     - target: {fileID: 3980350452599080391, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -89.98021
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085329614834140731, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
+      propertyPath: m_Size.z
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085329614834140731, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
+      propertyPath: m_Center.z
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4270454812708228058, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_Layer
@@ -4786,17 +4790,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
---- !u!114 &2975414613418989884 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6447386684092379247, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
-  m_PrefabInstance: {fileID: 2975414613418989883}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b08ce41b9aceee4fb40fd575ab76302, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6663014823424054770 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2446510938437457755, guid: 752e78fd6422238478549f1f0090bc90, type: 3}
