@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 159232708}
   m_Layer: 10
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2352,7 +2352,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23020
+  m_Name: pb_Mesh21816
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4339,6 +4339,10 @@ PrefabInstance:
     - target: {fileID: 6426530413149396065, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447386684092379247, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
+      propertyPath: levelTag
+      value: Level
       objectReference: {fileID: 0}
     - target: {fileID: 6467312891868382579, guid: 4e9836d88bfe86049ae9adce951fcad4, type: 3}
       propertyPath: m_Layer
