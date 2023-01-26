@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 6594784484340008431}
   - component: {fileID: 7794246723690760778}
   - component: {fileID: 5462388406510681728}
+  - component: {fileID: 3106986484073070425}
   m_Layer: 0
   m_Name: BananaCrate
   m_TagString: Untagged
@@ -341,7 +342,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5822786122017169237}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -120.95585, y: 7.8049917, z: -4.6319847}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children:
@@ -383,7 +384,7 @@ Transform:
   - {fileID: 4797692431444002121}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &7794246723690760778
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -433,6 +434,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3106986484073070425
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5822786122017169237}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: 98c0a441a0f147145b3364aefdfe79a9, type: 3}
 --- !u!1 &5907260525134566909
 GameObject:
   m_ObjectHideFlags: 0
