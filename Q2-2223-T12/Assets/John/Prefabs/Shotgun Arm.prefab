@@ -742,14 +742,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e6f8e4823619e4d87262bce424a7a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSpread: 1
-  spreadMult: 20
   shotDelay: 0.3
-  range: 100
   recoil: 0
-  enemyTag: 
-  enemyTag2: 
+  enemyTag: Enemy
+  enemyTag2: ExplodingEnemy
+  hasParticles: 1
+  particleAmount: 5
+  particle: {fileID: 0}
+  particleSpawnPoint: {fileID: 0}
   instPos: {fileID: 0}
+  shotgunRangeBox: {fileID: 0}
   damageToGive: 3
 --- !u!111 &4425612500694114837
 Animation:
