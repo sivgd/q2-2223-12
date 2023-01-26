@@ -5253,7 +5253,7 @@ PrefabInstance:
     - target: {fileID: 2278721822976176219, guid: 1d4c1dec0cea91e40bd8329264885304, type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 1027616644}
+      objectReference: {fileID: 0}
     - target: {fileID: 2278721822976176219, guid: 1d4c1dec0cea91e40bd8329264885304, type: 3}
       propertyPath: player
       value: 
