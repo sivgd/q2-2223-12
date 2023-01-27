@@ -597,6 +597,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2278721822482624857, guid: 1d4c1dec0cea91e40bd8329264885304, type: 3}
   m_PrefabInstance: {fileID: 2278721823353161097}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &623827893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 623827894}
+  m_Layer: 0
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &623827894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623827893}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9190638054162777198}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &721346210
 GameObject:
   m_ObjectHideFlags: 0
@@ -8394,7 +8424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9cba8a447d37464eba66b30bdd0d7ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1148010079}
+  agent: {fileID: 8412834266202709719}
   player: {fileID: 1216287972}
   whatIsGround:
     serializedVersion: 2
@@ -8403,7 +8433,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   walkPoint: {x: 0, y: 0, z: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 2984646618318544404}
   walkPointSet: 0
   walkPointRange: 5
   timeBetweenAttack: 1
@@ -8413,8 +8443,8 @@ MonoBehaviour:
   playerSightInRange: 0
   playerInAttackRange: 0
   projectile: {fileID: 4327793174593112311, guid: 856d7283df1af034983b7053e8628db2, type: 3}
-  firingPoint: {fileID: 967009658}
-  head: {fileID: 791768602}
+  firingPoint: {fileID: 623827893}
+  head: {fileID: 284241285224183642}
   shootForce: 20
   upwardForce: 0
   bulletsPerShot: 1
@@ -8685,6 +8715,7 @@ Transform:
   - {fileID: 232887348686525680}
   - {fileID: 1764018870974575988}
   - {fileID: 6917647764504252123}
+  - {fileID: 623827894}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
