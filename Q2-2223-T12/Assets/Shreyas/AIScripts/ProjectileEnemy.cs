@@ -9,6 +9,7 @@ public class ProjectileEnemy : MonoBehaviour
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public Vector3 walkPoint;
+    public Animator animator;
     [HideInInspector]
     public bool walkPointSet;
     public float walkPointRange;
@@ -61,11 +62,15 @@ public class ProjectileEnemy : MonoBehaviour
         {
             Attack();
         }
+
+        animator.SetFloat("Move", agent.velocity.magnitude);
     }
 
     private void Patrol()
     {
-        if(!walkPointSet)
+        animator.SetBool("Attack", false);
+        animator.SetBool("Move", true);
+        if (!walkPointSet)
         {
             SearchWalkPoint();
         }
@@ -113,12 +118,19 @@ public class ProjectileEnemy : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            Shoot();
-            alreadyAttacked = true;
-            Invoke(nameof(Resetenemy), timeBetweenAttack);
+            StartCoroutine(attackAnim());
         }
     }
 
+    IEnumerator attackAnim()
+    {
+        Shoot();
+        animator.SetBool("Attack", true);
+        alreadyAttacked = true;
+        yield return new WaitForSeconds(2.17f);
+        animator.SetBool("Attack", false);
+        Invoke(nameof(Resetenemy), timeBetweenAttack);
+    }
     private void Resetenemy()
     {
         alreadyAttacked = false;
