@@ -27,7 +27,7 @@ public class ShotgunArm : MonoBehaviour
     private RaycastHit hit; 
     public Transform instPos;
    // public ReturnEnemies shotgunRangeBox;
-    public Transform debugCube; 
+   // public Transform debugCube; 
     //public GameObject muzzleFlash;
     public int damageToGive;
    // public Vector3 gizmoPos; 
@@ -44,7 +44,7 @@ public class ShotgunArm : MonoBehaviour
     }
     private void Update()
     {
-        debugCube.localScale = (new Vector3(shotSpread * 2f, (shotSpread / 3) * 2f, shotSpread * range));
+      //  debugCube.localScale = (new Vector3(shotSpread * 2f, (shotSpread / 3) * 2f, shotSpread * range));
         
         if (Input.GetButtonDown("Fire1"))
         {
