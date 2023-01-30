@@ -7,14 +7,15 @@ public class ExplosionStuff : MonoBehaviour
     private float scale = 0f;
     float finalRadius;
     float rate;
-    private bool canGrow; 
+    private bool canGrow;
+   public AudioSource explosion; 
     public void Grow(float finalRadius, float rate)
     {
         this.finalRadius = finalRadius;
         this.rate = rate;
         canGrow = true; 
     }
-
+   
     private void Update()
     {
         if (canGrow)

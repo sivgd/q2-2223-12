@@ -686,6 +686,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialCameraPosition: {fileID: 0}
   explosionWindup: {fileID: 210873497095733050}
+  weaponEffects:
+  - {fileID: 8300000, guid: 30c38d7c2e689d94f8d2e267840c94bd, type: 3}
+  - {fileID: 8300000, guid: 8816275f40a827f4e90fe276b5c3af37, type: 3}
+  - {fileID: 8300000, guid: 4ff0b7fbc078a414c912fefb063941c7, type: 3}
+  - {fileID: 0}
   explosionLight: {fileID: 6768039025550832326}
   explosionScreenShake: 0.6
   recoilDuration: 0.3
