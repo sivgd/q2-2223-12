@@ -97,7 +97,8 @@ public class playerMove : MonoBehaviour
     private void FixedUpdate()
     {
         //#groundcheck!!!! slayyyyyyyyyyyyyyyyyy
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        // raycast does stupid and is reason why player can hop on shotgun collider and my 13th reason.
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround,QueryTriggerInteraction.Ignore);
 
         MovePlayer();
 

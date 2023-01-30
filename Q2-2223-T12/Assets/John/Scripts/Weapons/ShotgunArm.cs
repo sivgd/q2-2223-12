@@ -5,11 +5,11 @@ using UnityEngine;
 public class ShotgunArm : MonoBehaviour
 {
     [Header("Shooting Variables")]
-   /* public float shotSpread=0.2f;
-    public float spreadMult;*/
+    public float shotSpread=0.2f;
+    public float spreadMult;
     public float shotDelay = 0.3f; 
-    //float rX, rY, rZ;
-  //  public float range = 100f;
+    float rX, rY, rZ;
+    public float range = 100f;
     public float recoil = 3f; 
     public string enemyTag;
     public string enemyTag2;
@@ -24,11 +24,13 @@ public class ShotgunArm : MonoBehaviour
     public Transform particleSpawnPoint; 
 
     [Header("External References")]
-    //private RaycastHit hit; 
+    private RaycastHit hit; 
     public Transform instPos;
-    public ReturnEnemies shotgunRangeBox; 
+   // public ReturnEnemies shotgunRangeBox;
+   // public Transform debugCube; 
     //public GameObject muzzleFlash;
     public int damageToGive;
+   // public Vector3 gizmoPos; 
     private CameraEffectManager sfx;
     Animator animator; 
 
@@ -42,12 +44,13 @@ public class ShotgunArm : MonoBehaviour
     }
     private void Update()
     {
+      //  debugCube.localScale = (new Vector3(shotSpread * 2f, (shotSpread / 3) * 2f, shotSpread * range));
+        
         if (Input.GetButtonDown("Fire1"))
         {
             Fire();
             //StartCoroutine("MuzzleFlash"); 
-        }
-       
+        }       
     }
     /*IEnumerator MuzzleFlash()
     {
@@ -95,47 +98,47 @@ public class ShotgunArm : MonoBehaviour
     /// </summary>
    private void GenerateBullets()
    {
-        string names = ""; 
+      /*  string names = ""; 
         shotgunRangeBox.setActive(true); 
         Collider[] colHit = shotgunRangeBox.getColliders();
-
-        foreach(Collider col in colHit)
-        {
-            names += col.name + ", "; 
-            if (!col.CompareTag("BulletEffect"))
-            {
-                Debug.Log($"{col.name} was hit");
-                if (col.CompareTag(enemyTag) || col.CompareTag(enemyTag2)) ApplyDamage(col.gameObject);
-            }
-        }
-        Debug.Log($"[{names}]"); 
+*/
+        /* foreach(Collider col in colHit)
+         {
+             names += col.name + ", "; 
+             if (!col.CompareTag("BulletEffect"))
+             {
+                 Debug.Log($"{col.name} was hit");
+                 if (col.CompareTag(enemyTag) || col.CompareTag(enemyTag2)) ApplyDamage(col.gameObject);
+             }
+         }
+         Debug.Log($"[{names}]"); */
         //shotgunRangeBox.setActive(false);
-        shotgunRangeBox.clearColliderList(); 
-        /*Ray boxRay = new Ray(instPos.position, instPos.forward);
-        Vector3 boxRange = new Vector3(shotSpread,shotSpread/3,shotSpread);
+        // shotgunRangeBox.clearColliderList(); 
+        Ray boxRay = new Ray(instPos.position, instPos.forward);
+        Vector3 boxRange = new Vector3(shotSpread, shotSpread / 3, shotSpread);
         Quaternion boxOrientation = instPos.rotation;
-        Debug.DrawRay(boxRay.origin, boxRay.direction * range,Color.red);
+       // Debug.DrawRay(boxRay.origin, boxRay.direction * range, Color.red);
 
 
-       
+
         if (Physics.BoxCast(boxRay.origin, boxRange, boxRay.direction, out hit, boxOrientation, range))
         {
-            Debug.Log($"{hit.collider.name} was hit"); 
-            if(hit.collider.tag != null)
+            Debug.Log($"{hit.collider.name} was hit");
+            if (hit.collider.tag != null)
             {
                 if (hit.collider.CompareTag(enemyTag) || hit.collider.CompareTag(enemyTag2))
                 {
                     ApplyDamage(hit.collider.gameObject);
                 }
-                
+
                 if (hit.collider.gameObject.GetComponent<Rigidbody>() != null)
                 {
                     PushEnemy(hit.collider.gameObject.GetComponent<Rigidbody>(), hit);
                 }
             }
-        } */
+        }
 
-   }
+    }
     private void PushEnemy(Rigidbody affectedRB,RaycastHit hit)
     {
 
