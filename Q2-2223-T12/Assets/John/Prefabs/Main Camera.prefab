@@ -1005,7 +1005,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e6f8e4823619e4d87262bce424a7a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotSpread: 0.2
+  spreadMult: 0
   shotDelay: 0.3
+  range: 100
   recoil: 3
   enemyTag: Enemy
   enemyTag2: ExplodingEnemy
@@ -1016,6 +1019,7 @@ MonoBehaviour:
   instPos: {fileID: 2975414614282822398}
   shotgunRangeBox: {fileID: 6447386684092379247}
   damageToGive: 10
+  gizmoPos: {x: 0.75, y: 0.5, z: 0.15}
 --- !u!114 &5888661453218123652
 MonoBehaviour:
   m_ObjectHideFlags: 0
