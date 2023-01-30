@@ -16,7 +16,6 @@ public class pauseEsc : MonoBehaviour
     {
         pauseMenu = GameObject.Find("pauseMenu");
         pauseMenu.SetActive(false);
-        lilypadAnim.SetBool("canPlay", true);
     }
 
     // Update is called once per frame
@@ -32,12 +31,27 @@ public class pauseEsc : MonoBehaviour
             Time.timeScale = 0;
 
         }
-        if(isPaused == true && Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
             lilypadAnim.SetTrigger("playPt2");
             isPaused = false;
             Time.timeScale = 1;
-            pauseMenu.SetActive(false);
+            //pauseMenu.SetActive(false);
+            Invoke("unpauseThing", 0.8f);
         }
     }
+
+    public void resumeButton()
+    {
+        lilypadAnim.SetTrigger("playPt2");
+        isPaused = false;
+        Time.timeScale = 1;
+        Invoke("unpauseThing", 0.8f);
+    }
+
+    private void unpauseThing()
+    {
+        pauseMenu.SetActive(false);
+    }
+
 }

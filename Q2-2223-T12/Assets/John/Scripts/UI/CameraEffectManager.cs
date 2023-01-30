@@ -11,6 +11,7 @@ public class CameraEffectManager : MonoBehaviour
     public RectTransform styleUI; */
     [Header("Explosion SFX")]
     public AudioSource explosionWindup;
+    public AudioClip[] weaponEffects; 
     public GameObject explosionLight;
     public float explosionScreenShake;
    private bool isShaking = false; 
@@ -83,5 +84,24 @@ public class CameraEffectManager : MonoBehaviour
     {
         StartCoroutine(RecoilSFX(recoilForce,affectedTransform,initialPosition)); 
     }
+    public void playSound(soundEffects soundEffect)
+    {
+        switch (soundEffect)
+        {
+            case soundEffects.Shotgun:
+                break;
+            case soundEffects.Lilypad:
+                break;
+            case soundEffects.Slimeball:
+                break; 
+        }
+    }
     
+    
+}
+public enum soundEffects
+{
+    Shotgun,
+    Lilypad,
+    Slimeball
 }
