@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 7710766380529140746}
   - component: {fileID: 4085329614834140731}
   - component: {fileID: 6447386684092379247}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ShotgunRange
   m_TagString: ignoreLPad
   m_Icon: {fileID: 0}
@@ -277,6 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b08ce41b9aceee4fb40fd575ab76302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelTag: 
 --- !u!1 &1521825398452242295
 GameObject:
   m_ObjectHideFlags: 0
