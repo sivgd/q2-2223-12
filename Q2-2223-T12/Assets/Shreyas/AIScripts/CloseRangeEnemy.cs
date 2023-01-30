@@ -24,9 +24,6 @@ public class CloseRangeEnemy : MonoBehaviour
     public float sightRange, AttackRange;
     public bool playerSightInRange, playerInAttackRange;
 
-    [Header("Attack")]
-    public Animator anim;
-
     [Header("Look")]
     public float turnSpeed;
     Quaternion rotGoal;
