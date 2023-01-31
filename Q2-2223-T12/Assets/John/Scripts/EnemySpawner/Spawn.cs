@@ -34,7 +34,7 @@ public class Spawn : MonoBehaviour
      {
         yield return new WaitUntil(() => canSpawn);
         StartCoroutine(EnemySpawn());
-        spawnController.setBarriersActive(true); 
+   
         yield return new WaitForSecondsRealtime(spawnDelay); 
         yield return new WaitWhile(() => enemyExsists);
         currentEnemy++;
@@ -92,7 +92,9 @@ public class Spawn : MonoBehaviour
             spawnController.setBarriersActive(false);
             Destroy(gameObject); 
         }
+        
         enemyExsists = CheckForEnemy(); 
-       
+        if(enemyExsists) spawnController.setBarriersActive(true); 
+
     }
 }
