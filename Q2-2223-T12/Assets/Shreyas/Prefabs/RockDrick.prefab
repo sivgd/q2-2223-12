@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7114432098395260607}
   - component: {fileID: 7114432098395260600}
   - component: {fileID: 7114432098395260602}
+  - component: {fileID: 457479860429673983}
   m_Layer: 0
   m_Name: RockDrick
   m_TagString: EnemyBullet
@@ -104,6 +105,19 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.63746256
+  m_Center: {x: -0.13398707, y: 0.1908037, z: 0.12747931}
+--- !u!135 &457479860429673983
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114432098395260603}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7
   m_Center: {x: -0.13398707, y: 0.1908037, z: 0.12747931}
 --- !u!1 &7114432098932898051
 GameObject:

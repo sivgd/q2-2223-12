@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2258371498647126337}
   - component: {fileID: 5944590997493411341}
   - component: {fileID: -7521676234750963468}
+  - component: {fileID: 274595575664030588}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: EnemyBullet
@@ -155,3 +156,16 @@ MonoBehaviour:
   damageToGive: 5
   explodeDamage: 0
   tankDamage: 0
+--- !u!135 &274595575664030588
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4327793174593112311}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: 0, y: 0, z: 0}
