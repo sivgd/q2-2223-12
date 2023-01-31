@@ -8,11 +8,8 @@ public class ProjectileEnemy : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
-    public Vector3 walkPoint;
     public Animator animator;
     [HideInInspector]
-    public bool walkPointSet;
-    public float walkPointRange;
     public float timeBetweenAttack;
     [HideInInspector]
     public bool alreadyAttacked;
@@ -24,7 +21,6 @@ public class ProjectileEnemy : MonoBehaviour
     [Header("Shoot")]
     public GameObject projectile;
     public GameObject firingPoint;
-    public GameObject head;
     public float shootForce, upwardForce;
     public int bulletsPerShot;
     [HideInInspector]
@@ -39,7 +35,6 @@ public class ProjectileEnemy : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -48,56 +43,17 @@ public class ProjectileEnemy : MonoBehaviour
         playerSightInRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, whatIsPlayer);
 
-        if (!playerSightInRange && !playerInAttackRange)
-        {
-            Patrol();
-        }
-
-        if(playerSightInRange && !playerInAttackRange)
+        if(!playerInAttackRange)
         {
             Chase();
         }
 
-        if (playerInAttackRange && playerSightInRange)
+        if (playerInAttackRange && playerSightInRange && agent.velocity.magnitude == 0)
         {
             Attack();
         }
 
         animator.SetFloat("Move", agent.velocity.magnitude);
-    }
-
-    private void Patrol()
-    {
-        animator.SetBool("Attack", false);
-        animator.SetBool("Move", true);
-        if (!walkPointSet)
-        {
-            SearchWalkPoint();
-        }
-
-        if(walkPointSet)
-        {
-            agent.SetDestination(walkPoint);
-        }
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        if(distanceToWalkPoint.magnitude < 1)
-        {
-            walkPointSet = false;
-        }
-    }
-    private void SearchWalkPoint()
-    {
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-        {
-            walkPointSet = true;
-        }
     }
 
     private void Chase()
@@ -114,7 +70,6 @@ public class ProjectileEnemy : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
 
         firingPoint.transform.LookAt(player);
-        head.transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
@@ -124,10 +79,11 @@ public class ProjectileEnemy : MonoBehaviour
 
     IEnumerator attackAnim()
     {
-        Shoot();
         animator.SetBool("Attack", true);
         alreadyAttacked = true;
-        yield return new WaitForSeconds(2.17f);
+        yield return new WaitForSeconds(0.7f);
+        Shoot();
+        yield return new WaitForSeconds(0.36f);
         animator.SetBool("Attack", false);
         Invoke(nameof(Resetenemy), timeBetweenAttack);
     }

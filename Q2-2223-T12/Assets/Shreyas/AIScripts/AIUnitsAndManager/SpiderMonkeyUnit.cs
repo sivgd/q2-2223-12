@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [DefaultExecutionOrder(1)]
-public class AIUnit : MonoBehaviour
+public class SpiderMonkeyUnit : MonoBehaviour
 {
     public NavMeshAgent agent;
     public EnemyHealth health;
@@ -13,13 +13,13 @@ public class AIUnit : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        AIManager.Instance.Units.Add(this);
+        AIManager.Instance.SUnits.Add(this);
     }
     void Update()
     {
-        if(health.currentHealth <= 0)
+        if (health.currentHealth <= 0)
         {
-            AIManager.Instance.Units.Remove(this);
+            AIManager.Instance.SUnits.Remove(this);
         }
     }
 
