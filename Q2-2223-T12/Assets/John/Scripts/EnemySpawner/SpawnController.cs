@@ -6,6 +6,7 @@ public class SpawnController : MonoBehaviour
 {
     [Header("Outside References")]
     public Spawn[] spawnLocations;
+    public GameObject[] levelBarriers;
     //public SpawnTrigger[] spawnTriggers;
 
     [Header("Spawning Modifiers")]
@@ -22,10 +23,11 @@ public class SpawnController : MonoBehaviour
     public bool useTriggers = false;
     public bool spawnEqually = false;*/
 
-    private int spawnLocationNum = 0; 
+    private int spawnLocationNum = 0;
+    private bool getBarriersActive;
 
+    
 
-   
     /// <summary>
     /// Checks whether or not a spawner is ready to spawn, then activates said spawner. 
     /// </summary>
@@ -35,14 +37,20 @@ public class SpawnController : MonoBehaviour
     {
         return sp.CanSpawn(); 
     }
-
+   public void setBarriersActive(bool active)
+   {
+        foreach(GameObject barrier in levelBarriers)
+        {
+            barrier.SetActive(active); 
+        }
+   }
     private void Update()
     {
         if (checkSpawnValidity(spawnLocations[spawnLocationNum]))
         {
             spawnLocations[spawnLocationNum].StartSpawnRoutine();
             Debug.Log($"spawner no {spawnLocationNum} activated!");
-            spawnLocationNum++; 
+            spawnLocationNum++;  
         }
         else spawnLocationNum++;
         if (spawnLocationNum >= spawnLocations.Length) spawnLocationNum = 0; 

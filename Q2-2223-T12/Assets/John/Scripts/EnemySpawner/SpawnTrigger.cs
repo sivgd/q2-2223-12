@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class SpawnTrigger : MonoBehaviour
 {
+   
     private bool activated;
-    public string playerLayer = "player"; 
+    [Header("Outside References")]
+    public string playerLayer = "player";
+  
 
     public bool getActivated()
     {
@@ -19,5 +22,6 @@ public class SpawnTrigger : MonoBehaviour
             Debug.Log($"{name} triggered!"); 
         }
         Debug.Log($"Collided with {collision.gameObject.name}"); 
+       
     }
 }
