@@ -38,6 +38,9 @@ public class pauseEsc : MonoBehaviour
             lilypadAnim.SetTrigger("play");
             isPaused = true;
             Time.timeScale = 0;
+
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
         }
 
         else if (Input.GetKeyDown(KeyCode.Escape) && canUnpause == true)
@@ -49,8 +52,9 @@ public class pauseEsc : MonoBehaviour
             //pauseMenu.SetActive(false);
             Invoke("unpauseThing", 0.8f);
             disallowPause();
-            
 
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 
@@ -62,6 +66,10 @@ public class pauseEsc : MonoBehaviour
         Time.timeScale = 1;
         Invoke("unpauseThing", 0.8f);
         Invoke("allowPause", 2);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
     }
 
     private void unpauseThing()
