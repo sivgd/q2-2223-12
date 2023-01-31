@@ -66,6 +66,6 @@ public class ExplodingEnemyHealth : MonoBehaviour
         explosionTrigger.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         Destroy(explosion, 0.5f);
-        Destroy(gameObject, 0.1f);
+        Destroy(gameObject);
     }
 }

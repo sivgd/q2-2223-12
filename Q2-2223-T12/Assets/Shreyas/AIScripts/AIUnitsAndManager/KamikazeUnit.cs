@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public class KamikazeUnit : MonoBehaviour
 {
     public NavMeshAgent agent;
-    public EnemyHealth health;
+    public ExplodingEnemyHealth health;
 
     private void Awake()
     {

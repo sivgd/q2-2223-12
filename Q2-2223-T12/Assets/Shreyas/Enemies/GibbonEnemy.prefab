@@ -572,9 +572,9 @@ GameObject:
   - component: {fileID: 2278721822976176218}
   - component: {fileID: 2278721822976176219}
   - component: {fileID: 2278721822976176216}
-  - component: {fileID: 2278721822976176217}
   - component: {fileID: 2278721822976176198}
   - component: {fileID: 2278721822976176199}
+  - component: {fileID: 1446421353}
   m_Layer: 0
   m_Name: GibbonEnemy
   m_TagString: Enemy
@@ -695,20 +695,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 0
---- !u!114 &2278721822976176217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2278721822976176196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21bcd01d752e5354385c7920ddd97811, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 2278721822976176218}
-  health: {fileID: 2278721822976176216}
 --- !u!114 &2278721822976176198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,6 +725,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!114 &1446421353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2278721822976176196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964b597ed30976f42913d66d8222730c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 2278721822976176218}
+  health: {fileID: 2278721822976176216}
 --- !u!1 &2278721823277575231
 GameObject:
   m_ObjectHideFlags: 0

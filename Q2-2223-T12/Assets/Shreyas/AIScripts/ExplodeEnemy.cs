@@ -9,10 +9,7 @@ public class ExplodeEnemy : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
-    public Vector3 walkPoint;
     [HideInInspector]
-    public bool walkPointSet;
-    public float walkPointRange;
     public float timeBetweenAttack;
     [HideInInspector]
     public bool alreadyAttacked;
@@ -30,7 +27,7 @@ public class ExplodeEnemy : MonoBehaviour
     Quaternion rotGoal;
     Vector3 direction;
 
-    ExplodingEnemyHealth health;
+    public ExplodingEnemyHealth health;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,12 +40,7 @@ public class ExplodeEnemy : MonoBehaviour
         playerSightInRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, whatIsPlayer);
 
-        if (!playerSightInRange && !playerInAttackRange)
-        {
-            Patrol();
-        }
-
-        if (playerSightInRange && !playerInAttackRange)
+        if (!playerInAttackRange)
         {
             Chase();
         }
@@ -56,38 +48,6 @@ public class ExplodeEnemy : MonoBehaviour
         if (playerInAttackRange && playerSightInRange)
         {
             Attack();
-        }
-    }
-
-    private void Patrol()
-    {
-        if (!walkPointSet)
-        {
-            SearchWalkPoint();
-        }
-
-        if (walkPointSet)
-        {
-            agent.SetDestination(walkPoint);
-        }
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        if (distanceToWalkPoint.magnitude < 1)
-        {
-            walkPointSet = false;
-        }
-    }
-    private void SearchWalkPoint()
-    {
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-        {
-            walkPointSet = true;
         }
     }
 
@@ -138,6 +98,7 @@ public class ExplodeEnemy : MonoBehaviour
         agent.speed = 0;
         rendererObject.SetActive(false);
         animObject.SetActive(true);
+        health.currentHealth--;
         yield return new WaitForSeconds(3);
         GameObject explosion = Instantiate(exp, animObject.transform.position, transform.rotation);
         explosionTrigger.SetActive(true);
