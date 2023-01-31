@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e4fff57f53e96418ffb978b627b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootForce: 30000
+  shootForce: 7000
   damageToGive: 100
   lifeTime: 5
   enemyTag: Enemy
