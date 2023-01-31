@@ -89,8 +89,8 @@ public class Spawn : MonoBehaviour
         if (currentEnemy >= enemyQueue.Length)
         {
             canSpawn = false;
-            spawnController.setBarriersActive(false); 
-            gameObject.SetActive(false);
+            spawnController.setBarriersActive(false);
+            Destroy(gameObject); 
         }
         enemyExsists = CheckForEnemy(); 
        

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 887537438635088567}
   - component: {fileID: 887537438635088564}
   - component: {fileID: 887537438635088565}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: player_model
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887537438635088563}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d953aa7530a599f41b46951bc82f66df, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -169,9 +169,10 @@ GameObject:
   - component: {fileID: 887537440288829534}
   - component: {fileID: 887537440288829505}
   - component: {fileID: 887537440288829504}
+  - component: {fileID: 671634113}
   m_Layer: 11
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
-  sprintSpeed: 12
+  sprintSpeed: 19
   walkSpeed: 9
   slideSpeed: 30
   wallRunSpeed: 12
@@ -230,7 +231,7 @@ MonoBehaviour:
   slopeIncreaseMultiplier: 2.5
   groundDrag: 7
   jumpForce: 15
-  jumpCooldown: 0.25
+  jumpCooldown: 0.15
   airMultiplier: 0.3
   jumpCharge: 2
   crouchSpeed: 6
@@ -243,10 +244,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   maxSlopeAngle: 360
-  knockBackForce: 0
-  upForce: 0
-  knockBackTime: 0
-  tankKnockbackForce: 0
+  knockBackForce: 4
+  upForce: 2
+  knockBackTime: 0.25
+  tankKnockbackForce: 20
   orientation: {fileID: 887537438936350968}
   state: 0
   sliding: 0
@@ -287,9 +288,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   wallRunForce: 200
-  wallJumpUpForce: 0
-  wallJumpSideForce: 0
+  wallJumpUpForce: 0.75
+  wallJumpSideForce: 20
   jumpKey: 32
   wallCheckDistance: 0.7
   minJumpHeight: 1
   orientation: {fileID: 887537438936350968}
+--- !u!114 &671634113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887537440288829533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2892ec4ee66dd479879ff97c3d684b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
