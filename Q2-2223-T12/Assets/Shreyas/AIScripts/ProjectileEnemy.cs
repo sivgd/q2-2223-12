@@ -9,6 +9,8 @@ public class ProjectileEnemy : MonoBehaviour
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public Animator animator;
+    public GameObject anim1;
+    public GameObject anim2;
     [HideInInspector]
     public float timeBetweenAttack;
     [HideInInspector]
@@ -58,11 +60,15 @@ public class ProjectileEnemy : MonoBehaviour
 
     private void Chase()
     {
+        anim1.SetActive(false);
+        anim2.SetActive(true);
         agent.SetDestination(player.position);
     }
 
     private void Attack()
     {
+        anim1.SetActive(true);
+        anim2.SetActive(false);
         agent.SetDestination(transform.position);
 
         direction = (player.position - transform.position).normalized;
