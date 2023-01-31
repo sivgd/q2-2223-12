@@ -11,7 +11,6 @@ public class CameraEffectManager : MonoBehaviour
     public RectTransform styleUI; */
     [Header("Explosion SFX")]
     public AudioSource explosionWindup;
-    public AudioClip[] weaponEffects; 
     public GameObject explosionLight;
     public float explosionScreenShake;
    private bool isShaking = false; 
@@ -19,14 +18,17 @@ public class CameraEffectManager : MonoBehaviour
     [Header("Recoil SFX")]
     public float recoilDuration = 0.3f;
     private Vector3 initialPos;
-    /*[Header("Preferences")]
-    public float uiShakeMult = 2f; */
+    [Header("WeaponSFX")]
+    private AudioSource weaponAudioSource;  
+    public AudioClip[] lilypadThrowSounds;
+    public AudioClip shotGunShoot;
+  
 
-   /* private void Start()
+   
+    private void Start()
     {
-        initialStyleUIPosition = styleUI.anchoredPosition3D;
-
-    }*/
+        weaponAudioSource = GetComponent<AudioSource>(); 
+    }
     private void Update()
     {
         explosionWindupRatio = explosionWindup.time / explosionWindup.clip.length;
@@ -89,12 +91,17 @@ public class CameraEffectManager : MonoBehaviour
         switch (soundEffect)
         {
             case soundEffects.Shotgun:
+                weaponAudioSource.clip = shotGunShoot;
                 break;
             case soundEffects.Lilypad:
+                float rand = Random.value;
+                if (rand >= 0.5) weaponAudioSource.clip = lilypadThrowSounds[1];
+                else weaponAudioSource.clip = lilypadThrowSounds[0]; 
                 break;
             case soundEffects.Slimeball:
                 break; 
         }
+        weaponAudioSource.Play();
     }
     
     

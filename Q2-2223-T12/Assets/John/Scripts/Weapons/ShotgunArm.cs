@@ -63,8 +63,9 @@ public class ShotgunArm : MonoBehaviour
         if (canFire)
         {
             GenerateBullets();
-            if (hasParticles) GenerateParticles(); 
+            if (hasParticles) GenerateParticles();
             //sfx.ApplyRecoil(recoil, transform, initialPos);
+            sfx.playSound(soundEffects.Shotgun);
             StartCoroutine(Delay(shotDelay));
         }
 

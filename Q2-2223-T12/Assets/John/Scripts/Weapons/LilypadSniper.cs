@@ -37,6 +37,7 @@ public class LilypadSniper : MonoBehaviour
             isAnimating = true;
             StartCoroutine(WaitForAnimationDone()); 
             Instantiate(lilypadPrefab, instPos.position, instPos.rotation);
+            sfx.playSound(soundEffects.Lilypad); 
             //transform.localPosition = transform.localPosition;     
         }
     }

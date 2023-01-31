@@ -7,7 +7,8 @@ using TMPro;
 public class WeaponManager : MonoBehaviour
 {
     [Header("External References")]
-    public TextMeshProUGUI timerText; 
+    public TextMeshProUGUI timerText;
+    public GameObject lilypadPlayermodel; 
     [Header("Keybinds")]
     public KeyCode FirstSlotKeybind = KeyCode.Alpha1;
     public KeyCode SecondSlotKeybind = KeyCode.Alpha2;
@@ -64,6 +65,7 @@ public class WeaponManager : MonoBehaviour
         slimeballLauncher.SetActive(w2Active);
         //slimeballArm.SetActive(w2Active); 
         lillypadLauncher.enabled = w3Active;
+        lilypadPlayermodel.active = w3Active; 
         Debug.Log($"WeaponManager: Weapon States: (Shotgun, {w1Active}) (Slimeball, {w2Active}) (Lillypad, {w3Active})");
     }
     private void SlimeballCoolDown()

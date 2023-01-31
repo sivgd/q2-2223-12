@@ -17,9 +17,11 @@ public class SlimeBall : MonoBehaviour
     [Header("External References")]
     public GameObject explosionSphere;
     private CameraEffectManager sfx;
+    public GameObject explosionSoundPlayer; 
     public string enemyTagOne = "Enemy";
     public string enemyTagTwo; 
     private Rigidbody rb;
+
 
     private void Awake()
     {
@@ -120,6 +122,8 @@ public class SlimeBall : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        GameObject soundobj = Instantiate(explosionSoundPlayer,transform.position,transform.rotation);
+        soundobj.SetActive(true); 
         if (other.CompareTag("Lily"))
         {
             Explode(superExplosionMult);
