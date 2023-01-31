@@ -6,6 +6,8 @@ using UnityEngine.Animations;
 public class pauseEsc : MonoBehaviour
 {
 
+    private GameObject orientation;
+
     bool isPaused = false;
     public GameObject pauseMenu;
 
@@ -18,6 +20,7 @@ public class pauseEsc : MonoBehaviour
     void Start()
     {
         pauseMenu = GameObject.Find("pauseMenu");
+        orientation = GameObject.Find("Main Camera");
         pauseMenu.SetActive(false);
         canPause = true;
         canUnpause = false;
@@ -41,6 +44,7 @@ public class pauseEsc : MonoBehaviour
 
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
+            orientation.GetComponent<camMove>().enabled = false;
         }
 
         else if (Input.GetKeyDown(KeyCode.Escape) && canUnpause == true)
@@ -55,6 +59,7 @@ public class pauseEsc : MonoBehaviour
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            orientation.GetComponent<camMove>().enabled = true;
         }
     }
 
@@ -69,6 +74,7 @@ public class pauseEsc : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        orientation.GetComponent<camMove>().enabled = true;
 
     }
 
