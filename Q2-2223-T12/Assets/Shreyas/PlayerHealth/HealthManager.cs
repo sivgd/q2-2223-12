@@ -34,7 +34,7 @@ public class HealthManager : MonoBehaviour
     {
         if(healingPlayer == true)
         {
-            currentHealth += healthRegen;
+            currentHealth += healthRegen * Time.timeScale;
             if(currentHealth >= maxHealth)
             {
                 currentHealth = 100;
