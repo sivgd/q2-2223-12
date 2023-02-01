@@ -99,7 +99,7 @@ public class ExplodeEnemy : MonoBehaviour
         rendererObject.SetActive(false);
         animObject.SetActive(true);
         health.currentHealth--;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         GameObject explosion = Instantiate(exp, animObject.transform.position, transform.rotation);
         explosionTrigger.SetActive(true);
         yield return new WaitForSeconds(0.5f);
