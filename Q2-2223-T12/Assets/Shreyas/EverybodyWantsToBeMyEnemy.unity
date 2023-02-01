@@ -3658,10 +3658,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpiderMonkeyEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 4584063533693140954, guid: 15f8e710651e77c41824672b70519851, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15f8e710651e77c41824672b70519851, type: 3}
 --- !u!4 &1717800345972136475
@@ -3843,10 +3839,6 @@ PrefabInstance:
     - target: {fileID: 2278721822976176196, guid: 1d4c1dec0cea91e40bd8329264885304, type: 3}
       propertyPath: m_Name
       value: GibbonEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278721822976176196, guid: 1d4c1dec0cea91e40bd8329264885304, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2278721822976176198, guid: 1d4c1dec0cea91e40bd8329264885304, type: 3}
       propertyPath: styleMeter
@@ -4422,10 +4414,6 @@ PrefabInstance:
     - target: {fileID: 349057305398659570, guid: 6fa4ca9bd8b6e7b47b687b028c83f447, type: 3}
       propertyPath: m_Name
       value: MandrillEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 349057305398659570, guid: 6fa4ca9bd8b6e7b47b687b028c83f447, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1122462187306783560, guid: 6fa4ca9bd8b6e7b47b687b028c83f447, type: 3}
       propertyPath: m_RootOrder
@@ -5261,10 +5249,6 @@ PrefabInstance:
     - target: {fileID: 8264745650638951282, guid: 8e118345a1ce0b14e916a60664b82f95, type: 3}
       propertyPath: m_Name
       value: KamikazeEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8264745650638951282, guid: 8e118345a1ce0b14e916a60664b82f95, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e118345a1ce0b14e916a60664b82f95, type: 3}

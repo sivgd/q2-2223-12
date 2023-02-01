@@ -5498,7 +5498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ed22d37c6f3c14794a2183bb9d088b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 20
   currentHealth: 0
   particle: {fileID: 1398822386}
 --- !u!114 &2278721822976176198
