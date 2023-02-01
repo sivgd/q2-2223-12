@@ -22,6 +22,8 @@ public class CameraEffectManager : MonoBehaviour
     private AudioSource weaponAudioSource;  
     public AudioClip[] lilypadThrowSounds;
     public AudioClip shotGunShoot;
+    public AudioClip slimeballCharge;
+    public AudioClip slimeballThrow; 
   
 
    
@@ -98,17 +100,29 @@ public class CameraEffectManager : MonoBehaviour
                 if (rand >= 0.5) weaponAudioSource.clip = lilypadThrowSounds[1];
                 else weaponAudioSource.clip = lilypadThrowSounds[0]; 
                 break;
-            case soundEffects.Slimeball:
+            case soundEffects.SlimeballCharge:
+                weaponAudioSource.clip = slimeballCharge; 
+                break;
+            case soundEffects.SlimeballThrow:
+                weaponAudioSource.clip = slimeballThrow;
                 break; 
         }
         weaponAudioSource.Play();
     }
+    public void stopSound()
+    {
+        weaponAudioSource.Stop(); 
+    }
     
-    
+  /* IEnumerator chargeSlimeball()
+   {
+
+   } */
 }
 public enum soundEffects
 {
     Shotgun,
     Lilypad,
-    Slimeball
+    SlimeballCharge,
+    SlimeballThrow
 }

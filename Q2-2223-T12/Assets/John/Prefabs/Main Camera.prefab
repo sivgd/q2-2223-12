@@ -530,6 +530,7 @@ MonoBehaviour:
   initialScale: {x: 0.1, y: 0.1, z: 0.1}
   unchargedColor: {r: 1, g: 1, b: 0, a: 1}
   chargedColor: {r: 0.078431375, g: 1, b: 0, a: 1}
+  coolDownColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 0}
   sfx: {fileID: 1775020043438172880}
 --- !u!1 &2975414614282822399
 GameObject:
@@ -637,7 +638,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 5303
+    m_Bits: 5175
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -732,6 +733,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 30c38d7c2e689d94f8d2e267840c94bd, type: 3}
   - {fileID: 8300000, guid: 8816275f40a827f4e90fe276b5c3af37, type: 3}
   shotGunShoot: {fileID: 8300000, guid: 4ff0b7fbc078a414c912fefb063941c7, type: 3}
+  slimeballCharge: {fileID: 8300000, guid: 658c5af9325d9a24485651583e849e03, type: 3}
+  slimeballThrow: {fileID: 8300000, guid: 03c144015469d7941ba522f1b51bb53a, type: 3}
 --- !u!114 &1184264564551828638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1753,7 +1756,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8475601527433635879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.172, y: -0.237, z: 1.133}
+  m_LocalPosition: {x: -0.35, y: -0.4, z: 0.4}
   m_LocalScale: {x: 0.5, y: 0.01, z: 0.5}
   m_Children: []
   m_Father: {fileID: 2975414614734706930}

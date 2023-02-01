@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using TMPro; 
 
 public class SlimballLauncher : MonoBehaviour
 {
@@ -30,13 +28,13 @@ public class SlimballLauncher : MonoBehaviour
     public float maxScale = 0.3f;
     public Vector3 chargePos; 
     public Vector3 initialScale = new Vector3(0.1f, 0.1f, 0.1f); 
-    public Color unchargedColor,chargedColor;
+    public Color unchargedColor,chargedColor,coolDownColor;
     public CameraEffectManager sfx; 
     private Vector3 initialPos;
     private Color currentColor;
     private Renderer ballMat;
 
-    private bool isAnimating = false;
+    
 
     
     private void Start()
@@ -68,11 +66,13 @@ public class SlimballLauncher : MonoBehaviour
         if(Input.GetButtonDown("Fire1") && coolDownTimer <= 0f)
         {
             animator.SetTrigger("IsCharge");
-            isAnimating = true; 
+            sfx.playSound(soundEffects.SlimeballCharge); 
         }
         if(Input.GetButtonUp("Fire1")) animator.ResetTrigger("IsCharge"); 
         if ((Input.GetButtonUp("Fire1") || heldTimer >= maxTimer) && coolDownTimer <= 0f)
         {
+            sfx.stopSound();
+            sfx.playSound(soundEffects.SlimeballThrow); 
             animator.SetTrigger("IsSlimeballFire");
             charge = Mathf.Clamp(charge, 0.1f, chargeMult);
             heldTimer = 0f;
@@ -82,7 +82,14 @@ public class SlimballLauncher : MonoBehaviour
             Shoot();
             charge = 0f;
         }
-        UpdateColor(); 
+        if(charge <= 0)
+        {
+            CoolDownColor(); 
+        }
+        else
+        {
+            UpdateColor();
+        }
 
        // coolDownTimer -= Time.deltaTime;
         //chargeText.text = $"Charge: {charge}";
@@ -122,6 +129,17 @@ public class SlimballLauncher : MonoBehaviour
         ballMat.material.SetColor("_Color", currentColor);
         ballMat.material.SetColor("_EmissionColor", currentColor);
         DynamicGI.UpdateEnvironment(); 
+    }
+    void CoolDownColor()
+    {
+
+        float dR = ((coolDownColor.r - unchargedColor.r) / maxCoolDown) * coolDownTimer;
+        float dG = ((coolDownColor.g - unchargedColor.g) / maxCoolDown) * coolDownTimer;
+        float dB = ((coolDownColor.b - unchargedColor.b) / maxCoolDown) * coolDownTimer;
+        currentColor = new Color(unchargedColor.r + dR, unchargedColor.g + dG, unchargedColor.b + dB);
+        ballMat.material.SetColor("_Color", currentColor);
+        ballMat.material.SetColor("_EmissionColor", currentColor);
+        DynamicGI.UpdateEnvironment();
     }
 
    
