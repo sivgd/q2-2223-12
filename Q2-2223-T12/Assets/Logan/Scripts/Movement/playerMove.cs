@@ -114,7 +114,7 @@ public class playerMove : MonoBehaviour
     {
         if (grounded == true)
         {
-            jumpCharge = 1;
+            jumpCharge = 2;
         }
 
         if (knockBackCounter <= 0)
