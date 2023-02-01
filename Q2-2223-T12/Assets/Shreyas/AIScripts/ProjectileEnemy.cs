@@ -8,10 +8,13 @@ public class ProjectileEnemy : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
+    public Vector3 walkPoint;
     public Animator animator;
     public GameObject anim1;
     public GameObject anim2;
     [HideInInspector]
+    public bool walkPointSet;
+    public float walkPointRange;
     public float timeBetweenAttack;
     [HideInInspector]
     public bool alreadyAttacked;
@@ -45,12 +48,17 @@ public class ProjectileEnemy : MonoBehaviour
         playerSightInRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, whatIsPlayer);
 
-        if(!playerInAttackRange)
+        if (!playerSightInRange && !playerInAttackRange)
+        {
+            Patrol();
+        }
+
+        if (playerSightInRange && !playerInAttackRange)
         {
             Chase();
         }
 
-        if (playerInAttackRange && playerSightInRange && agent.velocity.magnitude == 0)
+        if (playerInAttackRange && playerSightInRange)
         {
             Attack();
         }
@@ -58,6 +66,39 @@ public class ProjectileEnemy : MonoBehaviour
         animator.SetFloat("Move", agent.velocity.magnitude);
     }
 
+    private void Patrol()
+    {
+        anim1.SetActive(false);
+        anim2.SetActive(true);
+        if (!walkPointSet)
+        {
+            SearchWalkPoint();
+        }
+
+        if (walkPointSet)
+        {
+            agent.SetDestination(walkPoint);
+        }
+
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+        if (distanceToWalkPoint.magnitude < 1)
+        {
+            walkPointSet = false;
+        }
+    }
+    private void SearchWalkPoint()
+    {
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        {
+            walkPointSet = true;
+        }
+    }
     private void Chase()
     {
         anim1.SetActive(false);

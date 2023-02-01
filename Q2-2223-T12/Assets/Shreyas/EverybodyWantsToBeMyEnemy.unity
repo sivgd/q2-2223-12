@@ -1312,9 +1312,12 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 2048
+  walkPoint: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
   anim1: {fileID: 0}
   anim2: {fileID: 0}
+  walkPointSet: 0
+  walkPointRange: 0
   timeBetweenAttack: 1
   alreadyAttacked: 0
   sightRange: 13.93
@@ -3654,6 +3657,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1491494269}
+    - target: {fileID: 4584063533693140953, guid: 15f8e710651e77c41824672b70519851, type: 3}
+      propertyPath: sightRange
+      value: 46.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4584063533693140953, guid: 15f8e710651e77c41824672b70519851, type: 3}
+      propertyPath: AttackRange
+      value: 28.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4584063533693140954, guid: 15f8e710651e77c41824672b70519851, type: 3}
       propertyPath: m_Name
       value: SpiderMonkeyEnemy
@@ -3839,6 +3850,10 @@ PrefabInstance:
     - target: {fileID: 2278721822976176196, guid: 1d4c1dec0cea91e40bd8329264885304, type: 3}
       propertyPath: m_Name
       value: GibbonEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278721822976176196, guid: 1d4c1dec0cea91e40bd8329264885304, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2278721822976176198, guid: 1d4c1dec0cea91e40bd8329264885304, type: 3}
       propertyPath: styleMeter
@@ -4414,6 +4429,10 @@ PrefabInstance:
     - target: {fileID: 349057305398659570, guid: 6fa4ca9bd8b6e7b47b687b028c83f447, type: 3}
       propertyPath: m_Name
       value: MandrillEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 349057305398659570, guid: 6fa4ca9bd8b6e7b47b687b028c83f447, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1122462187306783560, guid: 6fa4ca9bd8b6e7b47b687b028c83f447, type: 3}
       propertyPath: m_RootOrder
@@ -5249,6 +5268,10 @@ PrefabInstance:
     - target: {fileID: 8264745650638951282, guid: 8e118345a1ce0b14e916a60664b82f95, type: 3}
       propertyPath: m_Name
       value: KamikazeEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8264745650638951282, guid: 8e118345a1ce0b14e916a60664b82f95, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e118345a1ce0b14e916a60664b82f95, type: 3}
