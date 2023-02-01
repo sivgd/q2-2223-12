@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class HealthManager : MonoBehaviour
 {
@@ -11,6 +13,10 @@ public class HealthManager : MonoBehaviour
     private bool healingPlayer;
     public float healthRegen;
 
+    public Volume volume;
+    public GameObject urpThing;
+    public Vignette vig;
+
     playerMove player;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +24,9 @@ public class HealthManager : MonoBehaviour
         currentHealth = maxHealth;
 
         player = FindObjectOfType<playerMove>();
+        urpThing = GameObject.Find("PostProcessing");
+        volume = urpThing.GetComponent<Volume>();
+        
     }
 
     // Update is called once per frame
@@ -32,6 +41,27 @@ public class HealthManager : MonoBehaviour
                 healingPlayer = false;
             }
         }
+
+        if(currentHealth < 40)
+        {
+            Vignette tmp;
+            if(volume.profile.TryGet<Vignette>(out tmp))
+            {
+                vig = tmp;
+                vig.intensity.SetValue(new ClampedFloatParameter(0.5f, 0.5f, 0.5f));
+            }
+            
+        }
+        else
+        {
+            Vignette tmp;
+            if (volume.profile.TryGet<Vignette>(out tmp))
+            {
+                vig = tmp;
+                vig.intensity.SetValue(new ClampedFloatParameter(0f, 0f, 0f));
+            }
+        }
+
     }
 
     public void HurtPlayer(int damage)

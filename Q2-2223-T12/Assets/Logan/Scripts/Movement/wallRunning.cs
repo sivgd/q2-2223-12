@@ -86,7 +86,7 @@ public class wallRunning : MonoBehaviour
     private void StartWallRun()
     {
         pm.wallrunning = true;
-        pm.jumpCharge = 1;
+        pm.jumpCharge += 1;
     }
 
     private void WallRunningMovement()
