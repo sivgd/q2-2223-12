@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class deathBarrier : MonoBehaviour
 {
@@ -19,8 +20,12 @@ public class deathBarrier : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        player.transform.position = new Vector3(-18.072f, -0.316f, -59.69f);
+        if(collision.gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene("Level", LoadSceneMode.Single);
+        }
         
+
     }
 
 
