@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public float maxHealth;
     public float currentHealth;
-
+    public GameObject particle;
     
     private EnemyStyle style; 
     void Start()
@@ -29,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
     public void HurtEnemy(float damage,DamageSource damageSource)
     {
         currentHealth -= damage;
+        StartCoroutine(ParticlePlay());
 
         if (currentHealth <= 0)
         {
@@ -61,5 +62,11 @@ public class EnemyHealth : MonoBehaviour
         Destroy(gameObject);
     }
 
+    IEnumerator ParticlePlay()
+    {
+        particle.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        particle.SetActive(false);
+    }
 }
 
