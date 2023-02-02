@@ -8,6 +8,7 @@ public class SpawnTrigger : MonoBehaviour
     private bool activated;
     [Header("Outside References")]
     public string playerLayer = "player";
+    public GameObject tutorial;
   
 
     public bool getActivated()
@@ -19,6 +20,7 @@ public class SpawnTrigger : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             activated = true;
+            tutorial.SetActive(false);
             Debug.Log($"{name} triggered!"); 
         }
         Debug.Log($"Collided with {collision.gameObject.name}"); 
