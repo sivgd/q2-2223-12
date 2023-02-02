@@ -63,7 +63,6 @@ public class ScoreKeeper : MonoBehaviour
         playerMove.enabled = false;
         UpdateDeathUIStats();
         runTimer = false;
-        gameOver = true; 
        
     }
     void UpdateDeathUIStats()
