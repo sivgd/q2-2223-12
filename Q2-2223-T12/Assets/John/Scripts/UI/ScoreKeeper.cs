@@ -56,7 +56,8 @@ public class ScoreKeeper : MonoBehaviour
         yield return new WaitUntil(()=> gameOver);
         wallRunning.enabled = false;
         slideSystem.enabled = false;
-        playerMove.enabled = false; 
+        playerMove.enabled = false;
+        runTimer = false; 
         UpdateDeathUIStats(); 
     }
     void UpdateDeathUIStats()
@@ -65,7 +66,7 @@ public class ScoreKeeper : MonoBehaviour
         styleGrade.SetText(CalculateGrade(style, styleRequired));
         killsText.SetText($"KILLS: " + kills);
         killsGrade.SetText(CalculateGrade((float)kills, (float)killsRequired));   // cast is not redundant ignore editor
-        timeText.SetText($"TIME: {Mathf.Floor(time / 60f)}:{Mathf.Abs(Mathf.Floor(time / 60f) - time)}");
+        timeText.SetText($"TIME: {time}");
         timeGrade.text = CalculateGrade(time, (minutesRequired * 60f));
         killsGrade.color = getGradeColor(killsGrade);
         styleGrade.color = getGradeColor(styleGrade);
