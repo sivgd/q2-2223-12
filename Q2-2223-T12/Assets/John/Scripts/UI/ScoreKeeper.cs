@@ -46,6 +46,7 @@ public class ScoreKeeper : MonoBehaviour
     }
     private void Update()
     {
+
         time += Time.deltaTime; 
         if (!runTimer) finalTime = time; 
         if (gameOver) gameOverSequence();
@@ -69,11 +70,12 @@ public class ScoreKeeper : MonoBehaviour
     }
     void UpdateDeathUIStats()
     {
+        float cTime = time; 
         styleText.SetText($"STYLE: {style}");     //for some reason this line throws a null reference exception but doesn't actually halt the game 
         styleGrade.SetText(CalculateGrade(style, styleRequired));
         killsText.SetText($"KILLS: " + kills);
         killsGrade.SetText(CalculateGrade((float)kills, (float)killsRequired));   // cast is not redundant ignore editor
-        timeText.SetText($"TIME: {finalTime}");
+        timeText.SetText($"TIME: {cTime}");
         timeGrade.text = CalculateGrade(time, (minutesRequired * 60f));
         killsGrade.color = getGradeColor(killsGrade);
         styleGrade.color = getGradeColor(styleGrade);
