@@ -33,6 +33,9 @@ public class TankEnemy : MonoBehaviour
 
     [Header("Attack")]
     public Animator anim;
+    public Animator anim2;
+    public GameObject gameAnim1;
+    public GameObject gameAnim2;
 
     [Header("Look")]
     public float turnSpeed;
@@ -74,7 +77,9 @@ public class TankEnemy : MonoBehaviour
     private void Patrol()
     {
         anim.SetBool("Attack1", false);
-        anim.SetBool("Attack2", false);
+        anim2.SetBool("Attack2", false);
+        gameAnim1.SetActive(true);
+        gameAnim2.SetActive(false);
         if (!walkPointSet)
         {
             SearchWalkPoint();
@@ -108,13 +113,17 @@ public class TankEnemy : MonoBehaviour
     private void Chase()
     {
         anim.SetBool("Attack1", false);
-        anim.SetBool("Attack2", false);
+        anim2.SetBool("Attack2", false);
+        gameAnim1.SetActive(true);
+        gameAnim2.SetActive(false);
         agent.SetDestination(player.position);
     }
 
     private void Attack()
     {
-        anim.SetBool("Attack2", false);
+        gameAnim1.SetActive(true);
+        gameAnim2.SetActive(false);
+        anim2.SetBool("Attack2", false);
         firingPoint.SetActive(true);
         agent.SetDestination(transform.position);
 
@@ -129,6 +138,7 @@ public class TankEnemy : MonoBehaviour
     }
     private void Attack2()
     {
+        anim.SetBool("Attack1", false);
         agent.SetDestination(transform.position);
 
         direction = (player.position - transform.position).normalized;
@@ -145,20 +155,24 @@ public class TankEnemy : MonoBehaviour
     {
         anim.SetBool("Attack1", true);
         alreadyAttacked = true;
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(3.5f);
         Shoot();
         yield return new WaitForSeconds(0.37f);
-        anim.SetBool("Attack1", false);
+        anim.SetBool("Attack1", false); 
         Invoke(nameof(Resetenemy), timeBetweenAttack);
     }
 
     IEnumerator Attack2Anim()
     {
-        anim.SetBool("Attack2", true);
+        gameAnim1.SetActive(false);
+        gameAnim2.SetActive(true);
+        anim2.SetBool("Attack2", true);
         firingPoint.SetActive(false);
         alreadyAttacked = true;
         yield return new WaitForSeconds(1.1f);
-        anim.SetBool("Attack2", false);
+        gameAnim1.SetActive(true);
+        gameAnim2.SetActive(false);
+        anim2.SetBool("Attack2", false);
         Invoke(nameof(Resetenemy), timeBetweenAttack);
     }
 
