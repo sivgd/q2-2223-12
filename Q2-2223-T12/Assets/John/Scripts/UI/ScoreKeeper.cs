@@ -41,6 +41,7 @@ public class ScoreKeeper : MonoBehaviour
         slideSystem.enabled = true;
         playerMove.enabled = true;
         gameOver = false;
+        Time.timeScale = 1f; 
 
     }
     private void Update()
