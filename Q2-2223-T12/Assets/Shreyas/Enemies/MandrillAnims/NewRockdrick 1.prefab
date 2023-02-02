@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 2011333106366346689}
   - component: {fileID: 7429725411673479899}
   - component: {fileID: 1388293279175312949}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: NewRockdrick 1
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

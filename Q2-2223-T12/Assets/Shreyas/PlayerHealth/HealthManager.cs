@@ -72,8 +72,9 @@ public class HealthManager : MonoBehaviour
         if (isDead == true)
         {
             DeathUI.SetActive(true);
-           // DeathUI.GetComponent<ScoreKeeper>().setGameOver(true);
+            //DeathUI.GetComponent<ScoreKeeper>().setGameOver(true);
             PauseUI.SetActive(false);
+            Time.timeScale = 0;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
             DeathUI.GetComponent<ScoreKeeper>().setGameOver(true);
