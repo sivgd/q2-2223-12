@@ -45,10 +45,7 @@ public class ScoreKeeper : MonoBehaviour
     }
     private void Update()
     {
-
-      
         if (gameOver) gameOverSequence();
-        UpdateDeathUIStats(); 
     }
 
 
