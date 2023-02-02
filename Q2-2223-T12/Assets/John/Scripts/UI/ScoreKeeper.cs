@@ -45,6 +45,7 @@ public class ScoreKeeper : MonoBehaviour
     }
     private void Update()
     {
+        if(runTimer) time = Time.timeSinceLevelLoad;
         if (gameOver) gameOverSequence();
     }
 
@@ -66,7 +67,7 @@ public class ScoreKeeper : MonoBehaviour
     }
     void UpdateDeathUIStats()
     {
-        time = Time.timeSinceLevelLoad;
+      
         styleText.SetText($"STYLE: {style}");     //for some reason this line throws a null reference exception but doesn't actually halt the game 
         styleGrade.SetText(CalculateGrade(style, styleRequired));
         killsText.SetText($"KILLS: " + kills);
