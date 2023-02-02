@@ -18,6 +18,16 @@ public class camMove : MonoBehaviour
         Cursor.visible = false;
     }
 
+    public void setXsense(float xSense)
+    {
+        xSensitivity = xSense;
+    }
+
+    public void setYsense(float ySense)
+    {
+        ySensitivity = ySense;
+    }
+
     private void Update()
     {
         //get mouse input
