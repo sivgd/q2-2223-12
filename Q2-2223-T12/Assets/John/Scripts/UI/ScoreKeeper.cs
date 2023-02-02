@@ -45,9 +45,8 @@ public class ScoreKeeper : MonoBehaviour
     }
     private void Update()
     {
-       
         if (gameOver) gameOverSequence();
-        UpdateDeathUIStats();
+        //UpdateDeathUIStats(); 
     }
 
 
@@ -62,6 +61,7 @@ public class ScoreKeeper : MonoBehaviour
         wallRunning.enabled = false;
         slideSystem.enabled = false;
         playerMove.enabled = false;
+        UpdateDeathUIStats();
         runTimer = false; 
        
     }
@@ -72,7 +72,7 @@ public class ScoreKeeper : MonoBehaviour
         styleGrade.SetText(CalculateGrade(style, styleRequired));
         killsText.SetText($"KILLS: " + kills);
         killsGrade.SetText(CalculateGrade((float)kills, (float)killsRequired));   // cast is not redundant ignore editor
-        timeText.SetText($"TIME: {time}");
+        timeText.SetText($"TIME: {Mathf.Floor(time / 60)}:{time - (Mathf.Floor(time/60) * 60)}");
         timeGrade.text = CalculateGrade(time, (minutesRequired * 60f));
         killsGrade.color = getGradeColor(killsGrade);
         styleGrade.color = getGradeColor(styleGrade);
