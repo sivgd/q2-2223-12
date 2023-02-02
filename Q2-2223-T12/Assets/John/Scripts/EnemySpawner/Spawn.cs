@@ -21,6 +21,7 @@ public class Spawn : MonoBehaviour
     private bool enemyExsists;
 
 
+
     private void Start()
     {
         instObj = new GameObject[enemyQueue.Length * spawnsPerEnemy];

@@ -27,7 +27,9 @@ public class SpawnController : MonoBehaviour
     private int spawnLocationNum = 0;
     private bool getBarriersActive;
 
-    
+    public bool finalBarriers;
+    public GameObject endLevel;
+
 
     /// <summary>
     /// Checks whether or not a spawner is ready to spawn, then activates said spawner. 
@@ -42,8 +44,11 @@ public class SpawnController : MonoBehaviour
    {
         foreach(GameObject barrier in levelBarriers)
         {
-            barrier.SetActive(active); 
+            barrier.SetActive(active);
+            endLevel.SetActive(!active);
         }
+
+        
    }
     private void Update()
     {
@@ -55,6 +60,10 @@ public class SpawnController : MonoBehaviour
         }
         else spawnLocationNum++;
         if (spawnLocationNum >= spawnLocations.Length) spawnLocationNum = 0; 
+
+
+        
+
     }
 
 
