@@ -24,7 +24,9 @@ public class ScoreKeeper : MonoBehaviour
     private string[] grades = { "D", "C", "B", "A", "S" };    // please keep this the same  :pleading:
 
     [Header("Movement Scripts")]
-    public MonoBehaviour[] movementScripts;
+    public wallRunning wallRunning;
+    public slideSystem slideSystem;
+    public playerMove playerMove; 
     private int kills;
     private float style;
     private float time;
@@ -40,7 +42,9 @@ public class ScoreKeeper : MonoBehaviour
     {
         if (runTimer) time += Time.deltaTime;
         if (gameOver) gameOverSequence();
+        UpdateDeathUIStats(); 
     }
+
 
     void gameOverSequence()
     {
@@ -49,11 +53,10 @@ public class ScoreKeeper : MonoBehaviour
     }
     IEnumerator GameOver()
     {
-        yield return new WaitUntil(()=> gameOver); 
-        foreach(MonoBehaviour mvscript in movementScripts)
-        {
-            mvscript.enabled = false; 
-        }
+        yield return new WaitUntil(()=> gameOver);
+        wallRunning.enabled = false;
+        slideSystem.enabled = false;
+        playerMove.enabled = false; 
         UpdateDeathUIStats(); 
     }
     void UpdateDeathUIStats()
@@ -63,7 +66,21 @@ public class ScoreKeeper : MonoBehaviour
         killsText.text = "" + kills;
         killsGrade.text = CalculateGrade((float)kills, (float)killsRequired);   // cast is not redundant ignore editor
         timeText.text = $"{Mathf.Floor(time / 60f)}:{Mathf.Abs(Mathf.Floor(time / 60f) - time)}";
-        timeGrade.text = CalculateGrade(time, (minutesRequired * 60f)); 
+        timeGrade.text = CalculateGrade(time, (minutesRequired * 60f));
+        killsGrade.color = getGradeColor(killsGrade);
+        styleGrade.color = getGradeColor(styleGrade);
+        timeGrade.color = getGradeColor(timeGrade);
+
+    }
+    Color getGradeColor(TMP_Text textObj)
+    {
+        string text = textObj.text;
+        if (text.Contains(grades[0])) return gradeColors[0];
+        else if (text.Contains(grades[1])) return gradeColors[1];
+        else if (text.Contains(grades[2])) return gradeColors[2];
+        else if (text.Contains(grades[3])) return gradeColors[3];
+        else if (text.Contains(grades[4])) return gradeColors[4];
+        return Color.white; 
     }
     /// <summary>
     /// Outputs the corresponding grade by comparing the current value to the max value 
@@ -103,8 +120,6 @@ public class ScoreKeeper : MonoBehaviour
             else if (ratio >= 0) return grades[0];
             return "F";
         }
-        return "E"; // E for error! 
-
     }
     #region ACCESSORS AND MUTATORS
     public int getKills()

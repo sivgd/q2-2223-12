@@ -55,6 +55,7 @@ public class SlimeBall : MonoBehaviour
         foreach (Collider hit in colliders)  /// Checks each collider hit in the spherecast, and whether they have rigidbodies 
         {
             Rigidbody r = hit.GetComponent<Rigidbody>();
+            EnemyStyle sc = hit.GetComponent<EnemyStyle>(); 
             if(r != null)
             {
                 
