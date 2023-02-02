@@ -44,11 +44,12 @@ public class SpawnController : MonoBehaviour
         foreach(GameObject barrier in levelBarriers)
         {
             barrier.SetActive(active);
-            endLevel.SetActive(!active);
-        }
 
-        
-   }
+        }
+        endLevel.SetActive(!active);
+
+
+    }
     private void Update()
     {
         if (checkSpawnValidity(spawnLocations[spawnLocationNum]))
