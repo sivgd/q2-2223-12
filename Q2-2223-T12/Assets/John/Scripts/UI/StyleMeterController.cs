@@ -10,11 +10,10 @@ public class StyleMeterController : MonoBehaviour
 {
     [Header("UI")]
     public TMP_Text[] actionDisplay;
+    public ScoreKeeper scoreKeeper; 
     public Slider styleMeter;
     public TMP_Text grade;
-    [Header("Level Specific")]
-    public float maxStyle = 100f;
-
+  
     [Header("Preferences")]
     public float styleDecayRate = 0.1f;
     public float maxMovementMult = 3f;
@@ -29,7 +28,7 @@ public class StyleMeterController : MonoBehaviour
 
     private void Start()
     {
-        resetActionQueue(); 
+        resetActionQueue();
     }
     /// <summary>
     /// STYLE METER PROCESS
@@ -49,7 +48,7 @@ public class StyleMeterController : MonoBehaviour
             addTextToQueue("TEST");
             addToStyleScore(1); 
         }
-        updateStyleMeter(); 
+        updateStyleMeter();
         
     }
     public void updateStyleMeter()
@@ -174,11 +173,13 @@ public class StyleMeterController : MonoBehaviour
         {
             case DeathType.Explosion:
                 addTextToQueue("BOOM");
-                addToStyleScore(style); 
+                addToStyleScore(style);
+                scoreKeeper.addToKills(1); 
                 break;
             case DeathType.Normal:
                 addTextToQueue("KILL");
                 addToStyleScore(style);
+                scoreKeeper.addToKills(1);
                 break; 
         }
     }

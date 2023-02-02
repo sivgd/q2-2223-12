@@ -11,6 +11,7 @@ public class HealthManager : MonoBehaviour
 
     public float timeBeforeHeal;
     private bool healingPlayer;
+    private bool isDead; 
     public float healthRegen;
 
     public Volume volume;
@@ -61,6 +62,10 @@ public class HealthManager : MonoBehaviour
                 vig.intensity.SetValue(new ClampedFloatParameter(0f, 0f, 0f));
             }
         }
+        if(currentHealth <= 0)
+        {
+            isDead = true; 
+        }
 
     }
 
@@ -99,6 +104,9 @@ public class HealthManager : MonoBehaviour
         yield return new WaitForSeconds(timeBeforeHeal);
         healingPlayer = true;
     }
-
+    public bool getDead()
+    {
+        return isDead; 
+    }
 
 }
