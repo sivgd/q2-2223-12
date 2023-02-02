@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6353994440672965722}
   - component: {fileID: 31949856842152562}
   - component: {fileID: 922101677578911728}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: BananaHolder
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
