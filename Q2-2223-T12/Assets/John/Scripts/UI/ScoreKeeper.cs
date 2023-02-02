@@ -53,17 +53,17 @@ public class ScoreKeeper : MonoBehaviour
     void gameOverSequence()
     {
         Time.timeScale = 0;
+        UpdateDeathUIStats();
         StartCoroutine(GameOver()); 
     }
     IEnumerator GameOver()
     {
-        yield return new WaitUntil(() => gameOver); 
-
+        yield return new WaitUntil(() => gameOver);
         wallRunning.enabled = false;
         slideSystem.enabled = false;
         playerMove.enabled = false;
         runTimer = false; 
-        UpdateDeathUIStats(); 
+       
     }
     void UpdateDeathUIStats()
     {
