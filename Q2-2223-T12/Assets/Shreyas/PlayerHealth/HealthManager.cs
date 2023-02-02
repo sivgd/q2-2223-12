@@ -13,6 +13,7 @@ public class HealthManager : MonoBehaviour
     private bool healingPlayer;
     private bool isDead; 
     public float healthRegen;
+    public GameObject DeathUI;
 
     public Volume volume;
     public GameObject urpThing;
@@ -67,6 +68,10 @@ public class HealthManager : MonoBehaviour
             isDead = true; 
         }
 
+        if (isDead = true)
+        {
+            //DeathUI.setActive(true);
+        }
     }
 
     public void HurtPlayer(int damage)
