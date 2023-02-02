@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class deathBarrier : MonoBehaviour
 {
+    public GameObject DeathUI;
+    public GameObject PauseUI;
     public GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,11 @@ public class deathBarrier : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("Level", LoadSceneMode.Single);
+            DeathUI.SetActive(true);
+            PauseUI.SetActive(false);
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
         }
         
 

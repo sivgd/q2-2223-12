@@ -7,7 +7,6 @@ public class SpawnController : MonoBehaviour
     [Header("Outside References")]
     public Spawn[] spawnLocations;
     public GameObject[] levelBarriers;
-    public GameObject toEndCollider;
     //public SpawnTrigger[] spawnTriggers;
 
     [Header("Spawning Modifiers")]

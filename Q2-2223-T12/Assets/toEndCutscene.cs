@@ -22,6 +22,7 @@ public class toEndCutscene : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            
             SceneManager.LoadScene("endCutscene", LoadSceneMode.Single);
         }
 
