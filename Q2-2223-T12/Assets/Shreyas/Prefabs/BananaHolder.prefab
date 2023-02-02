@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankEnemy: 0
   explodeEnemy: 0
-  damageToGive: 5
+  damageToGive: 10
   explodeDamage: 0
   tankDamage: 0
 --- !u!135 &922101677578911728

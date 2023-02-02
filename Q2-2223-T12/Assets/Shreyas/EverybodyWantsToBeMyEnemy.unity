@@ -3404,6 +3404,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 887537440288829534, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
+      propertyPath: tankKnockbackForce
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 887537440288829535, guid: dd9588afe9bf0c746a388b3a1aff91bd, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -4882,6 +4886,10 @@ PrefabInstance:
     - target: {fileID: 2278721822976176196, guid: 1d4c1dec0cea91e40bd8329264885304, type: 3}
       propertyPath: m_Name
       value: GibbonEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278721822976176196, guid: 1d4c1dec0cea91e40bd8329264885304, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2278721822976176198, guid: 1d4c1dec0cea91e40bd8329264885304, type: 3}
       propertyPath: styleMeter
