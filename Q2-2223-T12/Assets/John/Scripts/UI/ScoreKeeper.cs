@@ -29,18 +29,24 @@ public class ScoreKeeper : MonoBehaviour
     public playerMove playerMove; 
     private int kills = 0;
     public float style = 0f;
+    public float finalTime = 0f; 
     public float time = 0f;
 
     private bool runTimer;
     private bool gameOver;
     private void Start()
     {
-        StartTimer();
-    }
+        runTimer = true;
+        wallRunning.enabled = true;
+        slideSystem.enabled = true;
+        playerMove.enabled = true;
+        gameOver = false;
 
+    }
     private void Update()
     {
-        if (runTimer) time += Time.deltaTime;
+        time += Time.deltaTime; 
+        if (!runTimer) finalTime = time; 
         if (gameOver) gameOverSequence();
         UpdateDeathUIStats(); 
     }
@@ -66,7 +72,7 @@ public class ScoreKeeper : MonoBehaviour
         styleGrade.SetText(CalculateGrade(style, styleRequired));
         killsText.SetText($"KILLS: " + kills);
         killsGrade.SetText(CalculateGrade((float)kills, (float)killsRequired));   // cast is not redundant ignore editor
-        timeText.SetText($"TIME: {time}");
+        timeText.SetText($"TIME: {finalTime}");
         timeGrade.text = CalculateGrade(time, (minutesRequired * 60f));
         killsGrade.color = getGradeColor(killsGrade);
         styleGrade.color = getGradeColor(styleGrade);
