@@ -45,15 +45,15 @@ public class ScoreKeeper : MonoBehaviour
     }
     private void Update()
     {
-        if(runTimer) time = Time.timeSinceLevelLoad;
+        if(!runTimer) time = Time.timeSinceLevelLoad;
         if (gameOver) gameOverSequence();
+        UpdateDeathUIStats();
     }
 
 
     void gameOverSequence()
     {
         Time.timeScale = 0;
-        UpdateDeathUIStats();
         StartCoroutine(GameOver()); 
     }
     IEnumerator GameOver()
