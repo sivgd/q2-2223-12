@@ -45,7 +45,7 @@ public class HealthManager : MonoBehaviour
             }
         }
 
-        if(currentHealth < 40)
+        if(currentHealth < 40 && currentHealth > 20)
         {
             Vignette tmp;
             if(volume.profile.TryGet<Vignette>(out tmp))
@@ -54,6 +54,15 @@ public class HealthManager : MonoBehaviour
                 vig.intensity.SetValue(new ClampedFloatParameter(0.5f, 0.5f, 0.5f));
             }
             
+        }
+        else if(currentHealth <= 20)
+        {
+            Vignette tmp;
+            if (volume.profile.TryGet<Vignette>(out tmp))
+            {
+                vig = tmp;
+                vig.intensity.SetValue(new ClampedFloatParameter(0.7f, 0.7f, 0.7f));
+            }
         }
         else
         {

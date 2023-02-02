@@ -6,6 +6,11 @@ using UnityEngine.Audio;
 public class settingsMenu : MonoBehaviour
 {
 
+    private void Start()
+    {
+        Screen.fullScreen = true;
+    }
+
     public AudioMixer masterVolumeMixer;
     public AudioMixerGroup sfxVolumeMixer;
     public AudioMixerGroup musicVolumeMixer;
