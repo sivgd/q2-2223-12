@@ -46,7 +46,7 @@ public class ScoreKeeper : MonoBehaviour
     private void Update()
     {
 
-        time = Time.timeSinceLevelLoad;
+        if(runTimer) time = Time.timeSinceLevelLoad;
         if (gameOver) gameOverSequence();
         UpdateDeathUIStats(); 
     }
