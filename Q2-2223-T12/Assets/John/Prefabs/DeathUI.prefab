@@ -261,7 +261,7 @@ MonoBehaviour:
   killsText: {fileID: 1640746488101493111}
   timeText: {fileID: 1640746486531364006}
   styleGrade: {fileID: 1640746488053740952}
-  killsGrade: {fileID: 1640746488053740952}
+  killsGrade: {fileID: 1640746486886692926}
   timeGrade: {fileID: 1640746486719296427}
   gradeColors:
   - {r: 0.08611488, g: 0, b: 1, a: 1}
@@ -272,6 +272,8 @@ MonoBehaviour:
   wallRunning: {fileID: 0}
   slideSystem: {fileID: 0}
   playerMove: {fileID: 0}
+  style: 0
+  time: 0
 --- !u!1 &1640746486719296429
 GameObject:
   m_ObjectHideFlags: 0

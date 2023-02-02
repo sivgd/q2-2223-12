@@ -27,9 +27,9 @@ public class ScoreKeeper : MonoBehaviour
     public wallRunning wallRunning;
     public slideSystem slideSystem;
     public playerMove playerMove; 
-    private int kills;
-    private float style;
-    private float time;
+    private int kills = 0;
+    public float style = 0f;
+    public float time = 0f;
 
     private bool runTimer;
     private bool gameOver;
@@ -61,11 +61,11 @@ public class ScoreKeeper : MonoBehaviour
     }
     void UpdateDeathUIStats()
     {
-        styleText.text = "" + style;     //fuck you C# why can't you be cool like javascript
-        styleGrade.text = CalculateGrade(style, styleRequired);
-        killsText.text = "" + kills;
-        killsGrade.text = CalculateGrade((float)kills, (float)killsRequired);   // cast is not redundant ignore editor
-        timeText.text = $"{Mathf.Floor(time / 60f)}:{Mathf.Abs(Mathf.Floor(time / 60f) - time)}";
+        styleText.SetText($"STYLE: {style}");     //for some reason this line throws a null reference exception but doesn't actually halt the game 
+        styleGrade.SetText(CalculateGrade(style, styleRequired));
+        killsText.SetText($"KILLS: " + kills);
+        killsGrade.SetText(CalculateGrade((float)kills, (float)killsRequired));   // cast is not redundant ignore editor
+        timeText.SetText($"TIME: {Mathf.Floor(time / 60f)}:{Mathf.Abs(Mathf.Floor(time / 60f) - time)}");
         timeGrade.text = CalculateGrade(time, (minutesRequired * 60f));
         killsGrade.color = getGradeColor(killsGrade);
         styleGrade.color = getGradeColor(styleGrade);

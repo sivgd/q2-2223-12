@@ -165,6 +165,7 @@ public class StyleMeterController : MonoBehaviour
     {
         dStyle += amt;
         currentStyle += amt;
+        scoreKeeper.setStyle(currentStyle); 
         //decayRollingMult = 1f; 
     }
     public void filterStyleFromDeathType(DeathType deathType, int style)
